@@ -19,6 +19,7 @@ size = 4.0
 script = ExtResource( 19 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.967392, 0, 0.253285, 0, 1, 0, -0.253285, 0, -0.967392, -0.39137, 0, -0.10247 )
 
 [node name="World" type="Spatial" parent="."]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://color_scheme/orange.tres" type="Material" id=1]
 [ext_resource path="res://color_scheme/red.tres" type="Material" id=2]
@@ -17,26 +17,101 @@
 [ext_resource path="res://color_scheme/dark_gray.tres" type="Material" id=15]
 [ext_resource path="res://color_scheme/black.tres" type="Material" id=16]
 [ext_resource path="res://assets/swords/sword-1.obj" type="ArrayMesh" id=17]
+[ext_resource path="res://color_scheme/peach.tres" type="Material" id=18]
+[ext_resource path="res://assets/axes/axe-1.obj" type="ArrayMesh" id=19]
+
+[sub_resource type="SphereMesh" id=1]
 
 [node name="items" type="Spatial"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.967848 )
 
-[node name="sword-1" type="MeshInstance" parent="."]
+[node name="axes" type="Spatial" parent="."]
+visible = false
+
+[node name="axe-1" type="Spatial" parent="axes"]
+
+[node name="handle-mesh" type="MeshInstance" parent="axes/axe-1"]
 transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 18 )
+
+[node name="axe-1-mesh" type="MeshInstance" parent="axes/axe-1"]
+transform = Transform( 0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, 0.0184203, 0.131308, 0 )
+mesh = ExtResource( 19 )
+material/0 = ExtResource( 13 )
+material/1 = ExtResource( 4 )
+
+[node name="swords" type="Spatial" parent="."]
+visible = false
+
+[node name="sword-1" type="Spatial" parent="swords"]
+
+[node name="handle-mesh" type="MeshInstance" parent="swords/sword-1"]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 18 )
+
+[node name="sword-1-mesh" type="MeshInstance" parent="swords/sword-1"]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0.149106, 0 )
 mesh = ExtResource( 17 )
 material/0 = ExtResource( 10 )
 material/1 = ExtResource( 13 )
 material/2 = ExtResource( 1 )
 
-[node name="dagger-1" type="MeshInstance" parent="."]
-transform = Transform( 0.04, 0, 0, 0, 0.05, 0, 0, 0, 0.025, -0.642976, 0, -0.0034554 )
-mesh = ExtResource( 8 )
-material/0 = ExtResource( 10 )
-material/1 = ExtResource( 15 )
+[node name="sword-2" type="Spatial" parent="swords"]
+
+[node name="handle-mesh" type="MeshInstance" parent="swords/sword-2"]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 18 )
+
+[node name="sword-2-mesh" type="MeshInstance" parent="swords/sword-2"]
+transform = Transform( 0.05, 0, 0, 0, 0.068, 0, 0, 0, 0.05, -0.0232072, 0.320171, 0 )
+mesh = ExtResource( 6 )
+material/0 = ExtResource( 15 )
+material/1 = ExtResource( 16 )
+material/2 = ExtResource( 1 )
+
+[node name="sword-3" type="Spatial" parent="swords"]
+
+[node name="handle-mesh" type="MeshInstance" parent="swords/sword-3"]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 18 )
+
+[node name="sword-3-mesh" type="MeshInstance" parent="swords/sword-3"]
+transform = Transform( 0.05, 0, 0, 0, 0.116, 0, 0, 0, 0.05, 0, 0.0597228, 0 )
+mesh = ExtResource( 5 )
+material/0 = ExtResource( 11 )
+material/1 = ExtResource( 10 )
 material/2 = ExtResource( 13 )
 
-[node name="staff-1-test" type="MeshInstance" parent="."]
-transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.367313, 0, 0 )
+[node name="sword-4" type="Spatial" parent="swords"]
+
+[node name="handle-mesh" type="MeshInstance" parent="swords/sword-4"]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 18 )
+
+[node name="sword-4-mesh" type="MeshInstance" parent="swords/sword-4"]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0.308475, 0 )
+mesh = ExtResource( 12 )
+material/0 = ExtResource( 3 )
+material/1 = ExtResource( 9 )
+material/2 = ExtResource( 14 )
+material/3 = ExtResource( 15 )
+
+[node name="staffs" type="Spatial" parent="."]
+visible = false
+
+[node name="staff-1" type="Spatial" parent="staffs"]
+
+[node name="handle-mesh" type="MeshInstance" parent="staffs/staff-1"]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 18 )
+
+[node name="staff-1-mesh" type="MeshInstance" parent="staffs/staff-1"]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.0230207, -0.0954189, 0 )
 mesh = ExtResource( 7 )
 material/0 = ExtResource( 14 )
 material/1 = ExtResource( 4 )
@@ -45,34 +120,29 @@ material/3 = ExtResource( 2 )
 material/4 = ExtResource( 13 )
 material/5 = ExtResource( 1 )
 
-[node name="OmniLight" type="OmniLight" parent="staff-1-test"]
+[node name="OmniLight" type="OmniLight" parent="staffs/staff-1/staff-1-mesh"]
 transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, 0.947531, 13.126, 1.87185 )
 light_color = Color( 0.815686, 0.27451, 0.282353, 1 )
 shadow_enabled = true
 
-[node name="OmniLight2" type="OmniLight" parent="staff-1-test"]
+[node name="OmniLight2" type="OmniLight" parent="staffs/staff-1/staff-1-mesh"]
 transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, 0.948, 13.126, -1.872 )
 light_color = Color( 0.815686, 0.27451, 0.282353, 1 )
 shadow_enabled = true
 
-[node name="sword-2" type="MeshInstance" parent="."]
-transform = Transform( 0.05, 0, 0, 0, 0.068, 0, 0, 0, 0.05, 0.391039, 0.154166, 0 )
-mesh = ExtResource( 6 )
-material/0 = ExtResource( 15 )
-material/1 = ExtResource( 16 )
-material/2 = ExtResource( 1 )
+[node name="daggers" type="Spatial" parent="."]
+visible = false
 
-[node name="sword-3" type="MeshInstance" parent="."]
-transform = Transform( 0.05, 0, 0, 0, 0.116, 0, 0, 0, 0.05, 0.78909, 0, 0 )
-mesh = ExtResource( 5 )
-material/0 = ExtResource( 11 )
-material/1 = ExtResource( 10 )
+[node name="dagger-1" type="Spatial" parent="daggers"]
+
+[node name="handle-mesh" type="MeshInstance" parent="daggers/dagger-1"]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 18 )
+
+[node name="dagger-1-mesh" type="MeshInstance" parent="daggers/dagger-1"]
+transform = Transform( 0.04, 0, 0, 0, 0.05, 0, 0, 0, 0.025, 0.0247281, 0.104957, 0 )
+mesh = ExtResource( 8 )
+material/0 = ExtResource( 10 )
+material/1 = ExtResource( 15 )
 material/2 = ExtResource( 13 )
-
-[node name="sword-4" type="MeshInstance" parent="."]
-transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.965966, 0, 0 )
-mesh = ExtResource( 12 )
-material/0 = ExtResource( 3 )
-material/1 = ExtResource( 9 )
-material/2 = ExtResource( 14 )
-material/3 = ExtResource( 15 )
