@@ -11,5 +11,4 @@ func _process(delta):
 	translation.x -= delta * speed
 	
 func reposition():
-	print('lol I\'ve repositioned')
 	translation.x += reposition_x_amount
