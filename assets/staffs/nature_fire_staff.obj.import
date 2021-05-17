@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/nature_fire_staff.obj-025c4e3ad7c8c62d8b9ac197a10135f0.mesh"
+
+[deps]
+
+files=[ "res://.import/nature_fire_staff.obj-025c4e3ad7c8c62d8b9ac197a10135f0.mesh" ]
+
+source_file="res://assets/staffs/nature_fire_staff.obj"
+dest_files=[ "res://.import/nature_fire_staff.obj-025c4e3ad7c8c62d8b9ac197a10135f0.mesh", "res://.import/nature_fire_staff.obj-025c4e3ad7c8c62d8b9ac197a10135f0.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
