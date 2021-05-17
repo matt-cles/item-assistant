@@ -13,6 +13,10 @@ config_version=4
 config/name="Godot Wild Jam #33 - You Aren't the Hero"
 run/main_scene="res://scenes/Main.tscn"
 
+[autoload]
+
+GlobalSetup="*res://scripts/global_setup.gd"
+
 [display]
 
 window/stretch/mode="viewport"
