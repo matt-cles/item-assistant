@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://color_scheme/dark_green.tres" type="Material" id=6]
 [ext_resource path="res://color_scheme/blue.tres" type="Material" id=17]
 [ext_resource path="res://scripts/Camera.gd" type="Script" id=19]
@@ -17,9 +17,6 @@ projection = 1
 current = true
 size = 4.0
 script = ExtResource( 19 )
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( -0.967392, 0, 0.253285, 0, 1, 0, -0.253285, 0, -0.967392, -0.39137, 0, -0.10247 )
 
 [node name="World" type="Spatial" parent="."]
 
@@ -98,3 +95,6 @@ material/0 = ExtResource( 6 )
 transform = Transform( 5.33624, 0, 0, 0, 0.0089638, -5.25957, 0, 0.0523084, 0.901302, -3.62435, -1.78556, -15.3191 )
 mesh = SubResource( 1 )
 material/0 = ExtResource( 17 )
+
+[node name="Character" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.883806, 0, 0.467853, 0, 1, 0, -0.467853, 0, -0.883806, -2.29076, -0.308663, -1.58358 )

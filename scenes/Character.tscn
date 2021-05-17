@@ -1,0 +1,30 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/characters/character-1.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://color_scheme/brown.tres" type="Material" id=2]
+[ext_resource path="res://color_scheme/blue_gray.tres" type="Material" id=3]
+[ext_resource path="res://color_scheme/peach.tres" type="Material" id=4]
+[ext_resource path="res://color_scheme/orange.tres" type="Material" id=5]
+[ext_resource path="res://assets/swords/sword-1.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://color_scheme/bright_green.tres" type="Material" id=7]
+[ext_resource path="res://color_scheme/dark_blue.tres" type="Material" id=8]
+
+[node name="Character" type="Spatial"]
+
+[node name="CharacterMesh" type="MeshInstance" parent="."]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 7 )
+material/1 = ExtResource( 2 )
+material/2 = ExtResource( 8 )
+material/3 = ExtResource( 4 )
+
+[node name="WeaponSlot1" type="Spatial" parent="."]
+transform = Transform( -0.00219967, -0.0772121, -0.0635094, 0.0130085, 0.0627637, -0.0767561, 0.0991259, -0.00995, 0.00866355, -0.364854, -0.0331169, -0.356495 )
+
+[node name="sword-5" type="MeshInstance" parent="WeaponSlot1"]
+transform = Transform( -0.0572085, 0, -0.496716, 0, 0.5, 0, 0.496716, 0, -0.0572085, 0, 0, 0 )
+mesh = ExtResource( 6 )
+material/0 = ExtResource( 3 )
+material/1 = ExtResource( 2 )
+material/2 = ExtResource( 5 )
