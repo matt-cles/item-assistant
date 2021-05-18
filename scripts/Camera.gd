@@ -4,7 +4,7 @@ export var use_pixels = true
 onready var viewport = get_viewport()
 
 func _ready():
-	get_tree().get_root().connect("size_changed", self, "_on_resize")
+	var _connected = get_tree().get_root().connect("size_changed", self, "_on_resize")
 	pixelize()
 	
 func _on_resize():
