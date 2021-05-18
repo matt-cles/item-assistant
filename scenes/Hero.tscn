@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/characters/character-1.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://color_scheme/brown.tres" type="Material" id=2]
-[ext_resource path="res://color_scheme/blue_gray.tres" type="Material" id=3]
 [ext_resource path="res://color_scheme/peach.tres" type="Material" id=4]
 [ext_resource path="res://color_scheme/orange.tres" type="Material" id=5]
-[ext_resource path="res://assets/swords/sword-1.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://animations/still.tres" type="Animation" id=7]
 [ext_resource path="res://color_scheme/dark_blue.tres" type="Material" id=8]
 [ext_resource path="res://animations/walk.tres" type="Animation" id=9]
 [ext_resource path="res://scripts/Hero.gd" type="Script" id=10]
@@ -78,19 +77,7 @@ material/2 = ExtResource( 8 )
 material/3 = ExtResource( 4 )
 
 [node name="WeaponSlot1" type="Spatial" parent="pivot"]
-transform = Transform( 0.10155, -0.607625, -0.787705, 0.0776916, 0.794224, -0.602638, 0.991792, -1.49012e-08, 0.127861, -0.520722, 0.122411, -0.408311 )
-
-[node name="placeholder_sword" type="MeshInstance" parent="pivot/WeaponSlot1" groups=[
-"drop",
-"item",
-"sword",
-"weapon",
-]]
-transform = Transform( -0.00572085, 5.75547e-10, -0.0496716, 3.60673e-09, 0.05, 1.97095e-10, 0.0496716, -1.58499e-11, -0.00572085, -6.36578e-05, 0.146846, 0.000493824 )
-mesh = ExtResource( 6 )
-material/0 = ExtResource( 3 )
-material/1 = ExtResource( 2 )
-material/2 = ExtResource( 5 )
+transform = Transform( -0.0219959, -0.772121, -0.635095, 0.130085, 0.627638, -0.76756, 0.991259, -0.0994995, 0.0866358, -0.364854, -0.0331169, -0.356495 )
 
 [node name="Hand" type="MeshInstance" parent="pivot/WeaponSlot1"]
 transform = Transform( 0.07, 9.11939e-11, -9.31323e-10, -2.4315e-09, 0.07, 1.10425e-08, -9.31323e-10, -1.08309e-10, 0.07, 0, 0, 0 )
@@ -99,4 +86,5 @@ material/0 = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 2 )
+anims/still = ExtResource( 7 )
 anims/walk = ExtResource( 9 )
