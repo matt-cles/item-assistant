@@ -8,12 +8,12 @@ func _ready():
 	_connected = events.connect('start_moving', self, 'start_walking')
 	$AnimationPlayer.play("walk")
 
-func _process(_delta):
-	if Input.is_action_just_pressed("ui_accept"):
-		$AnimationPlayer.play("attack")
-		yield($AnimationPlayer, "animation_finished")
-		var next = "walk" if walking else "still"
-		$AnimationPlayer.play(next)
+#func _process(_delta):
+#	if Input.is_action_just_pressed("ui_accept"):
+#		$AnimationPlayer.play("attack")
+#		yield($AnimationPlayer, "animation_finished")
+#		var next = "walk" if walking else "still"
+#		$AnimationPlayer.play(next)
 
 func start_walking():
 	walking = true
