@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://color_scheme/orange.tres" type="Material" id=1]
 [ext_resource path="res://color_scheme/red.tres" type="Material" id=2]
@@ -19,6 +19,10 @@
 [ext_resource path="res://assets/swords/sword-1.obj" type="ArrayMesh" id=17]
 [ext_resource path="res://color_scheme/peach.tres" type="Material" id=18]
 [ext_resource path="res://assets/axes/axe-1.obj" type="ArrayMesh" id=19]
+[ext_resource path="res://color_scheme/light_blue.tres" type="Material" id=20]
+[ext_resource path="res://assets/potions/potion-1.obj" type="ArrayMesh" id=21]
+[ext_resource path="res://color_scheme/dark_blue.tres" type="Material" id=22]
+[ext_resource path="res://color_scheme/white.tres" type="Material" id=23]
 
 [sub_resource type="SphereMesh" id=1]
 
@@ -183,3 +187,62 @@ mesh = ExtResource( 8 )
 material/0 = ExtResource( 10 )
 material/1 = ExtResource( 15 )
 material/2 = ExtResource( 13 )
+
+[node name="potions" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.96553 )
+
+[node name="potion-1" type="Spatial" parent="potions" groups=[
+"drop",
+"item",
+"potion",
+]]
+
+[node name="handle-mesh" type="MeshInstance" parent="potions/potion-1"]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 18 )
+
+[node name="potion-1-mesh" type="MeshInstance" parent="potions/potion-1"]
+transform = Transform( 0.0141421, 0.0141421, 0, -0.0141421, 0.0141421, 0, 0, 0, 0.02, -0.0652478, -0.0661565, 0 )
+mesh = ExtResource( 21 )
+material/0 = ExtResource( 10 )
+material/1 = ExtResource( 2 )
+material/2 = ExtResource( 4 )
+
+[node name="potion-2" type="Spatial" parent="potions" groups=[
+"drop",
+"item",
+"potion",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.319601, 0, 0 )
+
+[node name="handle-mesh" type="MeshInstance" parent="potions/potion-2"]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 18 )
+
+[node name="potion-2-mesh" type="MeshInstance" parent="potions/potion-2"]
+transform = Transform( 0.0141421, 0.0141421, 0, -0.0141421, 0.0141421, 0, 0, 0, 0.02, -0.0652478, -0.0661565, 0 )
+mesh = ExtResource( 21 )
+material/0 = ExtResource( 10 )
+material/1 = ExtResource( 14 )
+material/2 = ExtResource( 9 )
+
+[node name="potion-3" type="Spatial" parent="potions" groups=[
+"drop",
+"item",
+"potion",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.331514, 0, 0 )
+
+[node name="handle-mesh" type="MeshInstance" parent="potions/potion-3"]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 18 )
+
+[node name="potion-3-mesh" type="MeshInstance" parent="potions/potion-3"]
+transform = Transform( 0.0141421, 0.0141421, 0, -0.0141421, 0.0141421, 0, 0, 0, 0.02, -0.0652478, -0.0661565, 0 )
+mesh = ExtResource( 21 )
+material/0 = ExtResource( 10 )
+material/1 = ExtResource( 20 )
+material/2 = ExtResource( 11 )
