@@ -179,15 +179,14 @@ script = ExtResource( 4 )
 
 [node name="DayLighting" type="DirectionalLight" parent="World/DayNightCycle"]
 transform = Transform( 1, 0, 0, 0, -0.426505, 0.904485, 0, -0.904485, -0.426505, 0, 0, 0 )
-light_color = Color( 0.87451, 0.870588, 0.705882, 1 )
+light_energy = 2.2
 shadow_enabled = true
 shadow_contact = 0.15
 
 [node name="DayLighting2" type="DirectionalLight" parent="World/DayNightCycle"]
-transform = Transform( 1, 0, 0, 0, 0.422128, 0.906536, 0, -0.906536, 0.422128, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 0.568246, 0.822859, 0, -0.822859, 0.568246, 0, 0, 0 )
 visible = false
-light_color = Color( 0.87451, 0.870588, 0.705882, 1 )
-shadow_enabled = true
+light_energy = 0.68
 shadow_contact = 0.15
 
 [node name="sun-1" type="MeshInstance" parent="World/DayNightCycle"]
@@ -207,7 +206,11 @@ transform = Transform( -0.883806, 0, 0.467853, 0, 1, 0, -0.467853, 0, -0.883806,
 
 [node name="Player" parent="." instance=ExtResource( 12 )]
 transform = Transform( -0.707045, 0, 0.374283, 0, 0.8, 0, -0.374283, 0, -0.707045, -2.62879, -0.324255, -1.76252 )
-character_model = 1
+
+[node name="EnemySpawnPoint" type="Spatial" parent="." groups=[
+"enemy_spawn_point",
+]]
+transform = Transform( -0.883806, 0, 0.467853, 0, 1, 0, -0.467853, 0, -0.883806, 8.22577, -0.24233, 3.98346 )
 
 [node name="items" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.006, 0, 39.7992 )
