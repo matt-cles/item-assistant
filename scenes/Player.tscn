@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/characters/character-1.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://color_scheme/brown.tres" type="Material" id=2]
+[ext_resource path="res://color_scheme/blue_gray.tres" type="Material" id=3]
+[ext_resource path="res://color_scheme/peach.tres" type="Material" id=4]
+[ext_resource path="res://color_scheme/orange.tres" type="Material" id=5]
+[ext_resource path="res://assets/swords/sword-1.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://color_scheme/light_blue.tres" type="Material" id=7]
+[ext_resource path="res://animations/walk.tres" type="Animation" id=9]
+[ext_resource path="res://scripts/Hero.gd" type="Script" id=10]
+
+[sub_resource type="SphereMesh" id=1]
+
+[sub_resource type="Animation" id=2]
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("pivot/WeaponSlot1:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.46 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.364854, -0.0331169, -0.356495 ), Vector3( -0.601718, 0.156782, -0.483433 ), Vector3( -0.801891, 0.156782, -0.109556 ), Vector3( -0.520722, 0.122411, 0.577229 ), Vector3( -0.520722, 0.122411, -0.408311 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("pivot/WeaponSlot1:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.46 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 50.1353, -82.232, 11.7094 ), Vector3( 41.432, -77.6442, 18.6812 ), Vector3( 6.39018, -17.6063, 69.0146 ), Vector3( 10.6086, 48.6215, 83.2949 ), Vector3( 37.0591, -80.7801, 5.58694 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("pivot:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("pivot:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[node name="Player" type="Spatial"]
+script = ExtResource( 10 )
+
+[node name="pivot" type="Spatial" parent="."]
+
+[node name="CharacterMesh" type="MeshInstance" parent="pivot"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 7 )
+material/1 = ExtResource( 3 )
+material/2 = ExtResource( 2 )
+material/3 = ExtResource( 4 )
+
+[node name="WeaponSlot1" type="Spatial" parent="pivot"]
+transform = Transform( 0.10155, -0.607625, -0.787705, 0.0776916, 0.794224, -0.602638, 0.991792, -1.49012e-08, 0.127861, -0.520722, 0.122411, -0.408311 )
+
+[node name="placeholder_sword" type="MeshInstance" parent="pivot/WeaponSlot1" groups=[
+"drop",
+"item",
+"sword",
+"weapon",
+]]
+transform = Transform( -0.00572085, 5.75547e-10, -0.0496716, 3.60673e-09, 0.05, 1.97095e-10, 0.0496716, -1.58499e-11, -0.00572085, -6.36578e-05, 0.146846, 0.000493824 )
+mesh = ExtResource( 6 )
+material/0 = ExtResource( 3 )
+material/1 = ExtResource( 2 )
+material/2 = ExtResource( 5 )
+
+[node name="Hand" type="MeshInstance" parent="pivot/WeaponSlot1"]
+transform = Transform( 0.07, 9.11939e-11, -9.31323e-10, -2.4315e-09, 0.07, 1.10425e-08, -9.31323e-10, -1.08309e-10, 0.07, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/attack = SubResource( 2 )
+anims/walk = ExtResource( 9 )
