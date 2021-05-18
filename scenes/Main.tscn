@@ -1,9 +1,9 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://scenes/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Hero.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Items.tscn" type="PackedScene" id=2]
 [ext_resource path="res://color_scheme/brown.tres" type="Material" id=3]
-[ext_resource path="res://scenes/DayNightCycle.gd" type="Script" id=4]
+[ext_resource path="res://scripts/DayNightCycle.gd" type="Script" id=4]
 [ext_resource path="res://color_scheme/blue_gray.tres" type="Material" id=5]
 [ext_resource path="res://color_scheme/dark_green.tres" type="Material" id=6]
 [ext_resource path="res://color_scheme/yellow.tres" type="Material" id=7]
@@ -11,6 +11,8 @@
 [ext_resource path="res://assets/sun_and_moon/sun-1.obj" type="ArrayMesh" id=9]
 [ext_resource path="res://scenes/Tree.tscn" type="PackedScene" id=10]
 [ext_resource path="res://color_scheme/white.tres" type="Material" id=11]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scripts/Events.gd" type="Script" id=13]
 [ext_resource path="res://color_scheme/blue.tres" type="Material" id=17]
 [ext_resource path="res://scripts/Camera.gd" type="Script" id=19]
 [ext_resource path="res://assets/clouds/cloud-1.obj" type="ArrayMesh" id=23]
@@ -161,12 +163,12 @@ mesh = SubResource( 2 )
 material/0 = ExtResource( 6 )
 
 [node name="Road" type="MeshInstance" parent="World/Floor"]
-transform = Transform( -1.8436, 0, 0.0876747, 0, 18.8427, 0, -0.920974, 0, -0.156297, -0.429284, -16.7232, -0.280049 )
+transform = Transform( -1.06626, 0, 0.0800869, 0, 18.8427, 0, -0.532651, 0, -0.160317, 0.0129674, -16.7232, -0.0591214 )
 mesh = SubResource( 3 )
 material/0 = ExtResource( 3 )
 
 [node name="sky" type="MeshInstance" parent="World"]
-transform = Transform( 38.7333, 0, 0, 0, 0.0650642, -38.1768, 0, 0.0523084, 0.901302, -6.75108, -3.73088, -26.6711 )
+transform = Transform( 6.96039, 0, 0, 0, 0.0116921, -6.86038, 0, 0.0523084, 0.901302, -6.75108, -3.73088, -26.6711 )
 mesh = SubResource( 2 )
 material/0 = ExtResource( 17 )
 
@@ -175,9 +177,17 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.72692, -4.45337, -14.8914 )
 script = ExtResource( 4 )
 
 [node name="DayLighting" type="DirectionalLight" parent="World/DayNightCycle"]
-transform = Transform( 1, 0, 0, 0, 0.422128, 0.906536, 0, -0.906536, 0.422128, 0, 0, 0 )
-light_color = Color( 1, 0.992157, 0.6, 1 )
+transform = Transform( 1, 0, 0, 0, -0.426505, 0.904485, 0, -0.904485, -0.426505, 0, 0, 0 )
+light_color = Color( 0.87451, 0.870588, 0.705882, 1 )
 shadow_enabled = true
+shadow_contact = 0.15
+
+[node name="DayLighting2" type="DirectionalLight" parent="World/DayNightCycle"]
+transform = Transform( 1, 0, 0, 0, 0.422128, 0.906536, 0, -0.906536, 0.422128, 0, 0, 0 )
+visible = false
+light_color = Color( 0.87451, 0.870588, 0.705882, 1 )
+shadow_enabled = true
+shadow_contact = 0.15
 
 [node name="sun-1" type="MeshInstance" parent="World/DayNightCycle"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 3.06065, 0 )
@@ -194,8 +204,11 @@ material/0 = ExtResource( 5 )
 [node name="Hero" parent="." instance=ExtResource( 1 )]
 transform = Transform( -0.883806, 0, 0.467853, 0, 1, 0, -0.467853, 0, -0.883806, -1.24697, -0.24233, -1.03104 )
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( -0.707045, 0, 0.374282, 0, 0.8, 0, -0.374282, 0, -0.707045, -2.76997, -0.310465, -1.83726 )
+[node name="Player" parent="." instance=ExtResource( 12 )]
+transform = Transform( -0.707045, 0, 0.374283, 0, 0.8, 0, -0.374283, 0, -0.707045, -2.62879, -0.324255, -1.76252 )
 
 [node name="items" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.006, 0, 39.7992 )
+
+[node name="Events" type="Spatial" parent="."]
+script = ExtResource( 13 )
