@@ -8,7 +8,7 @@ func _ready():
 	get_random_weapon()
 
 func get_random_weapon():
-	var weapons = get_tree().get_nodes_in_group("weapon")
+	var weapons = get_tree().get_nodes_in_group("item")
 	var weapon = weapons[randi() % len(weapons)]
 	weapon = weapon.duplicate()
 	weapon.translation = Vector3.ZERO
