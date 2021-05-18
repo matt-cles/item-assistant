@@ -4,7 +4,7 @@
 length = 0.5
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("pivot/WeaponSlot1:translation")
+tracks/0/path = NodePath("pivot/RightHand:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -16,7 +16,7 @@ tracks/0/keys = {
 "values": [ Vector3( -0.364854, -0.0331169, -0.356495 ), Vector3( -0.601718, 0.156782, -0.483433 ), Vector3( -0.801891, 0.156782, -0.109556 ), Vector3( -0.520722, 0.122411, 0.577229 ), Vector3( -0.520722, 0.122411, -0.408311 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("pivot/WeaponSlot1:rotation_degrees")
+tracks/1/path = NodePath("pivot/RightHand:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false

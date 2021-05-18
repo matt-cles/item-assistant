@@ -15,7 +15,7 @@
 length = 0.5
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("pivot/WeaponSlot1:translation")
+tracks/0/path = NodePath("pivot/RightHand:translation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -27,7 +27,7 @@ tracks/0/keys = {
 "values": [ Vector3( -0.364854, -0.0331169, -0.356495 ), Vector3( -0.601718, 0.156782, -0.483433 ), Vector3( -0.801891, 0.156782, -0.109556 ), Vector3( -0.520722, 0.122411, 0.577229 ), Vector3( -0.520722, 0.122411, -0.408311 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("pivot/WeaponSlot1:rotation_degrees")
+tracks/1/path = NodePath("pivot/RightHand:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -63,7 +63,9 @@ tracks/3/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 
-[node name="Hero" type="Spatial"]
+[node name="Hero" type="Spatial" groups=[
+"hero",
+]]
 script = ExtResource( 10 )
 
 [node name="pivot" type="Spatial" parent="."]
@@ -76,13 +78,15 @@ material/1 = ExtResource( 2 )
 material/2 = ExtResource( 8 )
 material/3 = ExtResource( 4 )
 
-[node name="WeaponSlot1" type="Spatial" parent="pivot"]
+[node name="RightHand" type="Spatial" parent="pivot"]
 transform = Transform( -0.0219959, -0.772121, -0.635095, 0.130085, 0.627638, -0.76756, 0.991259, -0.0994995, 0.0866358, -0.364854, -0.0331169, -0.356495 )
 
-[node name="Hand" type="MeshInstance" parent="pivot/WeaponSlot1"]
+[node name="HandMesh" type="MeshInstance" parent="pivot/RightHand"]
 transform = Transform( 0.07, 9.11939e-11, -9.31323e-10, -2.4315e-09, 0.07, 1.10425e-08, -9.31323e-10, -1.08309e-10, 0.07, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = ExtResource( 4 )
+
+[node name="WeaponSlot" type="Spatial" parent="pivot/RightHand"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 2 )

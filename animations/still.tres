@@ -28,7 +28,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("pivot/WeaponSlot1:rotation_degrees")
+tracks/2/path = NodePath("pivot/RightHand:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -40,7 +40,7 @@ tracks/2/keys = {
 "values": [ Vector3( 50.1353, -82.232, 11.7094 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("pivot/WeaponSlot1:translation")
+tracks/3/path = NodePath("pivot/RightHand:translation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false

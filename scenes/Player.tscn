@@ -37,13 +37,15 @@ material/1 = ExtResource( 2 )
 material/2 = ExtResource( 4 )
 material/3 = ExtResource( 3 )
 
-[node name="WeaponSlot1" type="Spatial" parent="pivot"]
+[node name="RightHand" type="Spatial" parent="pivot"]
 transform = Transform( 0.10155, -0.607626, -0.787705, 0.0776915, 0.794223, -0.602639, 0.991792, 2.16067e-07, 0.127861, -0.520722, 0.122411, -0.408311 )
 
-[node name="Hand" type="MeshInstance" parent="pivot/WeaponSlot1"]
+[node name="HandMesh" type="MeshInstance" parent="pivot/RightHand"]
 transform = Transform( 0.07, 9.11939e-11, -9.31323e-10, -2.4315e-09, 0.07, 1.10425e-08, -9.31323e-10, -1.08309e-10, 0.07, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = ExtResource( 2 )
+
+[node name="WeaponSlot" type="Spatial" parent="pivot/RightHand"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = ExtResource( 10 )
