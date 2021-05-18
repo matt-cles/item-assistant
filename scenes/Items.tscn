@@ -166,6 +166,39 @@ transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, 0.948, 13.126, -1.872 )
 light_color = Color( 0.815686, 0.27451, 0.282353, 1 )
 shadow_enabled = true
 
+[node name="staff-2" type="Spatial" parent="staffs" groups=[
+"drop",
+"item",
+"staff",
+"weapon",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.600155, 0, 0 )
+
+[node name="handle-mesh" type="MeshInstance" parent="staffs/staff-2"]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 18 )
+
+[node name="staff-1-mesh" type="MeshInstance" parent="staffs/staff-2"]
+transform = Transform( 0.043825, 0.0240701, 0, -0.0240701, 0.043825, 0, 0, 0, 0.05, 0.108859, 0.255437, 0 )
+mesh = ExtResource( 7 )
+material/0 = ExtResource( 16 )
+material/1 = ExtResource( 22 )
+material/2 = ExtResource( 10 )
+material/3 = ExtResource( 11 )
+material/4 = ExtResource( 20 )
+material/5 = ExtResource( 23 )
+
+[node name="OmniLight" type="OmniLight" parent="staffs/staff-2/staff-1-mesh"]
+transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, 0.947531, 13.126, 1.87185 )
+light_color = Color( 0.34902, 0.490196, 0.807843, 1 )
+shadow_enabled = true
+
+[node name="OmniLight2" type="OmniLight" parent="staffs/staff-2/staff-1-mesh"]
+transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, 0.948013, 13.126, -1.872 )
+light_color = Color( 0.34902, 0.490196, 0.807843, 1 )
+shadow_enabled = true
+
 [node name="daggers" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.73481 )
 
