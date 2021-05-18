@@ -32,6 +32,7 @@ projection = 1
 current = true
 size = 4.0
 script = ExtResource( 19 )
+use_pixels = false
 
 [node name="World" type="Spatial" parent="."]
 
@@ -206,6 +207,7 @@ transform = Transform( -0.883806, 0, 0.467853, 0, 1, 0, -0.467853, 0, -0.883806,
 
 [node name="Player" parent="." instance=ExtResource( 12 )]
 transform = Transform( -0.707045, 0, 0.374283, 0, 0.8, 0, -0.374283, 0, -0.707045, -2.62879, -0.324255, -1.76252 )
+character_model = 1
 
 [node name="items" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.006, 0, 39.7992 )

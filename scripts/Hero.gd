@@ -1,27 +1,24 @@
 extends Spatial
 
-#var item_scene:PackedScene = preload("res://scenes/Items.tscn")
-#var items = item_scene.instance()
+onready var events:Node = get_tree().get_nodes_in_group("events")[0]
+var walking = true
 
 func _ready():
+	var _connected = events.connect('stop_moving', self, 'stop_walking')
+	_connected = events.connect('start_moving', self, 'start_walking')
 	$AnimationPlayer.play("walk")
-	get_random_weapon()
 
-func get_random_weapon():
-	var weapons = get_tree().get_nodes_in_group("item")
-	var weapon = weapons[randi() % len(weapons)]
-	weapon = weapon.duplicate()
-	weapon.translation = Vector3.ZERO
-	weapon.rotation_degrees.y = 90
-	for child in $pivot/WeaponSlot1.get_children():
-		if child.is_in_group("item"):
-			$pivot/WeaponSlot1.remove_child(child)
-	$pivot/WeaponSlot1.add_child(weapon)
-	
-
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		$AnimationPlayer.play("attack")
-		$AnimationPlayer.animation_set_next("attack", "walk")
-	if Input.is_action_just_pressed("ui_right"):
-		get_random_weapon()
+		yield($AnimationPlayer, "animation_finished")
+		var next = "walk" if walking else "still"
+		$AnimationPlayer.play(next)
+
+func start_walking():
+	walking = true
+	$AnimationPlayer.play("walk")
+	
+func stop_walking():
+	walking = false
+	$AnimationPlayer.play("still")
