@@ -8,12 +8,11 @@
 [ext_resource path="res://assets/swords/sword-1.obj" type="ArrayMesh" id=6]
 [ext_resource path="res://color_scheme/dark_blue.tres" type="Material" id=8]
 [ext_resource path="res://animations/walk.tres" type="Animation" id=9]
-[ext_resource path="res://scenes/Character.gd" type="Script" id=10]
+[ext_resource path="res://scripts/Character.gd" type="Script" id=10]
 
-[sub_resource type="SphereMesh" id=2]
+[sub_resource type="SphereMesh" id=1]
 
-[sub_resource type="Animation" id=1]
-resource_name = "attack"
+[sub_resource type="Animation" id=2]
 length = 0.5
 step = 0.01
 tracks/0/type = "value"
@@ -87,17 +86,17 @@ transform = Transform( 0.10155, -0.607625, -0.787705, 0.0776916, 0.794224, -0.60
 "sword",
 "weapon",
 ]]
-transform = Transform( -0.00572085, 4.5788e-10, -0.0496716, 3.7152e-09, 0.05, 1.62913e-10, 0.0496716, -9.10521e-11, -0.00572085, -6.36578e-05, 0.13207, 0.000493795 )
+transform = Transform( -0.00572085, 5.75547e-10, -0.0496716, 3.60673e-09, 0.05, 1.97095e-10, 0.0496716, -1.58499e-11, -0.00572085, -6.36578e-05, 0.146846, 0.000493824 )
 mesh = ExtResource( 6 )
 material/0 = ExtResource( 3 )
 material/1 = ExtResource( 2 )
 material/2 = ExtResource( 5 )
 
-[node name="MeshInstance" type="MeshInstance" parent="pivot/WeaponSlot1"]
+[node name="Hand" type="MeshInstance" parent="pivot/WeaponSlot1"]
 transform = Transform( 0.07, 9.11939e-11, -9.31323e-10, -2.4315e-09, 0.07, 1.10425e-08, -9.31323e-10, -1.08309e-10, 0.07, 0, 0, 0 )
-mesh = SubResource( 2 )
+mesh = SubResource( 1 )
 material/0 = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/attack = SubResource( 1 )
+anims/attack = SubResource( 2 )
 anims/walk = ExtResource( 9 )
