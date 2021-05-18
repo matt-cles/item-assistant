@@ -210,5 +210,7 @@ transform = Transform( -0.707045, 0, 0.374283, 0, 0.8, 0, -0.374283, 0, -0.70704
 [node name="items" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.006, 0, 39.7992 )
 
-[node name="Events" type="Spatial" parent="."]
+[node name="Events" type="Spatial" parent="." groups=[
+"events",
+]]
 script = ExtResource( 13 )
