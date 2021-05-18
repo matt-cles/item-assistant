@@ -8,7 +8,7 @@
 [ext_resource path="res://assets/swords/sword-1.obj" type="ArrayMesh" id=6]
 [ext_resource path="res://color_scheme/dark_blue.tres" type="Material" id=8]
 [ext_resource path="res://animations/walk.tres" type="Animation" id=9]
-[ext_resource path="res://scripts/Character.gd" type="Script" id=10]
+[ext_resource path="res://scripts/Hero.gd" type="Script" id=10]
 
 [sub_resource type="SphereMesh" id=1]
 
@@ -64,7 +64,7 @@ tracks/3/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 
-[node name="Character" type="Spatial"]
+[node name="Hero" type="Spatial"]
 script = ExtResource( 10 )
 
 [node name="pivot" type="Spatial" parent="."]
