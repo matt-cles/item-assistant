@@ -15,7 +15,7 @@ transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.08
 script = ExtResource( 2 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
-aabb = AABB( -8.67382, -13.2398, -2.93421, 17.3477, 26.4795, 5.86842 )
+aabb = AABB( -90.7145, -13.2398, -2.93421, 181.429, 26.4795, 5.86842 )
 
 [node name="TreeMeshes" type="Spatial" parent="."]
 
@@ -39,7 +39,7 @@ material/0 = ExtResource( 8 )
 visible = false
 mesh = ExtResource( 4 )
 material/0 = ExtResource( 3 )
-material/1 = ExtResource( 6 )
+material/1 = ExtResource( 8 )
 
 [node name="tree-5" type="MeshInstance" parent="TreeMeshes"]
 visible = false

@@ -19,6 +19,7 @@ func _process(delta):
 
 func reposition():
 	var spawn_points = get_tree().get_nodes_in_group('tree_spawn_point')
-	var spawn_point = spawn_points[randi() % len(spawn_points)]
-	translation = spawn_point.translation
-	show_one_mesh()
+	if spawn_points:
+		var spawn_point = spawn_points[randi() % len(spawn_points)]
+		translation = spawn_point.translation
+		show_one_mesh()
