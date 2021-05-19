@@ -12,18 +12,18 @@ export var max_mana:float = 100
 export var max_stamina:float = 100
 
 var walking = true
-var health:float
-var mana:float
-var stamina:float
+var health:float = max_health
+var mana:float = 0
+var stamina:float = 0
 
 func _ready():
 	var _connected = events.connect('stop_moving', self, 'stop_walking')
 	_connected = events.connect('start_moving', self, 'start_walking')
 	_connected = events.connect('damage_hero', self, 'take_damage')
 	$AnimationPlayer.play("walk")
-	health = max_health
-	mana = max_mana/2
-	stamina = max_stamina/2
+	modify_health(max_health)
+	modify_mana(max_mana/2)
+	modify_stamina(max_stamina/2)
 
 func _process(delta):
 	var current_item:Item = get_weapon()
