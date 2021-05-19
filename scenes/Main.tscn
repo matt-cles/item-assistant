@@ -322,7 +322,7 @@ anims/walk = ExtResource( 28 )
 monitorable = false
 
 [node name="CollisionShape" type="CollisionShape" parent="World/EnemySpawnPoint/Enemy/Area"]
-transform = Transform( 1.54634, 0, -5.96046e-08, 0, 1.54634, 0, 5.96046e-08, 0, 1.54634, 0, 0, 0 )
+transform = Transform( 0.550586, 0, -5.96046e-08, 0, 0.550586, 0, 5.96046e-08, 0, 0.550586, 0, 0, 0 )
 shape = SubResource( 5 )
 
 [node name="Hero" parent="." instance=ExtResource( 1 )]

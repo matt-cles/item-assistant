@@ -7,7 +7,7 @@ var move_speed = 2
 
 func _ready():
 	print($Area)
-	var _connected = $Area.connect("body_entered", self, 'combat_start')
+	var _connected = $Area.connect("area_entered", self, 'combat_start')
 	print(_connected)
 	_connected = events.connect("start_moving", self, "start_moving")
 	print(_connected)
