@@ -1,7 +1,7 @@
 extends Spatial
 class_name Item, "res://assets/icons/item_icon.png"
 
-enum DAMAGE_TYPES {FIRE, ICE, WATER, POISON, STEALTH, BLUNT, PIERCE, SLASH, NONE}
+enum DAMAGE_TYPES {FIRE, ICE, STEALTH, HEAVY, PIERCE, SLASH, NONE}
 enum RESTORE_TYPES {HEALTH, MANA, STAMINA, NONE}
 
 export var damage = 10
