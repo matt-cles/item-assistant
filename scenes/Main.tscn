@@ -1,27 +1,96 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Hero.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Items.tscn" type="PackedScene" id=2]
+[ext_resource path="res://color_scheme/brown.tres" type="Material" id=3]
+[ext_resource path="res://scripts/DayNightCycle.gd" type="Script" id=4]
+[ext_resource path="res://color_scheme/blue_gray.tres" type="Material" id=5]
 [ext_resource path="res://color_scheme/dark_green.tres" type="Material" id=6]
+[ext_resource path="res://color_scheme/yellow.tres" type="Material" id=7]
+[ext_resource path="res://assets/sun_and_moon/moon-1.obj" type="ArrayMesh" id=8]
+[ext_resource path="res://assets/sun_and_moon/sun-1.obj" type="ArrayMesh" id=9]
+[ext_resource path="res://scenes/Tree.tscn" type="PackedScene" id=10]
+[ext_resource path="res://color_scheme/white.tres" type="Material" id=11]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scripts/Events.gd" type="Script" id=13]
 [ext_resource path="res://color_scheme/blue.tres" type="Material" id=17]
 [ext_resource path="res://scripts/Camera.gd" type="Script" id=19]
+[ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scripts/Settings.gd" type="Script" id=22]
 [ext_resource path="res://assets/clouds/cloud-1.obj" type="ArrayMesh" id=23]
 [ext_resource path="res://scripts/cloud.gd" type="Script" id=25]
 
-[sub_resource type="CubeMesh" id=1]
+[sub_resource type="QuadMesh" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="CubeMesh" id=3]
 
 [node name="Main" type="Spatial"]
 
+[node name="Settings" type="Spatial" parent="." groups=[
+"settings",
+]]
+script = ExtResource( 22 )
+
+[node name="Events" type="Spatial" parent="." groups=[
+"events",
+]]
+script = ExtResource( 13 )
+
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.953775, -8.56185e-08, 0.300523, -0.0874678, 0.956707, 0.277599, -0.287512, -0.291053, 0.912483, 0.995314, 1.70391, 2.08738 )
+transform = Transform( 0.953775, -1.77999e-07, 0.300522, -0.0874678, 0.956707, 0.277599, -0.287512, -0.291053, 0.912483, 3.10053, 3.64854, 8.47949 )
 projection = 1
 current = true
 size = 4.0
 script = ExtResource( 19 )
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( -0.967392, 0, 0.253285, 0, 1, 0, -0.253285, 0, -0.967392, -0.39137, 0, -0.10247 )
+use_pixels = false
 
 [node name="World" type="Spatial" parent="."]
+
+[node name="trees" type="Spatial" parent="World"]
+
+[node name="tree-1" parent="World/trees" instance=ExtResource( 10 )]
+transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.0883806, -0.113401, 0, -1.92895 )
+
+[node name="tree-2" parent="World/trees" instance=ExtResource( 10 )]
+transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.0883806, 3.33721, 0, 3.03943 )
+
+[node name="tree-3" parent="World/trees" instance=ExtResource( 10 )]
+transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.0883806, -4.04052, 0, -4.00782 )
+
+[node name="tree-4" parent="World/trees" instance=ExtResource( 10 )]
+transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.0883806, -8.1405, 0, -6.17819 )
+
+[node name="tree-5" parent="World/trees" instance=ExtResource( 10 )]
+transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.0883806, -10.5523, 0, -7.45488 )
+
+[node name="tree-6" parent="World/trees" instance=ExtResource( 10 )]
+transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.0883806, -15.5339, 0, -10.092 )
+
+[node name="tree-7" parent="World/trees" instance=ExtResource( 10 )]
+transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.0883806, -13.7593, 0, -9.15258 )
+
+[node name="tree-8" parent="World/trees" instance=ExtResource( 10 )]
+transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.0883806, -18.0731, 0, -11.4361 )
+
+[node name="tree_spawn1" type="Spatial" parent="World/trees" groups=[
+"tree_spawn_point",
+]]
+transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.0883806, 5.43035, 0, 1.0057 )
+
+[node name="MeshInstance" type="MeshInstance" parent="World/trees/tree_spawn1"]
+transform = Transform( -0.212491, 0, -349.883, 0, 18.2794, 0, 0.163333, 0, -455.187, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="tree_spawn2" type="Spatial" parent="World/trees"]
+transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.0883806, 6.68018, 0, 4.80907 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="World/trees/tree_spawn2"]
+transform = Transform( -0.212491, 0, -349.883, 0, 18.2794, 0, 0.163333, 0, -455.187, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
 
 [node name="clouds" type="Spatial" parent="World"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.05068, -2.08095, -11.1283 )
@@ -29,7 +98,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.05068, -2.08095, -11.1283 )
 [node name="cloud-1" type="MeshInstance" parent="World/clouds"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.858934, 0.234789, 0 )
 mesh = ExtResource( 23 )
-material/0 = null
+material/0 = ExtResource( 11 )
 script = ExtResource( 25 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="World/clouds/cloud-1"]
@@ -38,7 +107,7 @@ aabb = AABB( -14.7061, -13.2398, -2.93421, 29.4123, 26.4795, 5.86842 )
 [node name="cloud-2" type="MeshInstance" parent="World/clouds"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -1.45726, 0.231066, 1.48151 )
 mesh = ExtResource( 23 )
-material/0 = null
+material/0 = ExtResource( 11 )
 script = ExtResource( 25 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="World/clouds/cloud-2"]
@@ -47,7 +116,7 @@ aabb = AABB( -14.7061, -13.2398, -2.93421, 29.4123, 26.4795, 5.86842 )
 [node name="cloud-3" type="MeshInstance" parent="World/clouds"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.96073, 0.737314, 0.838938 )
 mesh = ExtResource( 23 )
-material/0 = null
+material/0 = ExtResource( 11 )
 script = ExtResource( 25 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="World/clouds/cloud-3"]
@@ -56,7 +125,7 @@ aabb = AABB( -14.7061, -13.2398, -2.93421, 29.4123, 26.4795, 5.86842 )
 [node name="cloud-4" type="MeshInstance" parent="World/clouds"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 2.57355, -0.512445, -2.06113 )
 mesh = ExtResource( 23 )
-material/0 = null
+material/0 = ExtResource( 11 )
 script = ExtResource( 25 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="World/clouds/cloud-4"]
@@ -65,7 +134,7 @@ aabb = AABB( -14.7061, -13.2398, -2.93421, 29.4123, 26.4795, 5.86842 )
 [node name="cloud-5" type="MeshInstance" parent="World/clouds"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -3.55048, 0.124086, 0.137582 )
 mesh = ExtResource( 23 )
-material/0 = null
+material/0 = ExtResource( 11 )
 script = ExtResource( 25 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="World/clouds/cloud-5"]
@@ -74,7 +143,7 @@ aabb = AABB( -14.7061, -13.2398, -2.93421, 29.4123, 26.4795, 5.86842 )
 [node name="cloud-6" type="MeshInstance" parent="World/clouds"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 5.07401, 0.543868, -0.395616 )
 mesh = ExtResource( 23 )
-material/0 = null
+material/0 = ExtResource( 11 )
 script = ExtResource( 25 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="World/clouds/cloud-6"]
@@ -83,18 +152,76 @@ aabb = AABB( -14.7061, -13.2398, -2.93421, 29.4123, 26.4795, 5.86842 )
 [node name="cloud-7" type="MeshInstance" parent="World/clouds"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 4.02685, 0.0202168, 0.782862 )
 mesh = ExtResource( 23 )
-material/0 = null
+material/0 = ExtResource( 11 )
 script = ExtResource( 25 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="World/clouds/cloud-7"]
 aabb = AABB( -14.7061, -13.2398, -2.93421, 29.4123, 26.4795, 5.86842 )
 
-[node name="floor" type="MeshInstance" parent="World"]
-transform = Transform( 5.33624, 0, 0, 0, 0.0530709, 0, 0, 0, 5.33624, 0, -0.761734, 0 )
-mesh = SubResource( 1 )
+[node name="Floor" type="Spatial" parent="World"]
+transform = Transform( 5.33624, 0, 0, 0, 0.0530709, 0, 0, 0, 5.65466, 0, -0.761734, 0 )
+
+[node name="Grass" type="MeshInstance" parent="World/Floor"]
+transform = Transform( 16.4932, 0, 0, 0, 285.302, 0, 0, 0, 1, 0, -284.175, 0 )
+mesh = SubResource( 2 )
 material/0 = ExtResource( 6 )
 
+[node name="Light_block" type="MeshInstance" parent="World/Floor"]
+transform = Transform( 16.4271, -0.0794127, -0.00402538, -132.614, 41.9269, -4.69709, 0.62379, 2.64752, 0.00644458, 0, -284.175, -3.04976 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 6 )
+
+[node name="Road" type="MeshInstance" parent="World/Floor"]
+transform = Transform( -1.06626, 0, 0.0800869, 0, 18.8427, 0, -0.532651, 0, -0.160317, 0.0129674, -16.7232, -0.0591214 )
+mesh = SubResource( 3 )
+material/0 = ExtResource( 3 )
+
 [node name="sky" type="MeshInstance" parent="World"]
-transform = Transform( 5.33624, 0, 0, 0, 0.0089638, -5.25957, 0, 0.0523084, 0.901302, -3.62435, -1.78556, -15.3191 )
-mesh = SubResource( 1 )
+transform = Transform( 6.96039, 0, 0, 0, 0.0116921, -6.86038, 0, 0.0523084, 0.901302, -6.75108, -3.73088, -26.6711 )
+mesh = SubResource( 2 )
 material/0 = ExtResource( 17 )
+
+[node name="DayNightCycle" type="Spatial" parent="World"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.72692, -4.45337, -14.8914 )
+script = ExtResource( 4 )
+
+[node name="DayLighting" type="DirectionalLight" parent="World/DayNightCycle"]
+transform = Transform( 1, 0, 0, 0, -0.426505, 0.904485, 0, -0.904485, -0.426505, 0, 0, 0 )
+light_energy = 2.2
+shadow_enabled = true
+shadow_contact = 0.15
+
+[node name="DayLighting2" type="DirectionalLight" parent="World/DayNightCycle"]
+transform = Transform( 1, 0, 0, 0, 0.568246, 0.822859, 0, -0.822859, 0.568246, 0, 0, 0 )
+visible = false
+light_energy = 0.68
+shadow_contact = 0.15
+
+[node name="sun-1" type="MeshInstance" parent="World/DayNightCycle"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 3.06065, 0 )
+cast_shadow = 0
+mesh = ExtResource( 9 )
+material/0 = ExtResource( 7 )
+
+[node name="moon-1" type="MeshInstance" parent="World/DayNightCycle"]
+transform = Transform( -0.1, 8.74228e-09, 0, -8.74228e-09, -0.1, 0, 0, 0, 0.1, 4.76837e-07, -3.061, 0 )
+cast_shadow = 0
+mesh = ExtResource( 8 )
+material/0 = ExtResource( 5 )
+
+[node name="EnemySpawnPoint" type="Spatial" parent="World" groups=[
+"enemy_spawn_point",
+]]
+transform = Transform( -0.883806, 0, 0.467853, 0, 1, 0, -0.467853, 0, -0.883806, 6.98545, -0.24233, 3.32688 )
+
+[node name="Enemy" parent="World/EnemySpawnPoint" instance=ExtResource( 21 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+
+[node name="Hero" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.883806, 0, 0.467853, 0, 1, 0, -0.467853, 0, -0.883806, -1.24697, -0.24233, -1.03104 )
+
+[node name="Player" parent="." instance=ExtResource( 12 )]
+transform = Transform( -0.707045, 0, 0.374283, 0, 0.8, 0, -0.374283, 0, -0.707045, -2.62879, -0.324255, -1.76252 )
+
+[node name="items" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.006, 0, 39.7992 )

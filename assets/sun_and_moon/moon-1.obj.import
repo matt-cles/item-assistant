@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/moon-1.obj-082da38449336081cf2f329528345dcd.mesh"
+
+[deps]
+
+files=[ "res://.import/moon-1.obj-082da38449336081cf2f329528345dcd.mesh" ]
+
+source_file="res://assets/sun_and_moon/moon-1.obj"
+dest_files=[ "res://.import/moon-1.obj-082da38449336081cf2f329528345dcd.mesh", "res://.import/moon-1.obj-082da38449336081cf2f329528345dcd.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
