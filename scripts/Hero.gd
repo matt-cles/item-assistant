@@ -19,6 +19,7 @@ var stamina:float = 0
 func _ready():
 	var _connected = events.connect('stop_moving', self, 'stop_walking')
 	_connected = events.connect('start_moving', self, 'start_walking')
+	_connected = events.connect('hero_turn', self, 'attack')
 	_connected = events.connect('damage_hero', self, 'take_damage')
 	$AnimationPlayer.play("walk")
 	modify_health(max_health)
@@ -64,3 +65,13 @@ func start_walking():
 func stop_walking():
 	walking = false
 	$AnimationPlayer.play("still")
+	attack()
+	
+func attack():
+	$AnimationPlayer.play("attack")
+	yield($AnimationPlayer, "animation_finished")
+	var current_item:Item = get_weapon()
+	if current_item:
+		events.emit_signal("damage_enemy", current_item.damage)
+	events.emit_signal("enemy_turn")
+	

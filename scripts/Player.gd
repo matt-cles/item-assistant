@@ -71,11 +71,11 @@ func give_current_item_to_hero():
 
 
 func _process(_delta):
-	if Input.is_action_just_pressed("ui_down"):
-		events.emit_signal('stop_moving')
+	#if Input.is_action_just_pressed("ui_down"):
+	#	events.emit_signal('stop_moving')
 
-	if Input.is_action_just_pressed("ui_up"):
-		events.emit_signal("start_moving")
+	#if Input.is_action_just_pressed("ui_up"):
+	#	events.emit_signal("start_moving")
 
 	if Input.is_action_just_pressed("ui_right"):
 		next_weapon()
