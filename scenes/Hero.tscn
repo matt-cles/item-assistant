@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/characters/character-1.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://color_scheme/brown.tres" type="Material" id=2]
 [ext_resource path="res://animations/tired.tres" type="Animation" id=3]
 [ext_resource path="res://color_scheme/peach.tres" type="Material" id=4]
 [ext_resource path="res://color_scheme/orange.tres" type="Material" id=5]
+[ext_resource path="res://animations/die.tres" type="Animation" id=6]
 [ext_resource path="res://animations/still.tres" type="Animation" id=7]
 [ext_resource path="res://color_scheme/dark_blue.tres" type="Material" id=8]
 [ext_resource path="res://animations/walk.tres" type="Animation" id=9]
@@ -73,7 +74,7 @@ tracks/3/keys = {
 script = ExtResource( 10 )
 
 [node name="pivot" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.859558, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 0.0659349, 0.761285, 0, -0.996907, 0.0503509, 0, -0.226084, -0.754273 )
 
 [node name="CharacterMesh" type="MeshInstance" parent="pivot"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
@@ -84,7 +85,7 @@ material/2 = ExtResource( 8 )
 material/3 = ExtResource( 4 )
 
 [node name="RightHand" type="Spatial" parent="pivot"]
-transform = Transform( -0.0219959, -0.772121, -0.635095, 0.130085, 0.627638, -0.76756, 0.991259, -0.0994995, 0.0866358, -0.364854, -0.0331169, -0.356495 )
+transform = Transform( -0.0219959, -0.772121, -0.635095, 0.130085, 0.627638, -0.76756, 0.991259, -0.0994995, 0.0866358, -0.550165, 0.265628, -0.221791 )
 
 [node name="HandMesh" type="MeshInstance" parent="pivot/RightHand"]
 transform = Transform( 0.07, 9.11939e-11, -9.31323e-10, -2.4315e-09, 0.07, 1.10425e-08, -9.31323e-10, -1.08309e-10, 0.07, 0, 0, 0 )
@@ -95,6 +96,7 @@ material/0 = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 3 )
+anims/die = ExtResource( 6 )
 anims/drink = ExtResource( 13 )
 anims/still = ExtResource( 7 )
 anims/tired = ExtResource( 3 )

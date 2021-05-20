@@ -12,6 +12,7 @@ export var max_mana:float = 100
 export var max_stamina:float = 100
 
 var walking = true
+var dead = false
 var health:float = 0
 var mana:float = 0
 var stamina:float = 0
@@ -27,7 +28,14 @@ func _ready():
 	modify_stamina(max_stamina/2)
 
 func _process(delta):
+	if dead:
+		return
 	var current_item:Item = get_weapon()
+	if health <= 0:
+		dead = true
+		$AnimationPlayer.play("die")
+		events.emit_signal("hero_dead")
+		events.emit_signal("stop_moving")
 	if current_item:
 		match current_item.restore_type:
 			Item.RESTORE_TYPES.HEALTH:
@@ -47,27 +55,34 @@ func take_damage(damage):
 	modify_health(-damage)
 
 func modify_health(amount):
-	health = clamp(health+amount, 0.0, max_health)
-	emit_signal("health_changed", health)
+	if not dead:
+		health = clamp(health+amount, 0.0, max_health)
+		emit_signal("health_changed", health)
 
 func modify_mana(amount):
-	mana = clamp(mana+amount, 0.0, max_mana)
-	emit_signal("mana_changed", mana)
+	if not dead:
+		mana = clamp(mana+amount, 0.0, max_mana)
+		emit_signal("mana_changed", mana)
 
 func modify_stamina(amount):
-	stamina = clamp(stamina+amount, 0.0, max_stamina)
-	emit_signal("stamina_changed", stamina)
+	if not dead:
+		stamina = clamp(stamina+amount, 0.0, max_stamina)
+		emit_signal("stamina_changed", stamina)
 
 func start_walking():
-	walking = true
-	$AnimationPlayer.play("walk")
+	if not dead:
+		walking = true
+		$AnimationPlayer.play("walk")
 
 func stop_walking():
-	walking = false
-	$AnimationPlayer.play("still")
-	attack()
+	if not dead:
+		walking = false
+		$AnimationPlayer.play("still")
+		attack()
 	
 func attack():
+	if dead:
+		return
 	var current_item:Item = get_weapon()
 	if current_item:
 		if current_item.damage_type != Item.DAMAGE_TYPES.NONE:
@@ -83,6 +98,5 @@ func attack():
 		else:
 			$AnimationPlayer.play("drink")
 			yield($AnimationPlayer, "animation_finished")
-			$AnimationPlayer.play("still")
 	events.emit_signal("enemy_turn")
 	

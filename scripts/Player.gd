@@ -56,7 +56,7 @@ func hold_current_item():
 func give_current_item_to_hero():
 	passing = true
 	var hero_animation:AnimationPlayer = hero.get_node("AnimationPlayer")
-	if hero_animation.current_animation in ["drink", "attack"]:
+	if hero_animation.current_animation in ["drink", "attack", 'tired']:
 		$AnimationPlayer.play("hand_weapon")
 		print('wait for it!')
 		yield(hero_animation,"animation_finished")
@@ -89,7 +89,7 @@ func _process(_delta):
 		if Input.is_action_just_pressed("ui_left"):
 			prev_weapon()
 
-		if Input.is_action_just_pressed("ui_accept"):
+		if Input.is_action_just_pressed("ui_accept") and not hero.dead:
 			give_current_item_to_hero()
 
 func start_walking():

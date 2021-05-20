@@ -7,6 +7,7 @@ onready var weapons = get_tree().get_nodes_in_group('weapon')
 
 var moving = true
 var dead = false
+var hero_dead = false
 var move_speed = 2
 var level = 1.0
 var damage_ratio:float
@@ -19,6 +20,7 @@ func _ready():
 	_connected = events.connect("stop_moving", self, "stop_moving")
 	_connected = events.connect("enemy_turn", self, "attack")
 	_connected = events.connect("damage_enemy", self, "take_damage")
+	_connected = events.connect("hero_dead", self, "hero_death")
 	initialize()
 	
 func initialize():
@@ -28,6 +30,7 @@ func initialize():
 	damage_ratio = level / 10.0
 	translation = Vector3.ZERO
 	weapon = weapons[randi() % len(weapons)].duplicate()
+	# Prevent from getting a duplicated weapon in the player inventory..
 	weapon.remove_from_group('item')
 	weapon.remove_from_group('weapon')
 	weapon.rotate_y(90)
@@ -46,7 +49,7 @@ func initiate_combat(_body:Node):
 	events.emit_signal("stop_moving")
 
 func attack():
-	if not moving and not dead:
+	if not moving and not dead and not hero_dead:
 		$AnimationPlayer.play("attack")
 		yield($AnimationPlayer, "animation_finished")
 		var damage = weapon.damage * damage_ratio
@@ -74,6 +77,8 @@ func increase_difficulty():
 	level += settings.difficulty_increment
 	print(level)
 
+func hero_death():
+	hero_dead = true
 
 func _on_VisibilityNotifier_screen_exited():
 	increase_difficulty()

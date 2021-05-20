@@ -5,6 +5,7 @@ signal damage_hero
 signal damage_enemy
 signal hero_turn
 signal enemy_turn
+signal hero_dead
 signal stop_moving
 signal start_moving
 
@@ -22,6 +23,9 @@ func emit_hero_turn():
 
 func emit_enemy_turn():
 	emit_signal("enemy_turn")
+
+func emit_hero_dead():
+	emit_signal("hero_dead")
 
 func emit_stop_moving():
 	emit_signal("stop_moving")
