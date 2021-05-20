@@ -1,17 +1,19 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/characters/character-1.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://color_scheme/brown.tres" type="Material" id=2]
+[ext_resource path="res://animations/tired.tres" type="Animation" id=3]
 [ext_resource path="res://color_scheme/peach.tres" type="Material" id=4]
 [ext_resource path="res://color_scheme/orange.tres" type="Material" id=5]
 [ext_resource path="res://animations/still.tres" type="Animation" id=7]
 [ext_resource path="res://color_scheme/dark_blue.tres" type="Material" id=8]
 [ext_resource path="res://animations/walk.tres" type="Animation" id=9]
 [ext_resource path="res://scripts/Hero.gd" type="Script" id=10]
+[ext_resource path="res://animations/drink.tres" type="Animation" id=13]
 
 [sub_resource type="SphereMesh" id=1]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 length = 0.5
 step = 0.01
 tracks/0/type = "value"
@@ -63,7 +65,7 @@ tracks/3/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=4]
 
 [node name="Hero" type="Spatial" groups=[
 "hero",
@@ -71,6 +73,7 @@ tracks/3/keys = {
 script = ExtResource( 10 )
 
 [node name="pivot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.859558, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="CharacterMesh" type="MeshInstance" parent="pivot"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
@@ -91,12 +94,14 @@ material/0 = ExtResource( 4 )
 [node name="WeaponSlot" type="Spatial" parent="pivot/RightHand"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/attack = SubResource( 2 )
+anims/attack = SubResource( 3 )
+anims/drink = ExtResource( 13 )
 anims/still = ExtResource( 7 )
+anims/tired = ExtResource( 3 )
 anims/walk = ExtResource( 9 )
 
 [node name="CombatArea" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="CombatArea"]
 transform = Transform( 0.613837, 0, 0, 0, 0.613837, 0, 0, 0, 0.613837, 0, 0, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )

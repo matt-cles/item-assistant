@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Item",
 "language": "GDScript",
 "path": "res://scripts/item.gd"
+}, {
+"base": "Node",
+"class": "Settings",
+"language": "GDScript",
+"path": "res://scenes/Settings.gd"
 } ]
 _global_script_class_icons={
-"Item": "res://assets/icons/item_icon.png"
+"Item": "res://assets/icons/item_icon.png",
+"Settings": ""
 }
 
 [application]

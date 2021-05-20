@@ -2,18 +2,19 @@ extends Spatial
 
 onready var events:Node = get_tree().get_nodes_in_group("events")[0]
 onready var hero:Node = get_tree().get_nodes_in_group("hero")[0]
+onready var settings:Settings = get_tree().get_nodes_in_group("settings")[0]
 
-enum PLAYER_MODEL {RANDOM, MALE, FEMALE}
-
-export (PLAYER_MODEL) var character_model = PLAYER_MODEL.RANDOM
 var items_in_inventory
 var current_item
+var passing = false
+var moving = true
 
 func _ready():
 	# Select the character model
-	$pivot/MaleCharacter.visible = character_model == PLAYER_MODEL.MALE
-	$pivot/FemaleCharacter.visible = character_model == PLAYER_MODEL.FEMALE
-	if character_model == PLAYER_MODEL.RANDOM:
+	var character_model = settings.character_model
+	$pivot/MaleCharacter.visible = character_model == settings.PLAYER_MODEL.MALE
+	$pivot/FemaleCharacter.visible = character_model == settings.PLAYER_MODEL.FEMALE
+	if character_model == settings.PLAYER_MODEL.RANDOM:
 		var random_selection:bool = randi() % 2
 		$pivot/MaleCharacter.visible = random_selection
 		$pivot/FemaleCharacter.visible = not random_selection
@@ -53,6 +54,15 @@ func hold_current_item():
 	$pivot/RightHand/WeaponSlot.add_child(weapon)
 	
 func give_current_item_to_hero():
+	passing = true
+	var hero_animation:AnimationPlayer = hero.get_node("AnimationPlayer")
+	if hero_animation.current_animation in ["drink", "attack"]:
+		$AnimationPlayer.play("hand_weapon")
+		print('wait for it!')
+		yield(hero_animation,"animation_finished")
+		var next_animation = "walk" if moving else "still"
+		$AnimationPlayer.play(next_animation)
+		
 	var hero_weapon_slot:Spatial = hero.get_node("pivot/RightHand/WeaponSlot")
 	var hero_weapons = hero_weapon_slot.get_children()
 	var current_hero_weapon = null
@@ -68,26 +78,24 @@ func give_current_item_to_hero():
 		items_in_inventory[current_item] = current_hero_weapon.duplicate()
 	else:
 		items_in_inventory.remove(current_item)
+	passing = false
 
 
 func _process(_delta):
-	#if Input.is_action_just_pressed("ui_down"):
-	#	events.emit_signal('stop_moving')
+	if not passing:
+		if Input.is_action_just_pressed("ui_right"):
+			next_weapon()
 
-	#if Input.is_action_just_pressed("ui_up"):
-	#	events.emit_signal("start_moving")
+		if Input.is_action_just_pressed("ui_left"):
+			prev_weapon()
 
-	if Input.is_action_just_pressed("ui_right"):
-		next_weapon()
-
-	if Input.is_action_just_pressed("ui_left"):
-		prev_weapon()
-
-	if Input.is_action_just_pressed("ui_accept"):
-		give_current_item_to_hero()
+		if Input.is_action_just_pressed("ui_accept"):
+			give_current_item_to_hero()
 
 func start_walking():
 	$AnimationPlayer.play("walk")
+	moving = true
 
 func stop_walking():
 	$AnimationPlayer.play("still")
+	moving = false

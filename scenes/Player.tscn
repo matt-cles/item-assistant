@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://color_scheme/red.tres" type="Material" id=1]
 [ext_resource path="res://color_scheme/brown.tres" type="Material" id=2]
 [ext_resource path="res://color_scheme/purple.tres" type="Material" id=3]
 [ext_resource path="res://color_scheme/peach.tres" type="Material" id=4]
 [ext_resource path="res://assets/characters/character-3.obj" type="ArrayMesh" id=5]
+[ext_resource path="res://assets/swords/sword-1.obj" type="ArrayMesh" id=6]
 [ext_resource path="res://color_scheme/light_blue.tres" type="Material" id=7]
 [ext_resource path="res://scripts/Player.gd" type="Script" id=8]
 [ext_resource path="res://animations/walk.tres" type="Animation" id=9]
@@ -12,6 +13,7 @@
 [ext_resource path="res://animations/still.tres" type="Animation" id=11]
 [ext_resource path="res://color_scheme/black.tres" type="Material" id=12]
 [ext_resource path="res://assets/characters/character-2.obj" type="ArrayMesh" id=13]
+[ext_resource path="res://animations/hand_weapon.tres" type="Animation" id=14]
 
 [sub_resource type="SphereMesh" id=1]
 
@@ -19,6 +21,7 @@
 script = ExtResource( 8 )
 
 [node name="pivot" type="Spatial" parent="."]
+transform = Transform( 0.999165, 0.0408584, 0, -0.0408584, 0.999165, 0, 0, 0, 1, 0, 0.049, 0 )
 
 [node name="MaleCharacter" type="MeshInstance" parent="pivot"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
@@ -38,7 +41,7 @@ material/2 = ExtResource( 4 )
 material/3 = ExtResource( 3 )
 
 [node name="RightHand" type="Spatial" parent="pivot"]
-transform = Transform( 0.10155, -0.607626, -0.787705, 0.0776915, 0.794223, -0.602639, 0.991792, 2.16067e-07, 0.127861, -0.520722, 0.122411, -0.408311 )
+transform = Transform( 0.0438717, -0.718572, -0.694068, 0.1215, 0.693416, -0.71022, 0.991621, -0.053171, 0.117728, -0.359239, 0.0248047, -0.356495 )
 
 [node name="HandMesh" type="MeshInstance" parent="pivot/RightHand"]
 transform = Transform( 0.07, 9.11939e-11, -9.31323e-10, -2.4315e-09, 0.07, 1.10425e-08, -9.31323e-10, -1.08309e-10, 0.07, 0, 0, 0 )
@@ -47,7 +50,16 @@ material/0 = ExtResource( 2 )
 
 [node name="WeaponSlot" type="Spatial" parent="pivot/RightHand"]
 
+[node name="DebugWeaponPlaceholder" type="MeshInstance" parent="pivot/RightHand"]
+transform = Transform( -2.32831e-09, 4.65661e-10, 0.05, -8.14907e-10, 0.05, 0, -0.05, -2.91038e-11, -1.86265e-09, 0.0164861, 0.161131, -0.00357428 )
+visible = false
+mesh = ExtResource( 6 )
+material/0 = null
+material/1 = null
+material/2 = null
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = ExtResource( 10 )
+anims/hand_weapon = ExtResource( 14 )
 anims/still = ExtResource( 11 )
 anims/walk = ExtResource( 9 )

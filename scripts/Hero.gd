@@ -68,10 +68,21 @@ func stop_walking():
 	attack()
 	
 func attack():
-	$AnimationPlayer.play("attack")
-	yield($AnimationPlayer, "animation_finished")
 	var current_item:Item = get_weapon()
 	if current_item:
-		events.emit_signal("damage_enemy", current_item.damage)
+		if current_item.damage_type != Item.DAMAGE_TYPES.NONE:
+			if mana >= current_item.mana_cost and stamina >= current_item.stamina_cost:
+				$AnimationPlayer.play("attack")
+				yield($AnimationPlayer, "animation_finished")
+				events.emit_signal("damage_enemy", current_item.damage)
+				modify_mana(-current_item.mana_cost)
+				modify_stamina(-current_item.stamina_cost)
+			else:
+				$AnimationPlayer.play("tired")
+				yield($AnimationPlayer, "animation_finished")
+		else:
+			$AnimationPlayer.play("drink")
+			yield($AnimationPlayer, "animation_finished")
+			$AnimationPlayer.play("still")
 	events.emit_signal("enemy_turn")
 	
