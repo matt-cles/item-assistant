@@ -6,6 +6,7 @@ onready var spawn_point = get_tree().get_nodes_in_group('enemy_spawn_point')[0]
 onready var weapons = get_tree().get_nodes_in_group('weapon')
 
 var moving = true
+var dead = false
 var move_speed = 2
 var level = 1.0
 var damage_ratio:float
@@ -21,6 +22,8 @@ func _ready():
 	initialize()
 	
 func initialize():
+	move_speed = 2
+	dead = false
 	health = 100 * level / 10.0
 	damage_ratio = level / 10.0
 	translation = Vector3.ZERO
@@ -43,7 +46,7 @@ func initiate_combat(_body:Node):
 	events.emit_signal("stop_moving")
 
 func attack():
-	if not moving:
+	if not moving and not dead:
 		$AnimationPlayer.play("attack")
 		yield($AnimationPlayer, "animation_finished")
 		var damage = weapon.damage * damage_ratio
@@ -53,13 +56,14 @@ func attack():
 func take_damage(damage):
 	health = health - damage
 	if health <= 0:
-		print('dead')
-		increase_difficulty()
-		initialize()
+		$AnimationPlayer.play("die")
+		dead = true
+		move_speed = 1
 		events.emit_signal("start_moving")
 
 func start_moving():
-	$AnimationPlayer.play("walk")
+	if not dead:
+		$AnimationPlayer.play("walk")
 	moving = true
 
 func stop_moving():
@@ -69,3 +73,8 @@ func stop_moving():
 func increase_difficulty():
 	level += settings.difficulty_increment
 	print(level)
+
+
+func _on_VisibilityNotifier_screen_exited():
+	increase_difficulty()
+	initialize()

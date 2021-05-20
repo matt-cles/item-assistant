@@ -1,0 +1,52 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/path = NodePath("pivot:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -0.132523, -0.754273 ), Vector3( 0, -0.226084, -0.754273 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("pivot:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( -86.216, 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("pivot/RightHand:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.550165, 0.265628, -0.221791 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("pivot:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ), Vector3( 1, 1, 1 ), Vector3( 1, 0.999086, 0.762948 ) ]
+}

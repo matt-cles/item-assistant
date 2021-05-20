@@ -288,10 +288,10 @@ material/0 = ExtResource( 5 )
 [node name="EnemySpawnPoint" type="Spatial" parent="World" groups=[
 "enemy_spawn_point",
 ]]
-transform = Transform( -0.883806, 0, 0.467853, 0, 1, 0, -0.467853, 0, -0.883806, 14.4998, -0.24233, 7.3047 )
+transform = Transform( -0.883806, 0, 0.467853, 0, 1, 0, -0.467853, 0, -0.883806, 6.98545, -0.24233, 3.32688 )
 
 [node name="Enemy" parent="World/EnemySpawnPoint" instance=ExtResource( 21 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 10.8347, 0, -1.13249e-06 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
 [node name="Hero" parent="." instance=ExtResource( 1 )]
 transform = Transform( -0.883806, 0, 0.467853, 0, 1, 0, -0.467853, 0, -0.883806, -1.24697, -0.24233, -1.03104 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/characters/character-1.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://animations/walk.tres" type="Animation" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://color_scheme/black.tres" type="Material" id=7]
 [ext_resource path="res://scripts/Enemy.gd" type="Script" id=8]
 [ext_resource path="res://animations/attack.tres" type="Animation" id=9]
+[ext_resource path="res://animations/die.tres" type="Animation" id=10]
 
 [sub_resource type="SphereMesh" id=1]
 
@@ -18,7 +19,7 @@
 script = ExtResource( 8 )
 
 [node name="pivot" type="Spatial" parent="."]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 0.999086, 0, 0, 0, 0.762948, 0, 0, 0 )
 
 [node name="EnemyMesh" type="MeshInstance" parent="pivot"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
@@ -29,7 +30,7 @@ material/2 = ExtResource( 7 )
 material/3 = ExtResource( 5 )
 
 [node name="RightHand" type="Spatial" parent="pivot"]
-transform = Transform( 0.268957, -0.926142, 0.26443, 0.960282, 0.236672, -0.147799, 0.0742996, 0.293679, 0.953012, -0.661307, 0.139597, 0.233837 )
+transform = Transform( -0.0219959, -0.772121, -0.635095, 0.130085, 0.627638, -0.76756, 0.991259, -0.0994995, 0.0866358, -0.364854, -0.0331169, -0.356495 )
 
 [node name="HandMesh" type="MeshInstance" parent="pivot/RightHand"]
 transform = Transform( 0.07, 9.11939e-11, -9.31323e-10, -2.4315e-09, 0.07, 1.10425e-08, -9.31323e-10, -1.08309e-10, 0.07, 0, 0, 0 )
@@ -40,6 +41,7 @@ material/0 = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = ExtResource( 9 )
+anims/die = ExtResource( 10 )
 anims/still = ExtResource( 3 )
 anims/walk = ExtResource( 2 )
 
@@ -51,5 +53,9 @@ transform = Transform( 0.550586, 0, -5.96046e-08, 0, 0.550586, 0, 5.96046e-08, 0
 shape = SubResource( 2 )
 
 [node name="EvilGlow" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05781, 0 )
-light_color = Color( 0.498039, 0.0196078, 0.0196078, 1 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.842169, 0 )
+light_color = Color( 0.815686, 0.27451, 0.282353, 1 )
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]
