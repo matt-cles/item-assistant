@@ -12,7 +12,7 @@ export var max_mana:float = 100
 export var max_stamina:float = 100
 
 var walking = true
-var health:float = max_health
+var health:float = 0
 var mana:float = 0
 var stamina:float = 0
 
@@ -22,7 +22,7 @@ func _ready():
 	_connected = events.connect('hero_turn', self, 'attack')
 	_connected = events.connect('damage_hero', self, 'take_damage')
 	$AnimationPlayer.play("walk")
-	modify_health(max_health)
+	modify_health(max_health/2)
 	modify_mana(max_mana/2)
 	modify_stamina(max_stamina/2)
 
