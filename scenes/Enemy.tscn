@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/characters/character-1.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://animations/walk.tres" type="Animation" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://scripts/Enemy.gd" type="Script" id=8]
 [ext_resource path="res://animations/attack.tres" type="Animation" id=9]
 [ext_resource path="res://animations/die.tres" type="Animation" id=10]
+[ext_resource path="res://assets/bars/health_bar.png" type="Texture" id=11]
+[ext_resource path="res://assets/bars/empty_bar.png" type="Texture" id=12]
+[ext_resource path="res://scripts/StatusBarSprite.gd" type="Script" id=13]
 
 [sub_resource type="SphereMesh" id=1]
 
@@ -17,6 +20,33 @@
 
 [node name="Enemy" type="Spatial"]
 script = ExtResource( 8 )
+
+[node name="StatusBars" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0 )
+
+[node name="HealthBarSprite" type="Sprite3D" parent="StatusBars"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.278551, 0 )
+opacity = 0.8
+billboard = 2
+script = ExtResource( 13 )
+
+[node name="Viewport" type="Viewport" parent="StatusBars/HealthBarSprite"]
+size = Vector2( 400, 48 )
+transparent_bg = true
+usage = 0
+render_target_v_flip = true
+
+[node name="HealthBar" type="TextureProgress" parent="StatusBars/HealthBarSprite/Viewport"]
+margin_left = 73.8989
+margin_top = 33.0867
+margin_right = 473.899
+margin_bottom = 81.0867
+rect_scale = Vector2( 0.264635, 0.264114 )
+texture_under = ExtResource( 12 )
+texture_progress = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="pivot" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.999086, 0, 0, 0, 0.762948, 0, 0, 0 )

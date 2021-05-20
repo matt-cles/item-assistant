@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Settings",
 "language": "GDScript",
-"path": "res://scenes/Settings.gd"
+"path": "res://scripts/Settings.gd"
 } ]
 _global_script_class_icons={
 "Item": "res://assets/icons/item_icon.png",

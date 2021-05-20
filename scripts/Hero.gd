@@ -1,13 +1,9 @@
 extends Spatial
 
-signal health_changed
-signal mana_changed
-signal stamina_changed
-
 onready var events:Node = get_tree().get_nodes_in_group("events")[0]
 onready var weapon_slot = get_node("pivot/RightHand/WeaponSlot")
 
-export var max_health:float = 100
+export var max_health:float = 200
 export var max_mana:float = 100
 export var max_stamina:float = 100
 
@@ -23,7 +19,8 @@ func _ready():
 	_connected = events.connect('hero_turn', self, 'attack')
 	_connected = events.connect('damage_hero', self, 'take_damage')
 	$AnimationPlayer.play("walk")
-	modify_health(max_health/2)
+	$StatusBars/HealthBarSprite/Viewport/HealthBar.max_value = max_health
+	modify_health(max_health/4)
 	modify_mana(max_mana/2)
 	modify_stamina(max_stamina/2)
 
@@ -57,17 +54,17 @@ func take_damage(damage):
 func modify_health(amount):
 	if not dead:
 		health = clamp(health+amount, 0.0, max_health)
-		emit_signal("health_changed", health)
+		$StatusBars/HealthBarSprite/Viewport/HealthBar.value = health
 
 func modify_mana(amount):
 	if not dead:
 		mana = clamp(mana+amount, 0.0, max_mana)
-		emit_signal("mana_changed", mana)
+		$StatusBars/ManaBarSprite/Viewport/ManaBar.value = mana
 
 func modify_stamina(amount):
 	if not dead:
 		stamina = clamp(stamina+amount, 0.0, max_stamina)
-		emit_signal("stamina_changed", stamina)
+		$StatusBars/StaminaBarSprite/Viewport/StaminaBar.value = stamina
 
 func start_walking():
 	if not dead:

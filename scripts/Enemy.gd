@@ -27,6 +27,8 @@ func initialize():
 	move_speed = 2
 	dead = false
 	health = 100 * level / 10.0
+	$StatusBars/HealthBarSprite/Viewport/HealthBar.max_value = health
+	$StatusBars/HealthBarSprite/Viewport/HealthBar.value = health
 	damage_ratio = level / 10.0
 	translation = Vector3.ZERO
 	weapon = weapons[randi() % len(weapons)].duplicate()
@@ -58,6 +60,7 @@ func attack():
 	
 func take_damage(damage):
 	health = health - damage
+	$StatusBars/HealthBarSprite/Viewport/HealthBar.value = health
 	if health <= 0:
 		$AnimationPlayer.play("die")
 		dead = true

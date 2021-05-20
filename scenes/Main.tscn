@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/Hero.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Items.tscn" type="PackedScene" id=2]
@@ -13,15 +13,10 @@
 [ext_resource path="res://color_scheme/white.tres" type="Material" id=11]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scripts/Events.gd" type="Script" id=13]
-[ext_resource path="res://scripts/Control.gd" type="Script" id=14]
-[ext_resource path="res://assets/bars/mana_bar.png" type="Texture" id=15]
-[ext_resource path="res://assets/bars/stamina_bar.png" type="Texture" id=16]
 [ext_resource path="res://color_scheme/blue.tres" type="Material" id=17]
-[ext_resource path="res://assets/bars/empty_bar.png" type="Texture" id=18]
 [ext_resource path="res://scripts/Camera.gd" type="Script" id=19]
-[ext_resource path="res://assets/bars/health_bar.png" type="Texture" id=20]
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=21]
-[ext_resource path="res://scenes/Settings.gd" type="Script" id=22]
+[ext_resource path="res://scripts/Settings.gd" type="Script" id=22]
 [ext_resource path="res://assets/clouds/cloud-1.obj" type="ArrayMesh" id=23]
 [ext_resource path="res://scripts/cloud.gd" type="Script" id=25]
 
@@ -42,73 +37,6 @@ script = ExtResource( 22 )
 "events",
 ]]
 script = ExtResource( 13 )
-
-[node name="HUD" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-script = ExtResource( 14 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Hero" type="Label" parent="HUD"]
-margin_left = 18.8989
-margin_top = 20.1587
-margin_right = 58.8989
-margin_bottom = 51.1587
-text = "Hero
-"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Health" type="Label" parent="HUD/Hero"]
-margin_top = 12.928
-margin_right = 42.0
-margin_bottom = 26.928
-text = "Health"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HealthBar" type="TextureProgress" parent="HUD/Hero/Health"]
-margin_left = 55.0
-margin_right = 455.0
-margin_bottom = 48.0
-rect_scale = Vector2( 0.264635, 0.264114 )
-texture_under = ExtResource( 18 )
-texture_progress = ExtResource( 20 )
-
-[node name="Mana" type="Label" parent="HUD/Hero"]
-margin_top = 25.815
-margin_right = 42.0
-margin_bottom = 39.815
-text = "Mana"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ManaBar" type="TextureProgress" parent="HUD/Hero/Mana"]
-margin_left = 55.0
-margin_right = 455.0
-margin_bottom = 48.0
-rect_scale = Vector2( 0.264635, 0.264114 )
-texture_under = ExtResource( 18 )
-texture_progress = ExtResource( 15 )
-
-[node name="Stamina" type="Label" parent="HUD/Hero"]
-margin_top = 37.865
-margin_right = 51.0
-margin_bottom = 51.865
-text = "Stamina"
-
-[node name="StaminaBar" type="TextureProgress" parent="HUD/Hero/Stamina"]
-margin_left = 55.0
-margin_right = 455.0
-margin_bottom = 48.0
-rect_scale = Vector2( 0.264635, 0.264114 )
-texture_under = ExtResource( 18 )
-texture_progress = ExtResource( 16 )
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.953775, -1.77999e-07, 0.300522, -0.0874678, 0.956707, 0.277599, -0.287512, -0.291053, 0.912483, 3.10053, 3.64854, 8.47949 )
@@ -150,18 +78,14 @@ transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.08
 "tree_spawn_point",
 ]]
 transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.0883806, 5.43035, 0, 1.0057 )
-visible = false
 
 [node name="MeshInstance" type="MeshInstance" parent="World/trees/tree_spawn1"]
 transform = Transform( -0.212491, 0, -349.883, 0, 18.2794, 0, 0.163333, 0, -455.187, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 
-[node name="tree_spawn2" type="Spatial" parent="World/trees" groups=[
-"tree_spawn_point",
-]]
+[node name="tree_spawn2" type="Spatial" parent="World/trees"]
 transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.0883806, 6.68018, 0, 4.80907 )
-visible = false
 
 [node name="MeshInstance2" type="MeshInstance" parent="World/trees/tree_spawn2"]
 transform = Transform( -0.212491, 0, -349.883, 0, 18.2794, 0, 0.163333, 0, -455.187, 0, 0, 0 )

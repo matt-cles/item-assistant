@@ -21,7 +21,7 @@
 script = ExtResource( 8 )
 
 [node name="pivot" type="Spatial" parent="."]
-transform = Transform( 0.99993, -0.0115876, 0, 0.0118111, 0.981004, 0, 0, 0, 1, 0, 0.014161, 0 )
+transform = Transform( 0.997187, -0.0779791, 0, 0.0749559, 1.03741, 0, 0, 0, 1, 0, 0.0899512, 0 )
 
 [node name="MaleCharacter" type="MeshInstance" parent="pivot"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
@@ -41,7 +41,7 @@ material/2 = ExtResource( 4 )
 material/3 = ExtResource( 3 )
 
 [node name="RightHand" type="Spatial" parent="pivot"]
-transform = Transform( -0.0250867, -0.79183, -0.610226, 0.132153, 0.602434, -0.787153, 0.990912, -0.10039, 0.0895301, -0.369307, -0.0386448, -0.356495 )
+transform = Transform( -0.0454527, -0.882516, -0.468081, 0.131021, 0.45925, -0.878592, 0.990337, -0.101262, 0.0947537, -0.393138, -0.0682304, -0.356495 )
 
 [node name="HandMesh" type="MeshInstance" parent="pivot/RightHand"]
 transform = Transform( 0.07, 9.11939e-11, -9.31323e-10, -2.4315e-09, 0.07, 1.10425e-08, -9.31323e-10, -1.08309e-10, 0.07, 0, 0, 0 )
