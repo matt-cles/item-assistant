@@ -1,0 +1,51 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/characters/character-1.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://animations/walk.tres" type="Animation" id=2]
+[ext_resource path="res://animations/still.tres" type="Animation" id=3]
+[ext_resource path="res://color_scheme/gray.tres" type="Material" id=4]
+[ext_resource path="res://color_scheme/dark_green.tres" type="Material" id=5]
+[ext_resource path="res://color_scheme/dark_gray.tres" type="Material" id=6]
+[ext_resource path="res://color_scheme/black.tres" type="Material" id=7]
+[ext_resource path="res://scripts/Enemy.gd" type="Script" id=8]
+[ext_resource path="res://animations/attack.tres" type="Animation" id=9]
+
+[sub_resource type="SphereMesh" id=1]
+
+[sub_resource type="BoxShape" id=2]
+
+[node name="Enemy" type="Spatial"]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+script = ExtResource( 8 )
+
+[node name="pivot" type="Spatial" parent="."]
+
+[node name="EnemyMesh" type="MeshInstance" parent="pivot"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 4 )
+material/1 = ExtResource( 6 )
+material/2 = ExtResource( 7 )
+material/3 = ExtResource( 5 )
+
+[node name="RightHand" type="Spatial" parent="pivot"]
+transform = Transform( 0.10155, -0.607626, -0.787704, 0.0776915, 0.794224, -0.602638, 0.991792, 2.16067e-07, 0.127861, -0.520722, 0.122411, -0.408311 )
+
+[node name="HandMesh" type="MeshInstance" parent="pivot/RightHand"]
+transform = Transform( 0.07, 9.11939e-11, -9.31323e-10, -2.4315e-09, 0.07, 1.10425e-08, -9.31323e-10, -1.08309e-10, 0.07, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 5 )
+
+[node name="WeaponSlot" type="Spatial" parent="pivot/RightHand"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/attack = ExtResource( 9 )
+anims/still = ExtResource( 3 )
+anims/walk = ExtResource( 2 )
+
+[node name="Area" type="Area" parent="."]
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 0.550586, 0, -5.96046e-08, 0, 0.550586, 0, 5.96046e-08, 0, 0.550586, 0, 0, 0 )
+shape = SubResource( 2 )
