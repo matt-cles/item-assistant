@@ -106,6 +106,9 @@ __meta__ = {
 [node name="SettingsMenu" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="BG" type="Panel" parent="SettingsMenu"]
 visible = false
@@ -139,35 +142,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BackToStartMenu" type="Button" parent="SettingsMenu"]
-margin_left = 416.0
-margin_top = 464.0
-margin_right = 608.0
-margin_bottom = 512.0
-text = "Back"
+[node name="MusicVolumeControl" type="Control" parent="SettingsMenu"]
+margin_left = 304.0
+margin_top = 304.0
+margin_right = 496.0
+margin_bottom = 352.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="EmptyButton2" type="Button" parent="SettingsMenu"]
-margin_left = 32.0
-margin_top = 32.0
-margin_right = 224.0
-margin_bottom = 80.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VolumeControl" type="Control" parent="SettingsMenu"]
-margin_left = 416.0
-margin_top = 320.0
-margin_right = 608.0
-margin_bottom = 368.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="EmptyButton" type="Button" parent="SettingsMenu/VolumeControl"]
+[node name="EmptyButton" type="Button" parent="SettingsMenu/MusicVolumeControl"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 button_mask = 0
@@ -175,11 +159,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VolumeLabel" type="Label" parent="SettingsMenu/VolumeControl"]
-margin_left = 64.0
-margin_right = 128.0
+[node name="VolumeLabel" type="Label" parent="SettingsMenu/MusicVolumeControl"]
+margin_right = 192.0
 margin_bottom = 48.0
-text = "Volume
+text = "Music Volume
 "
 align = 1
 valign = 1
@@ -187,7 +170,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VolumeSlider" type="HSlider" parent="SettingsMenu/VolumeControl"]
+[node name="VolumeSlider" type="HSlider" parent="SettingsMenu/MusicVolumeControl"]
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 180.0
@@ -198,10 +181,143 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="SFXVolumeControl" type="Control" parent="SettingsMenu"]
+margin_left = 528.0
+margin_top = 304.0
+margin_right = 720.0
+margin_bottom = 352.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EmptyButton" type="Button" parent="SettingsMenu/SFXVolumeControl"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+button_mask = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VolumeLabel" type="Label" parent="SettingsMenu/SFXVolumeControl"]
+margin_left = 64.0
+margin_right = 128.0
+margin_bottom = 48.0
+text = "SFX Volume
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VolumeSlider" type="HSlider" parent="SettingsMenu/SFXVolumeControl"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 180.0
+margin_bottom = 54.0
+min_value = -80.0
+max_value = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DifficultyControl" type="Control" parent="SettingsMenu"]
+margin_left = 304.0
+margin_top = 368.0
+margin_right = 496.0
+margin_bottom = 416.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EmptyButton" type="Button" parent="SettingsMenu/DifficultyControl"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+button_mask = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DifficultyLabel" type="Label" parent="SettingsMenu/DifficultyControl"]
+margin_left = 64.0
+margin_right = 128.0
+margin_bottom = 48.0
+text = "Difficulty
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DifficultySlider" type="HSlider" parent="SettingsMenu/DifficultyControl"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 180.0
+margin_bottom = 54.0
+min_value = -80.0
+max_value = 0.0
+step = 0.05
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerModelControl" type="Control" parent="SettingsMenu"]
+margin_left = 528.0
+margin_top = 368.0
+margin_right = 720.0
+margin_bottom = 416.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EmptyButton" type="Button" parent="SettingsMenu/PlayerModelControl"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+button_mask = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerModelLabel" type="Label" parent="SettingsMenu/PlayerModelControl"]
+margin_left = 64.0
+margin_right = 128.0
+margin_bottom = 48.0
+text = "Player Model
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerModel" type="OptionButton" parent="SettingsMenu/PlayerModelControl"]
+margin_top = 32.0
+margin_right = 192.0
+margin_bottom = 52.0
+text = "Player Model"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackToStartMenu" type="Button" parent="SettingsMenu"]
+margin_left = 416.0
+margin_top = 432.0
+margin_right = 608.0
+margin_bottom = 480.0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="StartMenu/StartGame" to="." method="_on_StartGame_pressed"]
 [connection signal="pressed" from="StartMenu/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="StartMenu/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="PauseMenu/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="PauseMenu/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="value_changed" from="SettingsMenu/MusicVolumeControl/VolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
+[connection signal="value_changed" from="SettingsMenu/SFXVolumeControl/VolumeSlider" to="." method="_on_SFXVolumeSlider_value_changed"]
+[connection signal="value_changed" from="SettingsMenu/DifficultyControl/DifficultySlider" to="." method="_on_DifficultySlider_value_changed"]
+[connection signal="item_selected" from="SettingsMenu/PlayerModelControl/PlayerModel" to="." method="_on_PlayerModel_item_selected"]
 [connection signal="pressed" from="SettingsMenu/BackToStartMenu" to="." method="_on_BackToStartMenu_pressed"]
-[connection signal="value_changed" from="SettingsMenu/VolumeControl/VolumeSlider" to="." method="_on_VolumeSlider_value_changed"]
