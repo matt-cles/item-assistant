@@ -16,9 +16,11 @@ var stamina:float = 0
 func _ready():
 	var _connected = events.connect('stop_moving', self, 'stop_walking')
 	_connected = events.connect('start_moving', self, 'start_walking')
+	_connected = events.connect("start_game", self, "start_game")
 	_connected = events.connect('hero_turn', self, 'attack')
 	_connected = events.connect('damage_hero', self, 'take_damage')
 	$AnimationPlayer.play("walk")
+	$StatusBars.visible = false
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.max_value = max_health
 	$StatusBars/ManaBarSprite/Viewport/ManaBar.max_value = max_mana
 	$StatusBars/StaminaBarSprite/Viewport/StaminaBar.max_value = max_stamina
@@ -67,6 +69,9 @@ func modify_stamina(amount):
 	if not dead:
 		stamina = clamp(stamina+amount, 0.0, max_stamina)
 		$StatusBars/StaminaBarSprite/Viewport/StaminaBar.value = stamina
+
+func start_game():
+	$StatusBars.visible = true
 
 func start_walking():
 	if not dead:

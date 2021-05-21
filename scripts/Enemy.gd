@@ -5,7 +5,7 @@ onready var events:Node = get_tree().get_nodes_in_group('events')[0]
 onready var spawn_point = get_tree().get_nodes_in_group('enemy_spawn_point')[0]
 onready var weapons = get_tree().get_nodes_in_group('weapon')
 
-var moving = true
+var moving = false
 var dead = false
 var hero_dead = false
 var move_speed = 2
@@ -17,6 +17,7 @@ var weapon:Item
 func _ready():
 	var _connected = $Area.connect("area_entered", self, 'initiate_combat')
 	_connected = events.connect("start_moving", self, "start_moving")
+	_connected = events.connect("start_game", self, "start_moving")
 	_connected = events.connect("stop_moving", self, "stop_moving")
 	_connected = events.connect("enemy_turn", self, "attack")
 	_connected = events.connect("damage_enemy", self, "take_damage")

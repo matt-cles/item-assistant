@@ -1,5 +1,6 @@
 extends Spatial
 
+signal start_game
 signal give_hero_item
 signal damage_hero
 signal damage_enemy
@@ -8,6 +9,9 @@ signal enemy_turn
 signal hero_dead
 signal stop_moving
 signal start_moving
+
+func emit_start_game():
+	emit_signal("start_game")
 
 func emit_give_hero_item():
 	emit_signal("give_hero_item")

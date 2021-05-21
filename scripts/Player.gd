@@ -8,6 +8,7 @@ var items_in_inventory
 var current_item
 var passing = false
 var moving = true
+var in_menu = true
 
 func _ready():
 	# Select the character model
@@ -22,6 +23,7 @@ func _ready():
 	# Connect events
 	var _connected = events.connect('stop_moving', self, 'stop_walking')
 	_connected = events.connect('start_moving', self, 'start_walking')
+	_connected = events.connect('start_game', self, 'start_game')
 
 	# Start walk animation
 	$AnimationPlayer.play("walk")
@@ -29,7 +31,7 @@ func _ready():
 
 	# Initialize the inventory
 	items_in_inventory = get_tree().get_nodes_in_group("item")
-	current_item = 0
+	current_item = randi() % len(items_in_inventory)
 	hold_current_item()
 	give_current_item_to_hero()
 	current_item = randi() % len(items_in_inventory)
@@ -81,7 +83,7 @@ func give_current_item_to_hero():
 
 
 func _process(_delta):
-	if not passing:
+	if not passing and not in_menu:
 		if Input.is_action_just_pressed("ui_right"):
 			next_weapon()
 
@@ -98,3 +100,6 @@ func start_walking():
 func stop_walking():
 	$AnimationPlayer.play("still")
 	moving = false
+
+func start_game():
+	in_menu = false
