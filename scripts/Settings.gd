@@ -23,6 +23,10 @@ func _ready():
 
 	# Connect updaters
 	var _connected = events.connect("set_player_model", self, "set_player_model")
+	var _connecter = events.connect("set_difficulty", self, "set_difficulty")
 
 func set_player_model(index):
 	character_model = index
+
+func set_difficulty(difficulty):
+	difficulty_increment = difficulty
