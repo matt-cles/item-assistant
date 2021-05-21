@@ -41,6 +41,4 @@ func _on_BackToStartMenu_pressed():
 	$SettingsMenu.visible = false
 
 func _on_VolumeSlider_value_changed(value):
-	print('vol changed')
-	print(value)
 	events.emit_signal("set_music_volume", value)
