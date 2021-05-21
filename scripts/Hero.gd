@@ -20,9 +20,11 @@ func _ready():
 	_connected = events.connect('damage_hero', self, 'take_damage')
 	$AnimationPlayer.play("walk")
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.max_value = max_health
-	modify_health(max_health/4)
-	modify_mana(max_mana/2)
-	modify_stamina(max_stamina/2)
+	$StatusBars/ManaBarSprite/Viewport/ManaBar.max_value = max_mana
+	$StatusBars/StaminaBarSprite/Viewport/StaminaBar.max_value = max_stamina
+	modify_health(max_health)
+	modify_mana(max_mana)
+	modify_stamina(max_stamina)
 
 func _process(delta):
 	if dead:
