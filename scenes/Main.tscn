@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scenes/Hero.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Items.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://color_scheme/white.tres" type="Material" id=11]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scripts/Events.gd" type="Script" id=13]
+[ext_resource path="res://assets/sound/music/game-music-loop.mp3" type="AudioStream" id=14]
 [ext_resource path="res://color_scheme/blue.tres" type="Material" id=17]
 [ext_resource path="res://scripts/Camera.gd" type="Script" id=19]
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=21]
@@ -37,6 +38,11 @@ script = ExtResource( 22 )
 "events",
 ]]
 script = ExtResource( 13 )
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -11.052
+autoplay = true
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.953775, -1.77999e-07, 0.300522, -0.0874678, 0.956707, 0.277599, -0.287512, -0.291053, 0.912483, 3.10053, 3.64854, 8.47949 )
