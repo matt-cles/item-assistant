@@ -58,7 +58,6 @@ func give_current_item_to_hero():
 	var hero_animation:AnimationPlayer = hero.get_node("AnimationPlayer")
 	if hero_animation.current_animation in ["drink", "attack", 'tired']:
 		$AnimationPlayer.play("hand_weapon")
-		print('wait for it!')
 		yield(hero_animation,"animation_finished")
 		var next_animation = "walk" if moving else "still"
 		$AnimationPlayer.play(next_animation)

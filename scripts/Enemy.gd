@@ -80,7 +80,6 @@ func stop_moving():
 
 func increase_difficulty():
 	level += settings.difficulty_increment
-	print(level)
 
 func hero_death():
 	hero_dead = true
