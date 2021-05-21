@@ -103,7 +103,58 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="DeathMenu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeathColorSplash" type="ColorRect" parent="DeathMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.815686, 0.27451, 0.282353, 0.462745 )
+
+[node name="DeathColorSplash2" type="ColorRect" parent="DeathMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0784314, 0.0470588, 0.109804, 0.607843 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverLabel" type="Label" parent="DeathMenu"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -7.0
+margin_bottom = 7.0
+text = "Game Over!"
+align = 1
+valign = 1
+
+[node name="Restart" type="Button" parent="DeathMenu"]
+margin_left = 416.0
+margin_top = 336.0
+margin_right = 608.0
+margin_bottom = 384.0
+text = "Return to Title Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="DeathMenu"]
+margin_left = 416.0
+margin_top = 400.0
+margin_right = 608.0
+margin_bottom = 448.0
+text = "Exit to Desktop"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="SettingsMenu" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -316,6 +367,8 @@ __meta__ = {
 [connection signal="pressed" from="StartMenu/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="PauseMenu/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="PauseMenu/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="DeathMenu/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="DeathMenu/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="value_changed" from="SettingsMenu/MusicVolumeControl/VolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
 [connection signal="value_changed" from="SettingsMenu/SFXVolumeControl/VolumeSlider" to="." method="_on_SFXVolumeSlider_value_changed"]
 [connection signal="value_changed" from="SettingsMenu/DifficultyControl/DifficultySlider" to="." method="_on_DifficultySlider_value_changed"]

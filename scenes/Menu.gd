@@ -3,11 +3,12 @@ extends Control
 onready var events = get_tree().get_nodes_in_group('events')[0]
 onready var settings:Settings = get_tree().get_nodes_in_group('settings')[0]
 var game_started = false
+var hero_dead = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$StartMenu.visible = true
 	$PauseMenu.visible = get_tree().paused
+	$DeathMenu.visible = false
 	$SettingsMenu.visible = false
 	$SettingsMenu/MusicVolumeControl/VolumeSlider.min_value = settings.min_volume
 	$SettingsMenu/MusicVolumeControl/VolumeSlider.max_value = settings.max_volume
@@ -23,8 +24,10 @@ func _ready():
 	$SettingsMenu/PlayerModelControl/PlayerModel.add_item('Female', settings.PLAYER_MODEL.FEMALE)
 	$SettingsMenu/PlayerModelControl/PlayerModel.selected = settings.PLAYER_MODEL.RANDOM
 
+	var _connected = events.connect("hero_dead", self, 'show_death_menu')
+
 func _process(_delta):
-	if game_started:
+	if game_started and not hero_dead:
 		if Input.is_action_just_pressed("ui_cancel"):
 			var currently_paused = get_tree().paused
 			get_tree().paused = not currently_paused
@@ -40,7 +43,7 @@ func _on_Exit_pressed():
 
 func _on_Restart_pressed():
 	get_tree().paused = false
-	get_tree().reload_current_scene()
+	var _reloaded = get_tree().reload_current_scene()
 
 func _on_Options_pressed():
 	$StartMenu.visible = false
@@ -61,3 +64,7 @@ func _on_DifficultySlider_value_changed(value):
 
 func _on_PlayerModel_item_selected(index):
 	events.emit_signal("set_player_model", index)
+
+func show_death_menu():
+	hero_dead = true
+	$DeathMenu.visible = true
