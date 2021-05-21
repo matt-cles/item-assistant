@@ -9,6 +9,7 @@ signal enemy_turn
 signal hero_dead
 signal stop_moving
 signal start_moving
+signal set_music_volume
 
 func emit_start_game():
 	emit_signal("start_game")
@@ -36,3 +37,6 @@ func emit_stop_moving():
 
 func emit_start_moving():
 	emit_signal("start_moving")
+
+func emit_set_music_volume():
+	emit_signal("set_music_volume")
