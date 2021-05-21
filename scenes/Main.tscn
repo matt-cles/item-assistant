@@ -17,7 +17,7 @@
 [ext_resource path="res://scenes/Main.gd" type="Script" id=15]
 [ext_resource path="res://scenes/GameMusic.gd" type="Script" id=16]
 [ext_resource path="res://color_scheme/blue.tres" type="Material" id=17]
-[ext_resource path="res://scenes/Menu.gd" type="Script" id=18]
+[ext_resource path="res://scenes/Menu.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scripts/Camera.gd" type="Script" id=19]
 [ext_resource path="res://scenes/Enemy.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scripts/Settings.gd" type="Script" id=22]
@@ -34,115 +34,7 @@
 pause_mode = 1
 script = ExtResource( 15 )
 
-[node name="Menu" type="Control" parent="."]
-pause_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 18 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="StartMenu" type="Control" parent="Menu"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="StartColorSplash" type="ColorRect" parent="Menu/StartMenu"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.427451, 0.760784, 0.792157, 0.639216 )
-
-[node name="GameTitle" type="Label" parent="Menu/StartMenu"]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = -7.0
-margin_bottom = 7.0
-text = "Item Assistant"
-align = 1
-
-[node name="StartGame" type="Button" parent="Menu/StartMenu"]
-margin_left = 416.0
-margin_top = 336.0
-margin_right = 608.0
-margin_bottom = 384.0
-text = "Start Game"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Options" type="Button" parent="Menu/StartMenu"]
-margin_left = 416.0
-margin_top = 400.0
-margin_right = 608.0
-margin_bottom = 448.0
-text = "Settings"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Exit" type="Button" parent="Menu/StartMenu"]
-margin_left = 416.0
-margin_top = 464.0
-margin_right = 608.0
-margin_bottom = 512.0
-text = "Exit to Desktop"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PauseMenu" type="Control" parent="Menu"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PauseColorSplash" type="ColorRect" parent="Menu/PauseMenu"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.0784314, 0.0470588, 0.109804, 0.847059 )
-
-[node name="PauseLabel" type="Label" parent="Menu/PauseMenu"]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = -7.0
-margin_bottom = 7.0
-text = "Paused"
-align = 1
-valign = 1
-
-[node name="Restart" type="Button" parent="Menu/PauseMenu"]
-margin_left = 416.0
-margin_top = 336.0
-margin_right = 608.0
-margin_bottom = 384.0
-text = "Return to Title Menu"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Options" type="Button" parent="Menu/PauseMenu"]
-margin_left = 416.0
-margin_top = 400.0
-margin_right = 608.0
-margin_bottom = 448.0
-text = "Settings"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Exit" type="Button" parent="Menu/PauseMenu"]
-margin_left = 416.0
-margin_top = 464.0
-margin_right = 608.0
-margin_bottom = 512.0
-text = "Exit to Desktop"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Menu" parent="." instance=ExtResource( 18 )]
 
 [node name="Settings" type="Spatial" parent="." groups=[
 "settings",
@@ -350,10 +242,3 @@ transform = Transform( -0.707045, 0, 0.374283, 0, 0.8, 0, -0.374283, 0, -0.70704
 
 [node name="items" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.006, 0, 39.7992 )
-
-[connection signal="pressed" from="Menu/StartMenu/StartGame" to="Menu" method="_on_StartGame_pressed"]
-[connection signal="pressed" from="Menu/StartMenu/Options" to="Menu" method="_on_Options_pressed"]
-[connection signal="pressed" from="Menu/StartMenu/Exit" to="Menu" method="_on_Exit_pressed"]
-[connection signal="pressed" from="Menu/PauseMenu/Restart" to="Menu" method="_on_Restart_pressed"]
-[connection signal="pressed" from="Menu/PauseMenu/Options" to="Menu" method="_on_Options_pressed"]
-[connection signal="pressed" from="Menu/PauseMenu/Exit" to="Menu" method="_on_Exit_pressed"]

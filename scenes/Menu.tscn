@@ -1,0 +1,120 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/Menu.gd" type="Script" id=1]
+
+[node name="Menu" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartMenu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="StartColorSplash" type="ColorRect" parent="StartMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.427451, 0.760784, 0.792157, 0.639216 )
+
+[node name="GameTitle" type="Label" parent="StartMenu"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -7.0
+margin_bottom = 7.0
+text = "Item Assistant"
+align = 1
+
+[node name="StartGame" type="Button" parent="StartMenu"]
+margin_left = 416.0
+margin_top = 336.0
+margin_right = 608.0
+margin_bottom = 384.0
+text = "Start Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="Button" parent="StartMenu"]
+margin_left = 416.0
+margin_top = 400.0
+margin_right = 608.0
+margin_bottom = 448.0
+text = "Settings"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="StartMenu"]
+margin_left = 416.0
+margin_top = 464.0
+margin_right = 608.0
+margin_bottom = 512.0
+text = "Exit to Desktop"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseMenu" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseColorSplash" type="ColorRect" parent="PauseMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0784314, 0.0470588, 0.109804, 0.847059 )
+
+[node name="PauseLabel" type="Label" parent="PauseMenu"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -7.0
+margin_bottom = 7.0
+text = "Paused"
+align = 1
+valign = 1
+
+[node name="Restart" type="Button" parent="PauseMenu"]
+margin_left = 416.0
+margin_top = 336.0
+margin_right = 608.0
+margin_bottom = 384.0
+text = "Return to Title Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="Button" parent="PauseMenu"]
+margin_left = 416.0
+margin_top = 400.0
+margin_right = 608.0
+margin_bottom = 448.0
+text = "Settings"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="PauseMenu"]
+margin_left = 416.0
+margin_top = 464.0
+margin_right = 608.0
+margin_bottom = 512.0
+text = "Exit to Desktop"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="StartMenu/StartGame" to="." method="_on_StartGame_pressed"]
+[connection signal="pressed" from="StartMenu/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="StartMenu/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="PauseMenu/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="PauseMenu/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="PauseMenu/Exit" to="." method="_on_Exit_pressed"]
