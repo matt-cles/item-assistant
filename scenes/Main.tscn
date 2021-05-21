@@ -33,6 +33,7 @@
 "settings",
 ]]
 script = ExtResource( 22 )
+difficulty_increment = 1.0
 
 [node name="Events" type="Spatial" parent="." groups=[
 "events",
