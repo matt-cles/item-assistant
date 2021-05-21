@@ -57,6 +57,8 @@ func attack():
 		var damage = weapon.damage * damage_ratio
 		events.emit_signal("damage_hero", damage)
 		events.emit_signal("hero_turn")
+		# Get a little bit stronger each turn (prevent player from only using heal potion)
+		damage_ratio *= 1.05
 	
 func take_damage(damage):
 	health = health - damage
