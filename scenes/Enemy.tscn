@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/characters/character-1.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://animations/walk.tres" type="Animation" id=2]
@@ -13,6 +13,12 @@
 [ext_resource path="res://assets/bars/health_bar.png" type="Texture" id=11]
 [ext_resource path="res://assets/bars/empty_bar.png" type="Texture" id=12]
 [ext_resource path="res://scripts/StatusBarSprite.gd" type="Script" id=13]
+[ext_resource path="res://color_scheme/orange.tres" type="Material" id=14]
+[ext_resource path="res://color_scheme/blue_gray.tres" type="Material" id=15]
+[ext_resource path="res://color_scheme/red.tres" type="Material" id=16]
+[ext_resource path="res://color_scheme/dark_blue.tres" type="Material" id=17]
+[ext_resource path="res://color_scheme/brown.tres" type="Material" id=18]
+[ext_resource path="res://color_scheme/blue.tres" type="Material" id=19]
 
 [sub_resource type="SphereMesh" id=1]
 
@@ -51,7 +57,9 @@ __meta__ = {
 [node name="pivot" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.999086, 0, 0, 0, 0.762948, 0, 0, 0 )
 
-[node name="EnemyMesh" type="MeshInstance" parent="pivot"]
+[node name="Meshes" type="Spatial" parent="pivot"]
+
+[node name="Type1" type="MeshInstance" parent="pivot/Meshes"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
 mesh = ExtResource( 1 )
 material/0 = ExtResource( 4 )
@@ -59,13 +67,46 @@ material/1 = ExtResource( 6 )
 material/2 = ExtResource( 7 )
 material/3 = ExtResource( 5 )
 
+[node name="Type2" type="MeshInstance" parent="pivot/Meshes"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+visible = false
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 6 )
+material/1 = ExtResource( 14 )
+material/2 = ExtResource( 15 )
+material/3 = ExtResource( 16 )
+
+[node name="Type3" type="MeshInstance" parent="pivot/Meshes"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+visible = false
+mesh = ExtResource( 1 )
+material/0 = ExtResource( 15 )
+material/1 = ExtResource( 17 )
+material/2 = ExtResource( 18 )
+material/3 = ExtResource( 19 )
+
 [node name="RightHand" type="Spatial" parent="pivot"]
 transform = Transform( -0.0219959, -0.772121, -0.635095, 0.130085, 0.627638, -0.76756, 0.991259, -0.0994995, 0.0866358, -0.364854, -0.0331169, -0.356495 )
 
-[node name="HandMesh" type="MeshInstance" parent="pivot/RightHand"]
-transform = Transform( 0.07, 9.11939e-11, -9.31323e-10, -2.4315e-09, 0.07, 1.10425e-08, -9.31323e-10, -1.08309e-10, 0.07, 0, 0, 0 )
+[node name="HandMeshes" type="Spatial" parent="pivot/RightHand"]
+transform = Transform( 1, 0, 7.45058e-09, 0, 1, 1.67638e-08, 7.45058e-09, 5.58794e-09, 1, 0, 0, 0 )
+
+[node name="Type1" type="MeshInstance" parent="pivot/RightHand/HandMeshes"]
+transform = Transform( 0.07, -9.31323e-10, 0, -2.79397e-09, 0.07, 1.49012e-08, -9.31323e-10, 2.85218e-09, 0.07, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = ExtResource( 5 )
+
+[node name="Type2" type="MeshInstance" parent="pivot/RightHand/HandMeshes"]
+transform = Transform( 0.07, -9.31323e-10, 0, -2.79397e-09, 0.07, 1.49012e-08, -9.31323e-10, 2.85218e-09, 0.07, 0, 0, 0 )
+visible = false
+mesh = SubResource( 1 )
+material/0 = ExtResource( 16 )
+
+[node name="Type3" type="MeshInstance" parent="pivot/RightHand/HandMeshes"]
+transform = Transform( 0.07, -9.31323e-10, 0, -2.79397e-09, 0.07, 1.49012e-08, -9.31323e-10, 2.85218e-09, 0.07, 0, 0, 0 )
+visible = false
+mesh = SubResource( 1 )
+material/0 = ExtResource( 19 )
 
 [node name="WeaponSlot" type="Spatial" parent="pivot/RightHand"]
 

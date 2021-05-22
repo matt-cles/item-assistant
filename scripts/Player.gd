@@ -8,20 +8,17 @@ var items_in_inventory
 var current_item
 var passing = false
 var moving = true
+var in_menu = true
 
 func _ready():
-	# Select the character model
-	var character_model = settings.character_model
-	$pivot/MaleCharacter.visible = character_model == settings.PLAYER_MODEL.MALE
-	$pivot/FemaleCharacter.visible = character_model == settings.PLAYER_MODEL.FEMALE
-	if character_model == settings.PLAYER_MODEL.RANDOM:
-		var random_selection:bool = randi() % 2
-		$pivot/MaleCharacter.visible = random_selection
-		$pivot/FemaleCharacter.visible = not random_selection
-
 	# Connect events
 	var _connected = events.connect('stop_moving', self, 'stop_walking')
 	_connected = events.connect('start_moving', self, 'start_walking')
+	_connected = events.connect('start_game', self, 'start_game')
+	_connected = events.connect('set_player_model', self, 'set_player_model')
+
+	# Set player model
+	set_player_model(settings.character_model)
 
 	# Start walk animation
 	$AnimationPlayer.play("walk")
@@ -29,20 +26,29 @@ func _ready():
 
 	# Initialize the inventory
 	items_in_inventory = get_tree().get_nodes_in_group("item")
-	current_item = 0
+	current_item = randi() % len(items_in_inventory)
 	hold_current_item()
 	give_current_item_to_hero()
 	current_item = randi() % len(items_in_inventory)
 	hold_current_item()
-	
+
+func set_player_model(character_model):
+	# Select the character model
+	$pivot/MaleCharacter.visible = character_model == settings.PLAYER_MODEL.MALE
+	$pivot/FemaleCharacter.visible = character_model == settings.PLAYER_MODEL.FEMALE
+	if character_model == settings.PLAYER_MODEL.RANDOM:
+		var random_selection:bool = randi() % 2
+		$pivot/MaleCharacter.visible = random_selection
+		$pivot/FemaleCharacter.visible = not random_selection
+
 func next_weapon():
 	current_item = (current_item + 1) % len(items_in_inventory)
 	hold_current_item()
-	
+
 func prev_weapon():
 	current_item = (current_item - 1) % len(items_in_inventory)
 	hold_current_item()
-	
+
 func hold_current_item():
 	var weapon = items_in_inventory[current_item]
 	weapon = weapon.duplicate()
@@ -52,13 +58,12 @@ func hold_current_item():
 		if child.is_in_group("item"):
 			$pivot/RightHand/WeaponSlot.remove_child(child)
 	$pivot/RightHand/WeaponSlot.add_child(weapon)
-	
+
 func give_current_item_to_hero():
 	passing = true
 	var hero_animation:AnimationPlayer = hero.get_node("AnimationPlayer")
 	if hero_animation.current_animation in ["drink", "attack", 'tired']:
 		$AnimationPlayer.play("hand_weapon")
-		print('wait for it!')
 		yield(hero_animation,"animation_finished")
 		var next_animation = "walk" if moving else "still"
 		$AnimationPlayer.play(next_animation)
@@ -82,7 +87,7 @@ func give_current_item_to_hero():
 
 
 func _process(_delta):
-	if not passing:
+	if not passing and not in_menu:
 		if Input.is_action_just_pressed("ui_right"):
 			next_weapon()
 
@@ -99,3 +104,6 @@ func start_walking():
 func stop_walking():
 	$AnimationPlayer.play("still")
 	moving = false
+
+func start_game():
+	in_menu = false

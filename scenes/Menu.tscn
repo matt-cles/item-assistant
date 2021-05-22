@@ -1,0 +1,375 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/Menu.gd" type="Script" id=1]
+
+[node name="Menu" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartMenu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="StartColorSplash" type="ColorRect" parent="StartMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.427451, 0.760784, 0.792157, 0.639216 )
+
+[node name="GameTitle" type="Label" parent="StartMenu"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -7.0
+margin_bottom = 7.0
+text = "Item Assistant"
+align = 1
+
+[node name="StartGame" type="Button" parent="StartMenu"]
+margin_left = 416.0
+margin_top = 336.0
+margin_right = 608.0
+margin_bottom = 384.0
+text = "Start Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Options" type="Button" parent="StartMenu"]
+margin_left = 416.0
+margin_top = 400.0
+margin_right = 608.0
+margin_bottom = 448.0
+text = "Settings"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="StartMenu"]
+margin_left = 416.0
+margin_top = 464.0
+margin_right = 608.0
+margin_bottom = 512.0
+text = "Exit to Desktop"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseMenu" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseColorSplash" type="ColorRect" parent="PauseMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0784314, 0.0470588, 0.109804, 0.847059 )
+
+[node name="PauseLabel" type="Label" parent="PauseMenu"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -7.0
+margin_bottom = 7.0
+text = "Paused"
+align = 1
+valign = 1
+
+[node name="Restart" type="Button" parent="PauseMenu"]
+margin_left = 416.0
+margin_top = 336.0
+margin_right = 608.0
+margin_bottom = 384.0
+text = "Return to Title Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="PauseMenu"]
+margin_left = 416.0
+margin_top = 400.0
+margin_right = 608.0
+margin_bottom = 448.0
+text = "Exit to Desktop"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeathMenu" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeathColorSplash" type="ColorRect" parent="DeathMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.815686, 0.27451, 0.282353, 0.462745 )
+
+[node name="DeathColorSplash2" type="ColorRect" parent="DeathMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0784314, 0.0470588, 0.109804, 0.607843 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOverLabel" type="Label" parent="DeathMenu"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -7.0
+margin_bottom = 7.0
+text = "Game Over!"
+align = 1
+valign = 1
+
+[node name="Restart" type="Button" parent="DeathMenu"]
+margin_left = 416.0
+margin_top = 336.0
+margin_right = 608.0
+margin_bottom = 384.0
+text = "Return to Title Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="Button" parent="DeathMenu"]
+margin_left = 416.0
+margin_top = 400.0
+margin_right = 608.0
+margin_bottom = 448.0
+text = "Exit to Desktop"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SettingsMenu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="Panel" parent="SettingsMenu"]
+visible = false
+margin_left = 400.0
+margin_top = 272.0
+margin_right = 624.0
+margin_bottom = 528.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="SettingsMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.427451, 0.666667, 0.172549, 0.635294 )
+
+[node name="SettingsLabel" type="Label" parent="SettingsMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -80.0
+margin_top = -12.0
+margin_right = 84.0
+margin_bottom = 31.0
+text = "Settings
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicVolumeControl" type="Control" parent="SettingsMenu"]
+margin_left = 304.0
+margin_top = 336.0
+margin_right = 496.0
+margin_bottom = 384.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EmptyButton" type="Button" parent="SettingsMenu/MusicVolumeControl"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+button_mask = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VolumeLabel" type="Label" parent="SettingsMenu/MusicVolumeControl"]
+margin_right = 192.0
+margin_bottom = 48.0
+text = "Music Volume
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VolumeSlider" type="HSlider" parent="SettingsMenu/MusicVolumeControl"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 180.0
+margin_bottom = 54.0
+min_value = -80.0
+max_value = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXVolumeControl" type="Control" parent="SettingsMenu"]
+margin_left = 528.0
+margin_top = 336.0
+margin_right = 720.0
+margin_bottom = 384.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EmptyButton" type="Button" parent="SettingsMenu/SFXVolumeControl"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+button_mask = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VolumeLabel" type="Label" parent="SettingsMenu/SFXVolumeControl"]
+margin_left = 64.0
+margin_right = 128.0
+margin_bottom = 48.0
+text = "SFX Volume
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VolumeSlider" type="HSlider" parent="SettingsMenu/SFXVolumeControl"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 180.0
+margin_bottom = 54.0
+min_value = -80.0
+max_value = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DifficultyControl" type="Control" parent="SettingsMenu"]
+margin_left = 304.0
+margin_top = 400.0
+margin_right = 496.0
+margin_bottom = 448.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EmptyButton" type="Button" parent="SettingsMenu/DifficultyControl"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+button_mask = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DifficultyLabel" type="Label" parent="SettingsMenu/DifficultyControl"]
+margin_left = 64.0
+margin_right = 128.0
+margin_bottom = 48.0
+text = "Difficulty
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DifficultySlider" type="HSlider" parent="SettingsMenu/DifficultyControl"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 180.0
+margin_bottom = 54.0
+step = 0.05
+tick_count = 10
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerModelControl" type="Control" parent="SettingsMenu"]
+margin_left = 528.0
+margin_top = 400.0
+margin_right = 720.0
+margin_bottom = 448.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EmptyButton" type="Button" parent="SettingsMenu/PlayerModelControl"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+button_mask = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerModelLabel" type="Label" parent="SettingsMenu/PlayerModelControl"]
+margin_left = 64.0
+margin_right = 128.0
+margin_bottom = 48.0
+text = "Player Model
+"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerModel" type="OptionButton" parent="SettingsMenu/PlayerModelControl"]
+margin_top = 32.0
+margin_right = 192.0
+margin_bottom = 52.0
+text = "Player Model"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackToStartMenu" type="Button" parent="SettingsMenu"]
+margin_left = 416.0
+margin_top = 464.0
+margin_right = 608.0
+margin_bottom = 512.0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="StartMenu/StartGame" to="." method="_on_StartGame_pressed"]
+[connection signal="pressed" from="StartMenu/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="StartMenu/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="PauseMenu/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="PauseMenu/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="DeathMenu/Restart" to="." method="_on_Restart_pressed"]
+[connection signal="pressed" from="DeathMenu/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="value_changed" from="SettingsMenu/MusicVolumeControl/VolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
+[connection signal="value_changed" from="SettingsMenu/SFXVolumeControl/VolumeSlider" to="." method="_on_SFXVolumeSlider_value_changed"]
+[connection signal="value_changed" from="SettingsMenu/DifficultyControl/DifficultySlider" to="." method="_on_DifficultySlider_value_changed"]
+[connection signal="item_selected" from="SettingsMenu/PlayerModelControl/PlayerModel" to="." method="_on_PlayerModel_item_selected"]
+[connection signal="pressed" from="SettingsMenu/BackToStartMenu" to="." method="_on_BackToStartMenu_pressed"]

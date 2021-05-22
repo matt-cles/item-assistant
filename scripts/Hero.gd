@@ -16,13 +16,17 @@ var stamina:float = 0
 func _ready():
 	var _connected = events.connect('stop_moving', self, 'stop_walking')
 	_connected = events.connect('start_moving', self, 'start_walking')
+	_connected = events.connect("start_game", self, "start_game")
 	_connected = events.connect('hero_turn', self, 'attack')
 	_connected = events.connect('damage_hero', self, 'take_damage')
 	$AnimationPlayer.play("walk")
+	$StatusBars.visible = false
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.max_value = max_health
-	modify_health(max_health/4)
-	modify_mana(max_mana/2)
-	modify_stamina(max_stamina/2)
+	$StatusBars/ManaBarSprite/Viewport/ManaBar.max_value = max_mana
+	$StatusBars/StaminaBarSprite/Viewport/StaminaBar.max_value = max_stamina
+	modify_health(max_health)
+	modify_mana(max_mana)
+	modify_stamina(max_stamina)
 
 func _process(delta):
 	if dead:
@@ -66,6 +70,9 @@ func modify_stamina(amount):
 		stamina = clamp(stamina+amount, 0.0, max_stamina)
 		$StatusBars/StaminaBarSprite/Viewport/StaminaBar.value = stamina
 
+func start_game():
+	$StatusBars.visible = true
+
 func start_walking():
 	if not dead:
 		walking = true
@@ -86,7 +93,7 @@ func attack():
 			if mana >= current_item.mana_cost and stamina >= current_item.stamina_cost:
 				$AnimationPlayer.play("attack")
 				yield($AnimationPlayer, "animation_finished")
-				events.emit_signal("damage_enemy", current_item.damage)
+				events.emit_signal("damage_enemy", current_item.damage, current_item.damage_type)
 				modify_mana(-current_item.mana_cost)
 				modify_stamina(-current_item.stamina_cost)
 			else:

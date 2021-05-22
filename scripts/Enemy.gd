@@ -5,7 +5,7 @@ onready var events:Node = get_tree().get_nodes_in_group('events')[0]
 onready var spawn_point = get_tree().get_nodes_in_group('enemy_spawn_point')[0]
 onready var weapons = get_tree().get_nodes_in_group('weapon')
 
-var moving = true
+var moving = false
 var dead = false
 var hero_dead = false
 var move_speed = 2
@@ -14,9 +14,26 @@ var damage_ratio:float
 var health:float
 var weapon:Item
 
+var type:int
+var types = [ 
+	{
+		'resistances': [Item.DAMAGE_TYPES.ICE, Item.DAMAGE_TYPES.PIERCE],
+		'weaknesses' : [Item.DAMAGE_TYPES.FIRE, Item.DAMAGE_TYPES.HEAVY],
+	},
+	{
+		'resistances': [Item.DAMAGE_TYPES.FIRE, Item.DAMAGE_TYPES.STEALTH],
+		'weaknesses' : [Item.DAMAGE_TYPES.ICE, Item.DAMAGE_TYPES.SLASH],
+	},
+	{
+		'resistances': [Item.DAMAGE_TYPES.HEAVY, Item.DAMAGE_TYPES.SLASH],
+		'weaknesses' : [Item.DAMAGE_TYPES.STEALTH, Item.DAMAGE_TYPES.PIERCE],
+	},
+]
+
 func _ready():
 	var _connected = $Area.connect("area_entered", self, 'initiate_combat')
 	_connected = events.connect("start_moving", self, "start_moving")
+	_connected = events.connect("start_game", self, "start_moving")
 	_connected = events.connect("stop_moving", self, "stop_moving")
 	_connected = events.connect("enemy_turn", self, "attack")
 	_connected = events.connect("damage_enemy", self, "take_damage")
@@ -24,9 +41,16 @@ func _ready():
 	initialize()
 	
 func initialize():
+	type = randi() % len(types)
+	for mesh in $pivot/Meshes.get_children():
+		mesh.visible = false
+	for mesh in $pivot/RightHand/HandMeshes.get_children():
+		mesh.visible = false
+	$pivot/Meshes.get_child(type).visible = true
+	$pivot/RightHand/HandMeshes.get_child(type).visible = true
 	move_speed = 2
 	dead = false
-	health = 100 * level / 10.0
+	health = 90 + 10 * level
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.max_value = health
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.value = health
 	damage_ratio = level / 10.0
@@ -58,8 +82,14 @@ func attack():
 		events.emit_signal("damage_hero", damage)
 		events.emit_signal("hero_turn")
 	
-func take_damage(damage):
-	health = health - damage
+func take_damage(damage, damage_type=Item.DAMAGE_TYPES.NONE):
+	if damage_type in types[type].resistances:
+		print('Resist!')
+		damage *= .25
+	elif damage_type in types[type].weaknesses:
+		print('Effective!')
+		damage *= 4
+	health -= damage
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.value = health
 	if health <= 0:
 		$AnimationPlayer.play("die")
@@ -78,7 +108,6 @@ func stop_moving():
 
 func increase_difficulty():
 	level += settings.difficulty_increment
-	print(level)
 
 func hero_death():
 	hero_dead = true
