@@ -10,21 +10,22 @@ func _ready():
 	$PauseMenu.visible = get_tree().paused
 	$DeathMenu.visible = false
 	$SettingsMenu.visible = false
+	var _connected = events.connect("hero_dead", self, 'show_death_menu')
+	$SettingsMenu/PlayerModelControl/PlayerModel.add_item('Random', settings.PLAYER_MODEL.RANDOM)
+	$SettingsMenu/PlayerModelControl/PlayerModel.add_item('Male', settings.PLAYER_MODEL.MALE)
+	$SettingsMenu/PlayerModelControl/PlayerModel.add_item('Female', settings.PLAYER_MODEL.FEMALE)
+
+func get_settings_values():
 	$SettingsMenu/MusicVolumeControl/VolumeSlider.min_value = settings.min_volume
 	$SettingsMenu/MusicVolumeControl/VolumeSlider.max_value = settings.max_volume
 	$SettingsMenu/MusicVolumeControl/VolumeSlider.value = settings.default_music_volume
 	$SettingsMenu/SFXVolumeControl/VolumeSlider.min_value = settings.min_volume
 	$SettingsMenu/SFXVolumeControl/VolumeSlider.max_value = settings.max_volume
 	$SettingsMenu/SFXVolumeControl/VolumeSlider.value = settings.default_sfx_volume
+	$SettingsMenu/DifficultyControl/DifficultySlider.value = settings.difficulty_increment
 	$SettingsMenu/DifficultyControl/DifficultySlider.min_value = settings.min_difficulty
 	$SettingsMenu/DifficultyControl/DifficultySlider.max_value = settings.max_difficulty
-	$SettingsMenu/DifficultyControl/DifficultySlider.value = settings.default_difficulty
-	$SettingsMenu/PlayerModelControl/PlayerModel.add_item('Random', settings.PLAYER_MODEL.RANDOM)
-	$SettingsMenu/PlayerModelControl/PlayerModel.add_item('Male', settings.PLAYER_MODEL.MALE)
-	$SettingsMenu/PlayerModelControl/PlayerModel.add_item('Female', settings.PLAYER_MODEL.FEMALE)
-	$SettingsMenu/PlayerModelControl/PlayerModel.selected = settings.PLAYER_MODEL.RANDOM
-
-	var _connected = events.connect("hero_dead", self, 'show_death_menu')
+	$SettingsMenu/PlayerModelControl/PlayerModel.selected = settings.character_model
 
 func _process(_delta):
 	if game_started and not hero_dead:
@@ -46,6 +47,7 @@ func _on_Restart_pressed():
 	var _reloaded = get_tree().reload_current_scene()
 
 func _on_Options_pressed():
+	get_settings_values()
 	$StartMenu.visible = false
 	$SettingsMenu.visible = true
 

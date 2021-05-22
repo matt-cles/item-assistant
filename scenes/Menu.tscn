@@ -12,7 +12,6 @@ __meta__ = {
 }
 
 [node name="StartMenu" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -104,6 +103,7 @@ __meta__ = {
 }
 
 [node name="DeathMenu" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -154,7 +154,6 @@ __meta__ = {
 }
 
 [node name="SettingsMenu" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -182,9 +181,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -80.0
-margin_top = -28.0
+margin_top = -12.0
 margin_right = 84.0
-margin_bottom = 15.0
+margin_bottom = 31.0
 text = "Settings
 "
 align = 1
@@ -195,9 +194,9 @@ __meta__ = {
 
 [node name="MusicVolumeControl" type="Control" parent="SettingsMenu"]
 margin_left = 304.0
-margin_top = 304.0
+margin_top = 336.0
 margin_right = 496.0
-margin_bottom = 352.0
+margin_bottom = 384.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -234,9 +233,9 @@ __meta__ = {
 
 [node name="SFXVolumeControl" type="Control" parent="SettingsMenu"]
 margin_left = 528.0
-margin_top = 304.0
+margin_top = 336.0
 margin_right = 720.0
-margin_bottom = 352.0
+margin_bottom = 384.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -274,9 +273,9 @@ __meta__ = {
 
 [node name="DifficultyControl" type="Control" parent="SettingsMenu"]
 margin_left = 304.0
-margin_top = 368.0
+margin_top = 400.0
 margin_right = 496.0
-margin_bottom = 416.0
+margin_bottom = 448.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -306,18 +305,18 @@ margin_left = 16.0
 margin_top = 16.0
 margin_right = 180.0
 margin_bottom = 54.0
-min_value = -80.0
-max_value = 0.0
 step = 0.05
+tick_count = 10
+ticks_on_borders = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PlayerModelControl" type="Control" parent="SettingsMenu"]
 margin_left = 528.0
-margin_top = 368.0
+margin_top = 400.0
 margin_right = 720.0
-margin_bottom = 416.0
+margin_bottom = 448.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -354,9 +353,9 @@ __meta__ = {
 
 [node name="BackToStartMenu" type="Button" parent="SettingsMenu"]
 margin_left = 416.0
-margin_top = 432.0
+margin_top = 464.0
 margin_right = 608.0
-margin_bottom = 480.0
+margin_bottom = 512.0
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
