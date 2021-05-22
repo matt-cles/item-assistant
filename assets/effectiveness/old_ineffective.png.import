@@ -2,19 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ineffective.png-5687ac8a582219d0dd8e49121f8d6521.stex"
+path="res://.import/old_ineffective.png-975000447da89ab613988f14d7974e7d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/effectiveness/ineffective.png"
-dest_files=[ "res://.import/ineffective.png-5687ac8a582219d0dd8e49121f8d6521.stex" ]
+source_file="res://assets/effectiveness/old_ineffective.png"
+dest_files=[ "res://.import/old_ineffective.png-975000447da89ab613988f14d7974e7d.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
