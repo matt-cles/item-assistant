@@ -56,8 +56,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.42812, 0, 0 )
 "weapon",
 ]]
 script = ExtResource( 24 )
-damage = 15
-stamina_cost = 15
+stamina_cost = 10
 damage_type = 3
 
 [node name="handle-mesh" type="MeshInstance" parent="axes/axe-1"]
@@ -103,8 +102,7 @@ material/2 = ExtResource( 1 )
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.518746, 0, 0 )
 script = ExtResource( 24 )
-damage = 25
-stamina_cost = 20
+stamina_cost = 10
 damage_type = 3
 
 [node name="handle-mesh" type="MeshInstance" parent="swords/sword-2"]
@@ -177,7 +175,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.73493, 0, 0 )
 ]]
 script = ExtResource( 24 )
 damage = 20
-mana_cost = 10
+mana_cost = 20
 damage_type = 0
 
 [node name="handle-mesh" type="MeshInstance" parent="staffs/staff-1"]
@@ -224,7 +222,7 @@ shadow_enabled = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.600155, 0, 0 )
 script = ExtResource( 24 )
 damage = 20
-mana_cost = 10
+mana_cost = 20
 damage_type = 1
 
 [node name="handle-mesh" type="MeshInstance" parent="staffs/staff-2"]
@@ -272,7 +270,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.73481 )
 "weapon",
 ]]
 script = ExtResource( 24 )
-stamina_cost = 5
+stamina_cost = 10
 damage_type = 4
 
 [node name="handle-mesh" type="MeshInstance" parent="daggers/dagger-1"]
