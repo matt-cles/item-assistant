@@ -3,9 +3,9 @@ extends Spatial
 onready var events:Node = get_tree().get_nodes_in_group("events")[0]
 onready var weapon_slot = get_node("pivot/RightHand/WeaponSlot")
 
-export var max_health:float = 200
-export var max_mana:float = 100
-export var max_stamina:float = 100
+export var max_health:float = 300
+export var max_mana:float = 200
+export var max_stamina:float = 200
 
 var walking = true
 var dead = false

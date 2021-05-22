@@ -294,6 +294,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.96553 )
 "potion",
 ]]
 script = ExtResource( 24 )
+restore_amount = 30
 restore_type = 0
 
 [node name="handle-mesh" type="MeshInstance" parent="potions/potion-1"]
@@ -315,6 +316,7 @@ material/2 = ExtResource( 4 )
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.319601, 0, 0 )
 script = ExtResource( 24 )
+restore_amount = 30
 restore_type = 2
 
 [node name="handle-mesh" type="MeshInstance" parent="potions/potion-2"]
@@ -336,6 +338,7 @@ material/2 = ExtResource( 1 )
 ]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.331514, 0, 0 )
 script = ExtResource( 24 )
+restore_amount = 30
 restore_type = 1
 
 [node name="handle-mesh" type="MeshInstance" parent="potions/potion-3"]
