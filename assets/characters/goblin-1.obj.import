@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/goblin-1.obj-45cdd5f764f24cb3d13b934d01137bdd.mesh"
+
+[deps]
+
+files=[ "res://.import/goblin-1.obj-45cdd5f764f24cb3d13b934d01137bdd.mesh" ]
+
+source_file="res://assets/characters/goblin-1.obj"
+dest_files=[ "res://.import/goblin-1.obj-45cdd5f764f24cb3d13b934d01137bdd.mesh", "res://.import/goblin-1.obj-45cdd5f764f24cb3d13b934d01137bdd.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
