@@ -66,7 +66,7 @@ __meta__ = {
 transform = Transform( 0.999907, 0, 0, 0, 0.226563, 0, 0, 0, 0.999999, 0.202127, 0.723157, 0.580141 )
 
 [node name="EffectivenessVisualizer" type="MeshInstance" parent="StatusBars/EffectivenessSpawn"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1.97441, 0, 0, 0, 1.97441, 0, 0, 0, 1, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 script = ExtResource( 20 )
