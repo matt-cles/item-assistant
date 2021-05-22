@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://scenes/Menu.gd" type="Script" id=1]
+[ext_resource path="res://scripts/Menu.gd" type="Script" id=1]
 
 [node name="Menu" type="Control"]
 pause_mode = 2
@@ -11,7 +11,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ScoreTab" type="Control" parent="."]
+visible = false
+margin_left = 384.0
+margin_top = 32.0
+margin_right = 640.0
+margin_bottom = 72.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ScoreTab"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Enemies Defeated: 0"
+align = 1
+valign = 1
+
 [node name="StartMenu" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -103,7 +121,6 @@ __meta__ = {
 }
 
 [node name="DeathMenu" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -133,6 +150,18 @@ text = "Game Over!"
 align = 1
 valign = 1
 
+[node name="ScoreTally" type="Label" parent="DeathMenu"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = 7.0
+margin_bottom = 21.0
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Restart" type="Button" parent="DeathMenu"]
 margin_left = 416.0
 margin_top = 336.0
@@ -154,6 +183,7 @@ __meta__ = {
 }
 
 [node name="SettingsMenu" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -369,6 +399,7 @@ __meta__ = {
 [connection signal="pressed" from="DeathMenu/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="DeathMenu/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="value_changed" from="SettingsMenu/MusicVolumeControl/VolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
+[connection signal="mouse_entered" from="SettingsMenu/SFXVolumeControl/VolumeSlider" to="." method="_on_VolumeSlider_mouse_entered"]
 [connection signal="value_changed" from="SettingsMenu/SFXVolumeControl/VolumeSlider" to="." method="_on_SFXVolumeSlider_value_changed"]
 [connection signal="value_changed" from="SettingsMenu/DifficultyControl/DifficultySlider" to="." method="_on_DifficultySlider_value_changed"]
 [connection signal="item_selected" from="SettingsMenu/PlayerModelControl/PlayerModel" to="." method="_on_PlayerModel_item_selected"]

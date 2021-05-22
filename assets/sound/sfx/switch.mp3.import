@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/switch.mp3-96ee3927d6e349d15f21491f576ff927.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/sfx/switch.mp3"
+dest_files=[ "res://.import/switch.mp3-96ee3927d6e349d15f21491f576ff927.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

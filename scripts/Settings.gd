@@ -41,7 +41,7 @@ func _ready():
 	# Set settings vars to values in config, if they exist
 	events.emit_signal("set_player_model", config_file.get_value('player', 'character_model', PLAYER_MODEL.RANDOM))
 	events.emit_signal("set_music_volume", config_file.get_value('volume', 'music_volume', -10))
-	events.emit_signal("set_sfx_volume", config_file.get_value('volume', 'sfx_volume', -10))
+	events.emit_signal("set_sfx_volume", config_file.get_value('volume', 'sfx_volume', -15))
 	events.emit_signal("set_difficulty", config_file.get_value('difficulty', 'increment', .5))
 
 func set_player_model(index):

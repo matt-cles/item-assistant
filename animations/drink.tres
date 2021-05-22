@@ -4,7 +4,7 @@
 resource_name = "drink"
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("pivot/RightHand:translation")
+tracks/0/path = NodePath("pivot/RightHand:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -13,10 +13,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.55, 0.85, 0.95 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( -0.364854, -0.0331169, -0.356495 ), Vector3( -0.483837, 0.173352, -0.222489 ), Vector3( -0.340429, 0.265441, 0.00267187 ), Vector3( -0.289784, 0.311635, -0.00226643 ), Vector3( -0.343247, 0.190665, -0.497193 ), Vector3( -0.260111, -0.0248905, -0.467061 ) ]
+"values": [ Vector3( 50.1353, -82.232, 11.7094 ), Vector3( 6.93722, -90.3565, 7.52994 ), Vector3( -57.7454, -103.271, 14.1079 ), Vector3( -79.82, -138.211, 47.3931 ), Vector3( 15.4354, -89.1952, 7.75585 ), Vector3( 39.8775, -84.9782, 9.75931 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("pivot/RightHand:rotation_degrees")
+tracks/1/path = NodePath("pivot/RightHand:translation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -25,5 +25,5 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.55, 0.85, 0.95 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 50.1353, -82.232, 11.7094 ), Vector3( 6.93722, -90.3565, 7.52994 ), Vector3( -57.7454, -103.271, 14.1079 ), Vector3( -79.82, -138.211, 47.3931 ), Vector3( 15.4354, -89.1952, 7.75585 ), Vector3( 39.8775, -84.9782, 9.75931 ) ]
+"values": [ Vector3( -0.364854, -0.0331169, -0.356495 ), Vector3( -0.483837, 0.173352, -0.222489 ), Vector3( -0.340429, 0.265441, 0.00267187 ), Vector3( -0.289784, 0.311635, -0.00226643 ), Vector3( -0.343247, 0.190665, -0.497193 ), Vector3( -0.260111, -0.0248905, -0.467061 ) ]
 }

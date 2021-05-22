@@ -13,9 +13,9 @@
 [ext_resource path="res://color_scheme/white.tres" type="Material" id=11]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scripts/Events.gd" type="Script" id=13]
-[ext_resource path="res://assets/sound/music/game-music-loop.mp3" type="AudioStream" id=14]
-[ext_resource path="res://scenes/Main.gd" type="Script" id=15]
-[ext_resource path="res://scenes/GameMusic.gd" type="Script" id=16]
+[ext_resource path="res://assets/sound/music/game_music_loop.mp3" type="AudioStream" id=14]
+[ext_resource path="res://scripts/Main.gd" type="Script" id=15]
+[ext_resource path="res://scripts/GameMusic.gd" type="Script" id=16]
 [ext_resource path="res://color_scheme/blue.tres" type="Material" id=17]
 [ext_resource path="res://scenes/Menu.tscn" type="PackedScene" id=18]
 [ext_resource path="res://scripts/Camera.gd" type="Script" id=19]
@@ -68,7 +68,7 @@ use_pixels = false
 transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.0883806, -0.205014, 0, -2.26392 )
 
 [node name="tree-2" parent="World/trees" instance=ExtResource( 10 )]
-transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.0883806, 4.14963, 0, 5.4593 )
+transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.0883806, 3.43481, 0, 3.28127 )
 
 [node name="tree-3" parent="World/trees" instance=ExtResource( 10 )]
 transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.0883806, -4.13213, 0, -4.34279 )
@@ -101,10 +101,50 @@ material/0 = null
 [node name="tree_spawn2" type="Spatial" parent="World/trees" groups=[
 "tree_spawn_point",
 ]]
-transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.0883806, 7.4926, 0, 7.22894 )
+transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.0883806, 6.77778, 0, 5.05091 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="World/trees/tree_spawn2"]
 transform = Transform( -0.212491, 0, -349.883, 0, 42.8665, 0, 0.163333, 0, -455.187, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="tree_spawn3" type="Spatial" parent="World/trees" groups=[
+"tree_spawn_point",
+]]
+transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.0883806, 5.33874, 0, 0.670728 )
+
+[node name="MeshInstance" type="MeshInstance" parent="World/trees/tree_spawn3"]
+transform = Transform( -0.212491, 0, -349.883, 0, 18.2794, 0, 0.163333, 0, -455.187, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="tree_spawn4" type="Spatial" parent="World/trees" groups=[
+"tree_spawn_point",
+]]
+transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.0883806, 5.33874, 0, 0.670728 )
+
+[node name="MeshInstance" type="MeshInstance" parent="World/trees/tree_spawn4"]
+transform = Transform( -0.212491, 0, -349.883, 0, 18.2794, 0, 0.163333, 0, -455.187, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="tree_spawn5" type="Spatial" parent="World/trees" groups=[
+"tree_spawn_point",
+]]
+transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.0883806, 5.33874, 0, 0.670728 )
+
+[node name="MeshInstance" type="MeshInstance" parent="World/trees/tree_spawn5"]
+transform = Transform( -0.212491, 0, -349.883, 0, 18.2794, 0, 0.163333, 0, -455.187, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="tree_spawn6" type="Spatial" parent="World/trees" groups=[
+"tree_spawn_point",
+]]
+transform = Transform( -0.0883806, 0, 0.0467853, 0, 0.1, 0, -0.0467853, 0, -0.0883806, 5.33874, 0, 0.670728 )
+
+[node name="MeshInstance" type="MeshInstance" parent="World/trees/tree_spawn6"]
+transform = Transform( -0.212491, 0, -349.883, 0, 18.2794, 0, 0.163333, 0, -455.187, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 

@@ -5,6 +5,11 @@ onready var events:Node = get_tree().get_nodes_in_group('events')[0]
 onready var spawn_point = get_tree().get_nodes_in_group('enemy_spawn_point')[0]
 onready var weapons = get_tree().get_nodes_in_group('weapon')
 
+onready var effective_texture = load("res://assets/effectiveness/Effective.tres")
+onready var ineffective_texture = load("res://assets/effectiveness/Ineffective.tres")
+onready var critical_texture = load("res://assets/effectiveness/Critical.tres")
+onready var resisted_texture = load("res://assets/effectiveness/Resisted.tres")
+
 var moving = false
 var dead = false
 var hero_dead = false
@@ -15,18 +20,44 @@ var health:float
 var weapon:Item
 
 var type:int
+# Item damage types are: Fire, Ice, Heavy, Slash, Pierce, Stealth
 var types = [ 
 	{
-		'resistances': [Item.DAMAGE_TYPES.ICE, Item.DAMAGE_TYPES.PIERCE],
-		'weaknesses' : [Item.DAMAGE_TYPES.FIRE, Item.DAMAGE_TYPES.HEAVY],
-	},
-	{
-		'resistances': [Item.DAMAGE_TYPES.FIRE, Item.DAMAGE_TYPES.STEALTH],
-		'weaknesses' : [Item.DAMAGE_TYPES.ICE, Item.DAMAGE_TYPES.SLASH],
-	},
-	{
-		'resistances': [Item.DAMAGE_TYPES.HEAVY, Item.DAMAGE_TYPES.SLASH],
-		'weaknesses' : [Item.DAMAGE_TYPES.STEALTH, Item.DAMAGE_TYPES.PIERCE],
+		# Green Human
+		'resisted': [Item.DAMAGE_TYPES.SLASH],
+		'ineffective': [Item.DAMAGE_TYPES.ICE, Item.DAMAGE_TYPES.STEALTH],
+		'effective': [Item.DAMAGE_TYPES.PIERCE, Item.DAMAGE_TYPES.HEAVY],
+		'critical' : [Item.DAMAGE_TYPES.FIRE],
+	}, {
+		# Red Human
+		'resisted': [Item.DAMAGE_TYPES.PIERCE],
+		'ineffective': [Item.DAMAGE_TYPES.FIRE, Item.DAMAGE_TYPES.SLASH],
+		'effective': [Item.DAMAGE_TYPES.ICE, Item.DAMAGE_TYPES.STEALTH],
+		'critical' : [Item.DAMAGE_TYPES.HEAVY],
+	}, {
+		# Blue Human
+		'resisted': [Item.DAMAGE_TYPES.HEAVY],
+		'ineffective': [Item.DAMAGE_TYPES.ICE, Item.DAMAGE_TYPES.PIERCE],
+		'effective': [Item.DAMAGE_TYPES.FIRE, Item.DAMAGE_TYPES.SLASH],
+		'critical' : [Item.DAMAGE_TYPES.STEALTH],
+	}, {
+		# Orange Tall Guy
+		'resisted': [Item.DAMAGE_TYPES.STEALTH, Item.DAMAGE_TYPES.SLASH],
+		'ineffective': [Item.DAMAGE_TYPES.PIERCE, Item.DAMAGE_TYPES.HEAVY],
+		'effective': [],
+		'critical' : [Item.DAMAGE_TYPES.ICE, Item.DAMAGE_TYPES.FIRE],
+	}, {
+		# goblin-1
+		'resisted': [Item.DAMAGE_TYPES.ICE, Item.DAMAGE_TYPES.FIRE],
+		'ineffective': [Item.DAMAGE_TYPES.STEALTH],
+		'effective': [Item.DAMAGE_TYPES.PIERCE, Item.DAMAGE_TYPES.HEAVY],
+		'critical' : [Item.DAMAGE_TYPES.SLASH],
+	}, {
+		# goblin-2
+		'resisted': [Item.DAMAGE_TYPES.ICE, Item.DAMAGE_TYPES.FIRE],
+		'ineffective': [],
+		'effective': [Item.DAMAGE_TYPES.PIERCE, Item.DAMAGE_TYPES.SLASH, Item.DAMAGE_TYPES.HEAVY],
+		'critical' : [Item.DAMAGE_TYPES.STEALTH],
 	},
 ]
 
@@ -53,6 +84,7 @@ func initialize():
 	health = 90 + 10 * level
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.max_value = health
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.value = health
+	$StatusBars/HealthBarSprite.visible = true
 	damage_ratio = level / 10.0
 	translation = Vector3.ZERO
 	weapon = weapons[randi() % len(weapons)].duplicate()
@@ -66,6 +98,7 @@ func initialize():
 		weapon_slot.remove_child(old_weapon)
 		old_weapon.queue_free()
 	weapon_slot.add_child(weapon)
+	$StatusBars/EffectivenessSpawn/EffectivenessVisualizer.visible = false
 	$AnimationPlayer.play("walk")
 
 func _process(delta):
@@ -81,21 +114,34 @@ func attack():
 		var damage = weapon.damage * damage_ratio
 		events.emit_signal("damage_hero", damage)
 		events.emit_signal("hero_turn")
-	
+
+func display_effectiveness(texture):
+	$StatusBars/EffectivenessSpawn/EffectivenessVisualizer.mesh.surface_set_material(0, texture)
+	$StatusBars/EffectivenessSpawn/EffectivenessVisualizer.translation = $StatusBars/EffectivenessSpawn.translation
+	$StatusBars/EffectivenessSpawn/EffectivenessVisualizer.visible = true
+
 func take_damage(damage, damage_type=Item.DAMAGE_TYPES.NONE):
-	if damage_type in types[type].resistances:
-		print('Resist!')
-		damage *= .25
-	elif damage_type in types[type].weaknesses:
-		print('Effective!')
-		damage *= 4
+	if damage_type in types[type].resisted:
+		damage *= .05
+		display_effectiveness(resisted_texture)
+	elif damage_type in types[type].ineffective:
+		damage *= .5
+		display_effectiveness(ineffective_texture)
+	elif damage_type in types[type].effective:
+		damage *= 2
+		display_effectiveness(effective_texture)
+	elif damage_type in types[type].critical:
+		damage *= 8
+		display_effectiveness(critical_texture)
 	health -= damage
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.value = health
 	if health <= 0:
 		$AnimationPlayer.play("die")
+		events.emit_signal("enemy_defeated")
 		dead = true
 		move_speed = 1
 		events.emit_signal("start_moving")
+		$StatusBars/HealthBarSprite.visible = false
 
 func start_moving():
 	if not dead:
