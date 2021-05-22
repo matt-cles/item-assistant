@@ -10,6 +10,6 @@ In this game, you are the assistant to the Hero. Your job is to give the Hero th
 
 ___
 
-## Licence: CC BY 4.0
+## License: CC BY 4.0
 
 Item Assistant © 2021 by Matthew Cles is licensed under Attribution 4.0 International. To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/
