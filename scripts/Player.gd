@@ -67,6 +67,7 @@ func give_current_item_to_hero(show_animation=true):
 		if hero_animation.current_animation in ["drink", "attack", 'tired']:
 			yield(hero_animation, "animation_finished")
 		hero_animation.play('take')
+		$SFX/TurnSound.play()
 		yield(hero_animation, "animation_finished")
 		
 	var hero_weapon_slot:Spatial = hero.get_node("pivot/RightHand/WeaponSlot")
@@ -88,6 +89,7 @@ func give_current_item_to_hero(show_animation=true):
 	
 	if show_animation:
 		hero_animation.play_backwards('take')
+		$SFX/TurnSound.play()
 		yield(hero_animation, "animation_finished")
 		var next_animation = "walk" if moving else "still"
 		$AnimationPlayer.play(next_animation)
@@ -97,9 +99,11 @@ func give_current_item_to_hero(show_animation=true):
 func _process(_delta):
 	if not passing and not in_menu:
 		if Input.is_action_just_pressed("ui_right"):
+			$SFX/ItemSwitchSound.play()
 			next_weapon()
 
 		if Input.is_action_just_pressed("ui_left"):
+			$SFX/ItemSwitchSound.play()
 			prev_weapon()
 
 		if Input.is_action_just_pressed("ui_accept") and not hero.dead:

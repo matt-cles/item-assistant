@@ -369,6 +369,7 @@ __meta__ = {
 [connection signal="pressed" from="DeathMenu/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="DeathMenu/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="value_changed" from="SettingsMenu/MusicVolumeControl/VolumeSlider" to="." method="_on_MusicVolumeSlider_value_changed"]
+[connection signal="mouse_entered" from="SettingsMenu/SFXVolumeControl/VolumeSlider" to="." method="_on_VolumeSlider_mouse_entered"]
 [connection signal="value_changed" from="SettingsMenu/SFXVolumeControl/VolumeSlider" to="." method="_on_SFXVolumeSlider_value_changed"]
 [connection signal="value_changed" from="SettingsMenu/DifficultyControl/DifficultySlider" to="." method="_on_DifficultySlider_value_changed"]
 [connection signal="item_selected" from="SettingsMenu/PlayerModelControl/PlayerModel" to="." method="_on_PlayerModel_item_selected"]

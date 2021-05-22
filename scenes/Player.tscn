@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://color_scheme/red.tres" type="Material" id=1]
 [ext_resource path="res://color_scheme/brown.tres" type="Material" id=2]
@@ -14,10 +14,15 @@
 [ext_resource path="res://color_scheme/black.tres" type="Material" id=12]
 [ext_resource path="res://assets/characters/character-2.obj" type="ArrayMesh" id=13]
 [ext_resource path="res://animations/hand_weapon.tres" type="Animation" id=14]
+[ext_resource path="res://assets/sound/sfx/rand_switch.tres" type="AudioStream" id=15]
+[ext_resource path="res://assets/sound/sfx/swish.mp3" type="AudioStream" id=16]
+[ext_resource path="res://scripts/sfx.gd" type="Script" id=17]
 
 [sub_resource type="SphereMesh" id=1]
 
-[node name="Player" type="Spatial"]
+[node name="Player" type="Spatial" groups=[
+"player",
+]]
 script = ExtResource( 8 )
 
 [node name="pivot" type="Spatial" parent="."]
@@ -63,3 +68,14 @@ anims/attack = ExtResource( 10 )
 anims/hand_weapon = ExtResource( 14 )
 anims/still = ExtResource( 11 )
 anims/walk = ExtResource( 9 )
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="ItemSwitchSound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 15 )
+script = ExtResource( 17 )
+balancer = 0.932
+
+[node name="TurnSound" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource( 16 )
+script = ExtResource( 17 )

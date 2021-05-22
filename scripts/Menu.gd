@@ -2,8 +2,10 @@ extends Control
 
 onready var events = get_tree().get_nodes_in_group('events')[0]
 onready var settings:Settings = get_tree().get_nodes_in_group('settings')[0]
+onready var sfx = get_tree().get_nodes_in_group('player')[0].get_node("SFX")
 var game_started = false
 var hero_dead = false
+var allow_preview_sfx = false
 
 func _ready():
 	$StartMenu.visible = true
@@ -16,6 +18,7 @@ func _ready():
 	$SettingsMenu/PlayerModelControl/PlayerModel.add_item('Female', settings.PLAYER_MODEL.FEMALE)
 
 func get_settings_values():
+	allow_preview_sfx = false
 	$SettingsMenu/MusicVolumeControl/VolumeSlider.min_value = settings.min_volume
 	$SettingsMenu/MusicVolumeControl/VolumeSlider.max_value = settings.max_volume
 	$SettingsMenu/MusicVolumeControl/VolumeSlider.value = settings.default_music_volume
@@ -60,6 +63,10 @@ func _on_MusicVolumeSlider_value_changed(value):
 
 func _on_SFXVolumeSlider_value_changed(value):
 	events.emit_signal("set_sfx_volume", value)
+	if allow_preview_sfx:
+		var sounds = sfx.get_children()
+		var random_sfx = sounds[randi() % len(sounds)]
+		random_sfx.play()
 
 func _on_DifficultySlider_value_changed(value):
 	events.emit_signal("set_difficulty", value)
@@ -70,3 +77,6 @@ func _on_PlayerModel_item_selected(index):
 func show_death_menu():
 	hero_dead = true
 	$DeathMenu.visible = true
+
+func _on_VolumeSlider_mouse_entered():
+	allow_preview_sfx = true
