@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://assets/characters/character-1.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://animations/walk.tres" type="Animation" id=2]
@@ -20,6 +20,13 @@
 [ext_resource path="res://color_scheme/brown.tres" type="Material" id=18]
 [ext_resource path="res://color_scheme/blue.tres" type="Material" id=19]
 [ext_resource path="res://scripts/EffectivenessVisualizer.gd" type="Script" id=20]
+[ext_resource path="res://assets/characters/goblin-1.obj" type="ArrayMesh" id=21]
+[ext_resource path="res://assets/characters/goblin-2.obj" type="ArrayMesh" id=22]
+[ext_resource path="res://color_scheme/bright_green.tres" type="Material" id=23]
+[ext_resource path="res://color_scheme/light_blue.tres" type="Material" id=24]
+[ext_resource path="res://color_scheme/peach.tres" type="Material" id=25]
+[ext_resource path="res://color_scheme/purple.tres" type="Material" id=26]
+[ext_resource path="res://assets/characters/character-4.obj" type="ArrayMesh" id=27]
 
 [sub_resource type="QuadMesh" id=1]
 
@@ -69,15 +76,16 @@ transform = Transform( 1, 0, 0, 0, 0.999086, 0, 0, 0, 0.762948, 0, 0, 0 )
 
 [node name="Meshes" type="Spatial" parent="pivot"]
 
-[node name="Type1" type="MeshInstance" parent="pivot/Meshes"]
+[node name="GreenHuman" type="MeshInstance" parent="pivot/Meshes"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+visible = false
 mesh = ExtResource( 1 )
 material/0 = ExtResource( 4 )
 material/1 = ExtResource( 6 )
 material/2 = ExtResource( 7 )
 material/3 = ExtResource( 5 )
 
-[node name="Type2" type="MeshInstance" parent="pivot/Meshes"]
+[node name="RedHuman" type="MeshInstance" parent="pivot/Meshes"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
 visible = false
 mesh = ExtResource( 1 )
@@ -86,7 +94,7 @@ material/1 = ExtResource( 14 )
 material/2 = ExtResource( 15 )
 material/3 = ExtResource( 16 )
 
-[node name="Type3" type="MeshInstance" parent="pivot/Meshes"]
+[node name="BlueHuman" type="MeshInstance" parent="pivot/Meshes"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
 visible = false
 mesh = ExtResource( 1 )
@@ -95,28 +103,70 @@ material/1 = ExtResource( 17 )
 material/2 = ExtResource( 18 )
 material/3 = ExtResource( 19 )
 
+[node name="OrangeTallGuy" type="MeshInstance" parent="pivot/Meshes"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+visible = false
+mesh = ExtResource( 27 )
+material/0 = ExtResource( 7 )
+material/1 = ExtResource( 14 )
+material/2 = ExtResource( 25 )
+material/3 = ExtResource( 26 )
+
+[node name="goblin-1" type="MeshInstance" parent="pivot/Meshes"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+mesh = ExtResource( 21 )
+material/0 = ExtResource( 18 )
+material/1 = ExtResource( 6 )
+material/2 = ExtResource( 23 )
+
+[node name="goblin-2" type="MeshInstance" parent="pivot/Meshes"]
+transform = Transform( -4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0, 0, 0 )
+visible = false
+mesh = ExtResource( 22 )
+material/0 = ExtResource( 23 )
+material/1 = ExtResource( 17 )
+material/2 = ExtResource( 24 )
+
 [node name="RightHand" type="Spatial" parent="pivot"]
 transform = Transform( -0.0219959, -0.772121, -0.635095, 0.130085, 0.627638, -0.76756, 0.991259, -0.0994995, 0.0866358, -0.364854, -0.0331169, -0.356495 )
 
 [node name="HandMeshes" type="Spatial" parent="pivot/RightHand"]
 transform = Transform( 1, 0, 7.45058e-09, 0, 1, 1.67638e-08, 7.45058e-09, 5.58794e-09, 1, 0, 0, 0 )
 
-[node name="Type1" type="MeshInstance" parent="pivot/RightHand/HandMeshes"]
+[node name="GreenHuman" type="MeshInstance" parent="pivot/RightHand/HandMeshes"]
 transform = Transform( 0.07, -9.31323e-10, 0, -2.79397e-09, 0.07, 1.49012e-08, -9.31323e-10, 2.85218e-09, 0.07, 0, 0, 0 )
+visible = false
 mesh = SubResource( 2 )
 material/0 = ExtResource( 5 )
 
-[node name="Type2" type="MeshInstance" parent="pivot/RightHand/HandMeshes"]
+[node name="RedHuman" type="MeshInstance" parent="pivot/RightHand/HandMeshes"]
 transform = Transform( 0.07, -9.31323e-10, 0, -2.79397e-09, 0.07, 1.49012e-08, -9.31323e-10, 2.85218e-09, 0.07, 0, 0, 0 )
 visible = false
 mesh = SubResource( 2 )
 material/0 = ExtResource( 16 )
 
-[node name="Type3" type="MeshInstance" parent="pivot/RightHand/HandMeshes"]
+[node name="BlueHuman" type="MeshInstance" parent="pivot/RightHand/HandMeshes"]
 transform = Transform( 0.07, -9.31323e-10, 0, -2.79397e-09, 0.07, 1.49012e-08, -9.31323e-10, 2.85218e-09, 0.07, 0, 0, 0 )
 visible = false
 mesh = SubResource( 2 )
 material/0 = ExtResource( 19 )
+
+[node name="OrangeTallGuy" type="MeshInstance" parent="pivot/RightHand/HandMeshes"]
+transform = Transform( 0.07, -9.31323e-10, 0, -2.79397e-09, 0.07, 1.49012e-08, -9.31323e-10, 2.85218e-09, 0.07, 0, 0, 0 )
+visible = false
+mesh = SubResource( 2 )
+material/0 = ExtResource( 14 )
+
+[node name="goblin-1" type="MeshInstance" parent="pivot/RightHand/HandMeshes"]
+transform = Transform( 0.07, -1.39698e-09, 9.31323e-10, -2.32831e-09, 0.07, 1.49012e-08, 4.65661e-10, 2.96859e-09, 0.07, 0, 0, 0 )
+visible = false
+mesh = SubResource( 2 )
+material/0 = ExtResource( 23 )
+
+[node name="goblin-2" type="MeshInstance" parent="pivot/RightHand/HandMeshes"]
+transform = Transform( 0.07, -1.39698e-09, 9.31323e-10, -2.32831e-09, 0.07, 1.49012e-08, 4.65661e-10, 2.96859e-09, 0.07, 0, 0, 0 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 23 )
 
 [node name="WeaponSlot" type="Spatial" parent="pivot/RightHand"]
 

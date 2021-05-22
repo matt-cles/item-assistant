@@ -20,18 +20,44 @@ var health:float
 var weapon:Item
 
 var type:int
+# Item damage types are: Fire, Ice, Heavy, Slash, Pierce, Stealth
 var types = [ 
 	{
-		'resistances': [Item.DAMAGE_TYPES.ICE, Item.DAMAGE_TYPES.PIERCE],
-		'weaknesses' : [Item.DAMAGE_TYPES.FIRE, Item.DAMAGE_TYPES.HEAVY],
-	},
-	{
-		'resistances': [Item.DAMAGE_TYPES.FIRE, Item.DAMAGE_TYPES.STEALTH],
-		'weaknesses' : [Item.DAMAGE_TYPES.ICE, Item.DAMAGE_TYPES.SLASH],
-	},
-	{
-		'resistances': [Item.DAMAGE_TYPES.HEAVY, Item.DAMAGE_TYPES.SLASH],
-		'weaknesses' : [Item.DAMAGE_TYPES.STEALTH, Item.DAMAGE_TYPES.PIERCE],
+		# Green Human
+		'resisted': [Item.DAMAGE_TYPES.SLASH],
+		'ineffective': [Item.DAMAGE_TYPES.ICE, Item.DAMAGE_TYPES.STEALTH],
+		'effective': [Item.DAMAGE_TYPES.PIERCE, Item.DAMAGE_TYPES.HEAVY],
+		'critical' : [Item.DAMAGE_TYPES.FIRE],
+	}, {
+		# Red Human
+		'resisted': [Item.DAMAGE_TYPES.PIERCE],
+		'ineffective': [Item.DAMAGE_TYPES.FIRE, Item.DAMAGE_TYPES.SLASH],
+		'effective': [Item.DAMAGE_TYPES.ICE, Item.DAMAGE_TYPES.STEALTH],
+		'critical' : [Item.DAMAGE_TYPES.HEAVY],
+	}, {
+		# Blue Human
+		'resisted': [Item.DAMAGE_TYPES.HEAVY],
+		'ineffective': [Item.DAMAGE_TYPES.ICE, Item.DAMAGE_TYPES.PIERCE],
+		'effective': [Item.DAMAGE_TYPES.FIRE, Item.DAMAGE_TYPES.SLASH],
+		'critical' : [Item.DAMAGE_TYPES.STEALTH],
+	}, {
+		# Orange Tall Guy
+		'resisted': [Item.DAMAGE_TYPES.STEALTH, Item.DAMAGE_TYPES.SLASH],
+		'ineffective': [Item.DAMAGE_TYPES.PIERCE, Item.DAMAGE_TYPES.HEAVY],
+		'effective': [],
+		'critical' : [Item.DAMAGE_TYPES.ICE, Item.DAMAGE_TYPES.FIRE],
+	}, {
+		# goblin-1
+		'resisted': [Item.DAMAGE_TYPES.ICE, Item.DAMAGE_TYPES.FIRE],
+		'ineffective': [Item.DAMAGE_TYPES.STEALTH],
+		'effective': [Item.DAMAGE_TYPES.PIERCE, Item.DAMAGE_TYPES.HEAVY],
+		'critical' : [Item.DAMAGE_TYPES.SLASH],
+	}, {
+		# goblin-2
+		'resisted': [Item.DAMAGE_TYPES.ICE, Item.DAMAGE_TYPES.FIRE],
+		'ineffective': [],
+		'effective': [Item.DAMAGE_TYPES.PIERCE, Item.DAMAGE_TYPES.SLASH, Item.DAMAGE_TYPES.HEAVY],
+		'critical' : [Item.DAMAGE_TYPES.STEALTH],
 	},
 ]
 
@@ -95,13 +121,17 @@ func display_effectiveness(texture):
 	$StatusBars/EffectivenessSpawn/EffectivenessVisualizer.visible = true
 
 func take_damage(damage, damage_type=Item.DAMAGE_TYPES.NONE):
-	if damage_type in types[type].resistances:
-		print('Resist!')
-		damage *= .25
+	if damage_type in types[type].resisted:
+		damage *= .05
 		display_effectiveness(resisted_texture)
-	elif damage_type in types[type].weaknesses:
-		print('Effective!')
-		damage *= 4
+	elif damage_type in types[type].ineffective:
+		damage *= .5
+		display_effectiveness(ineffective_texture)
+	elif damage_type in types[type].effective:
+		damage *= 2
+		display_effectiveness(effective_texture)
+	elif damage_type in types[type].critical:
+		damage *= 8
 		display_effectiveness(critical_texture)
 	health -= damage
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.value = health
