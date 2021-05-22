@@ -6,13 +6,16 @@ onready var sfx = get_tree().get_nodes_in_group('player')[0].get_node("SFX")
 var game_started = false
 var hero_dead = false
 var allow_preview_sfx = false
+var enemies_defeated = 0
 
 func _ready():
 	$StartMenu.visible = true
 	$PauseMenu.visible = get_tree().paused
 	$DeathMenu.visible = false
+	$ScoreTab.visible = false
 	$SettingsMenu.visible = false
 	var _connected = events.connect("hero_dead", self, 'show_death_menu')
+	_connected = events.connect("enemy_defeated", self, 'enemy_defeated')
 	$SettingsMenu/PlayerModelControl/PlayerModel.add_item('Random', settings.PLAYER_MODEL.RANDOM)
 	$SettingsMenu/PlayerModelControl/PlayerModel.add_item('Male', settings.PLAYER_MODEL.MALE)
 	$SettingsMenu/PlayerModelControl/PlayerModel.add_item('Female', settings.PLAYER_MODEL.FEMALE)
@@ -40,6 +43,7 @@ func _process(_delta):
 func _on_StartGame_pressed():
 	game_started = true
 	$StartMenu.visible = false
+	$ScoreTab.visible = true
 	events.emit_signal('start_game')
 
 func _on_Exit_pressed():
@@ -76,7 +80,13 @@ func _on_PlayerModel_item_selected(index):
 
 func show_death_menu():
 	hero_dead = true
+	$ScoreTab.visible = false
+	$DeathMenu/ScoreTally.text = "You helped the hero defeat %s enemies! Great job!!" % enemies_defeated
 	$DeathMenu.visible = true
+
+func enemy_defeated():
+	enemies_defeated += 1
+	$ScoreTab/Label.text = 'Enemies Defeated: %s' % enemies_defeated
 
 func _on_VolumeSlider_mouse_entered():
 	allow_preview_sfx = true

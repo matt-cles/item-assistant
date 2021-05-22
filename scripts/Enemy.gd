@@ -137,6 +137,7 @@ func take_damage(damage, damage_type=Item.DAMAGE_TYPES.NONE):
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.value = health
 	if health <= 0:
 		$AnimationPlayer.play("die")
+		events.emit_signal("enemy_defeated")
 		dead = true
 		move_speed = 1
 		events.emit_signal("start_moving")
