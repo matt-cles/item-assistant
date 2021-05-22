@@ -160,7 +160,7 @@ material/2 = ExtResource( 8 )
 material/3 = ExtResource( 4 )
 
 [node name="RightHand" type="Spatial" parent="pivot"]
-transform = Transform( 0.117356, -0.516539, -0.848183, 0.767507, 0.589171, -0.252608, 0.630207, -0.621341, 0.46559, -0.822978, -0.0331169, -0.562502 )
+transform = Transform( -0.170919, -0.164108, -0.902066, 0.767507, 0.589171, -0.252608, 0.608797, -0.893403, -0.234002, -0.822979, -0.0331169, -0.562502 )
 
 [node name="HandMesh" type="MeshInstance" parent="pivot/RightHand"]
 transform = Transform( 0.07, 9.11939e-11, -9.31323e-10, -2.4315e-09, 0.07, 1.10425e-08, -9.31323e-10, -1.08309e-10, 0.07, 0, 0, 0 )

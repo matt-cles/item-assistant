@@ -38,5 +38,5 @@ tracks/2/keys = {
 "times": PoolRealArray( 0.15 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( 14.6319, -61.2365, 52.4886 ) ]
+"values": [ Vector3( 13.5934, -88.6148, 52.5646 ) ]
 }
