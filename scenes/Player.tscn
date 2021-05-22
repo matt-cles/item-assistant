@@ -15,7 +15,7 @@
 [ext_resource path="res://assets/characters/character-2.obj" type="ArrayMesh" id=13]
 [ext_resource path="res://animations/hand_weapon.tres" type="Animation" id=14]
 [ext_resource path="res://assets/sound/sfx/rand_switch.tres" type="AudioStream" id=15]
-[ext_resource path="res://assets/sound/sfx/swish.mp3" type="AudioStream" id=16]
+[ext_resource path="res://assets/sound/sfx/rand_swish.tres" type="AudioStream" id=16]
 [ext_resource path="res://scripts/sfx.gd" type="Script" id=17]
 
 [sub_resource type="SphereMesh" id=1]
@@ -78,4 +78,5 @@ balancer = 0.932
 
 [node name="TurnSound" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource( 16 )
+pitch_scale = 0.91
 script = ExtResource( 17 )
