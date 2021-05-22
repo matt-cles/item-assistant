@@ -17,9 +17,9 @@
 [ext_resource path="res://assets/bars/stamina_bar.png" type="Texture" id=15]
 [ext_resource path="res://scripts/StatusBarSprite.gd" type="Script" id=17]
 
-[sub_resource type="SphereMesh" id=1]
+[sub_resource type="SphereMesh" id=4]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=5]
 length = 0.5
 step = 0.01
 tracks/0/type = "value"
@@ -71,7 +71,7 @@ tracks/3/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=6]
 
 [node name="Hero" type="Spatial" groups=[
 "hero",
@@ -79,12 +79,10 @@ tracks/3/keys = {
 script = ExtResource( 10 )
 
 [node name="StatusBars" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1.5, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5029, 1.13381, 0.0748382 )
 
 [node name="HealthBarSprite" type="Sprite3D" parent="StatusBars"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.278551, 0 )
-opacity = 0.8
-billboard = 2
 script = ExtResource( 17 )
 
 [node name="Viewport" type="Viewport" parent="StatusBars/HealthBarSprite"]
@@ -107,8 +105,6 @@ __meta__ = {
 
 [node name="ManaBarSprite" type="Sprite3D" parent="StatusBars"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.138241, 0 )
-opacity = 0.8
-billboard = 2
 script = ExtResource( 17 )
 
 [node name="Viewport" type="Viewport" parent="StatusBars/ManaBarSprite"]
@@ -131,8 +127,6 @@ __meta__ = {
 
 [node name="StaminaBarSprite" type="Sprite3D" parent="StatusBars"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00613725, 0 )
-opacity = 0.8
-billboard = 2
 script = ExtResource( 17 )
 
 [node name="Viewport" type="Viewport" parent="StatusBars/StaminaBarSprite"]
@@ -169,13 +163,13 @@ transform = Transform( -0.0219959, -0.772121, -0.635095, 0.130085, 0.627638, -0.
 
 [node name="HandMesh" type="MeshInstance" parent="pivot/RightHand"]
 transform = Transform( 0.07, 9.11939e-11, -9.31323e-10, -2.4315e-09, 0.07, 1.10425e-08, -9.31323e-10, -1.08309e-10, 0.07, 0, 0, 0 )
-mesh = SubResource( 1 )
+mesh = SubResource( 4 )
 material/0 = ExtResource( 4 )
 
 [node name="WeaponSlot" type="Spatial" parent="pivot/RightHand"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/attack = SubResource( 2 )
+anims/attack = SubResource( 5 )
 anims/die = ExtResource( 6 )
 anims/drink = ExtResource( 13 )
 anims/still = ExtResource( 7 )
@@ -186,4 +180,4 @@ anims/walk = ExtResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="CombatArea"]
 transform = Transform( 0.613837, 0, 0, 0, 0.613837, 0, 0, 0, 0.613837, 0, 0, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 6 )

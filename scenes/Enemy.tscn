@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/characters/character-1.obj" type="ArrayMesh" id=1]
 [ext_resource path="res://animations/walk.tres" type="Animation" id=2]
@@ -19,21 +19,22 @@
 [ext_resource path="res://color_scheme/dark_blue.tres" type="Material" id=17]
 [ext_resource path="res://color_scheme/brown.tres" type="Material" id=18]
 [ext_resource path="res://color_scheme/blue.tres" type="Material" id=19]
+[ext_resource path="res://scripts/EffectivenessVisualizer.gd" type="Script" id=20]
 
-[sub_resource type="SphereMesh" id=1]
+[sub_resource type="QuadMesh" id=1]
 
-[sub_resource type="BoxShape" id=2]
+[sub_resource type="SphereMesh" id=2]
+
+[sub_resource type="BoxShape" id=3]
 
 [node name="Enemy" type="Spatial"]
 script = ExtResource( 8 )
 
 [node name="StatusBars" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -0.395675 )
 
 [node name="HealthBarSprite" type="Sprite3D" parent="StatusBars"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.278551, 0 )
-opacity = 0.8
-billboard = 2
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.278551, 0.319169 )
 script = ExtResource( 13 )
 
 [node name="Viewport" type="Viewport" parent="StatusBars/HealthBarSprite"]
@@ -53,6 +54,15 @@ texture_progress = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="EffectivenessSpawn" type="Spatial" parent="StatusBars"]
+transform = Transform( 0.999907, 0, 0, 0, 0.226563, 0, 0, 0, 0.999999, 0.202127, 0.723157, 0.580141 )
+
+[node name="EffectivenessVisualizer" type="MeshInstance" parent="StatusBars/EffectivenessSpawn"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+script = ExtResource( 20 )
 
 [node name="pivot" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.999086, 0, 0, 0, 0.762948, 0, 0, 0 )
@@ -93,19 +103,19 @@ transform = Transform( 1, 0, 7.45058e-09, 0, 1, 1.67638e-08, 7.45058e-09, 5.5879
 
 [node name="Type1" type="MeshInstance" parent="pivot/RightHand/HandMeshes"]
 transform = Transform( 0.07, -9.31323e-10, 0, -2.79397e-09, 0.07, 1.49012e-08, -9.31323e-10, 2.85218e-09, 0.07, 0, 0, 0 )
-mesh = SubResource( 1 )
+mesh = SubResource( 2 )
 material/0 = ExtResource( 5 )
 
 [node name="Type2" type="MeshInstance" parent="pivot/RightHand/HandMeshes"]
 transform = Transform( 0.07, -9.31323e-10, 0, -2.79397e-09, 0.07, 1.49012e-08, -9.31323e-10, 2.85218e-09, 0.07, 0, 0, 0 )
 visible = false
-mesh = SubResource( 1 )
+mesh = SubResource( 2 )
 material/0 = ExtResource( 16 )
 
 [node name="Type3" type="MeshInstance" parent="pivot/RightHand/HandMeshes"]
 transform = Transform( 0.07, -9.31323e-10, 0, -2.79397e-09, 0.07, 1.49012e-08, -9.31323e-10, 2.85218e-09, 0.07, 0, 0, 0 )
 visible = false
-mesh = SubResource( 1 )
+mesh = SubResource( 2 )
 material/0 = ExtResource( 19 )
 
 [node name="WeaponSlot" type="Spatial" parent="pivot/RightHand"]
@@ -121,7 +131,7 @@ monitorable = false
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 0.550586, 0, -5.96046e-08, 0, 0.550586, 0, 5.96046e-08, 0, 0.550586, 0, 0, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="EvilGlow" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.842169, 0 )
