@@ -14,6 +14,7 @@ var damage_ratio:float
 var health:float
 var weapon:Item
 
+var type:int
 var types = [ 
 	{
 		'resistances': [Item.DAMAGE_TYPES.ICE, Item.DAMAGE_TYPES.PIERCE],
@@ -40,7 +41,7 @@ func _ready():
 	initialize()
 	
 func initialize():
-	var type = randi() % len(types)
+	type = randi() % len(types)
 	for mesh in $pivot/Meshes.get_children():
 		mesh.visible = false
 	for mesh in $pivot/RightHand/HandMeshes.get_children():
@@ -49,7 +50,7 @@ func initialize():
 	$pivot/RightHand/HandMeshes.get_child(type).visible = true
 	move_speed = 2
 	dead = false
-	health = 100 * level / 10.0
+	health = 90 + 10 * level
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.max_value = health
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.value = health
 	damage_ratio = level / 10.0
@@ -81,8 +82,14 @@ func attack():
 		events.emit_signal("damage_hero", damage)
 		events.emit_signal("hero_turn")
 	
-func take_damage(damage, damage_tyoe=Item.DAMAGE_TYPES.NONE):
-	health = health - damage
+func take_damage(damage, damage_type=Item.DAMAGE_TYPES.NONE):
+	if damage_type in types[type].resistances:
+		print('Resist!')
+		damage *= .25
+	elif damage_type in types[type].weaknesses:
+		print('Effective!')
+		damage *= 4
+	health -= damage
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.value = health
 	if health <= 0:
 		$AnimationPlayer.play("die")

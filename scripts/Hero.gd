@@ -93,7 +93,7 @@ func attack():
 			if mana >= current_item.mana_cost and stamina >= current_item.stamina_cost:
 				$AnimationPlayer.play("attack")
 				yield($AnimationPlayer, "animation_finished")
-				events.emit_signal("damage_enemy", current_item.damage)
+				events.emit_signal("damage_enemy", current_item.damage, current_item.damage_type)
 				modify_mana(-current_item.mana_cost)
 				modify_stamina(-current_item.stamina_cost)
 			else:
