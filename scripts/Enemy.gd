@@ -15,6 +15,7 @@ var dead = false
 var hero_dead = false
 var move_speed = 2
 var level = 1.0
+var damage = 0.0
 var damage_ratio:float
 var health:float
 var weapon:Item
@@ -88,7 +89,7 @@ func initialize():
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.max_value = health
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.value = health
 	$StatusBars/HealthBarSprite.visible = true
-	damage_ratio = level
+	damage = 10 * settings.difficulty_increment * level
 	translation = Vector3.ZERO
 	$AnimationPlayer.play("walk")
 
@@ -118,7 +119,6 @@ func attack():
 	if not moving and not dead and not hero_dead:
 		$AnimationPlayer.play("attack")
 		yield($AnimationPlayer, "animation_finished")
-		var damage = weapon.damage * settings.difficulty_increment * damage_ratio
 		events.emit_signal("damage_hero", damage)
 		events.emit_signal("hero_turn")
 
