@@ -26,7 +26,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Godot Wild Jam #33 - You Aren't the Hero"
+config/name="Item Assistant"
 run/main_scene="res://scenes/Main.tscn"
 
 [autoload]
