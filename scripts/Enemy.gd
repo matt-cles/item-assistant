@@ -15,6 +15,7 @@ var dead = false
 var hero_dead = false
 var move_speed = 2
 var level = 1.0
+var damage = 0.0
 var damage_ratio:float
 var health:float
 var weapon:Item
@@ -88,7 +89,7 @@ func initialize():
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.max_value = health
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.value = health
 	$StatusBars/HealthBarSprite.visible = true
-	damage_ratio = level
+	damage = 10 * settings.difficulty_increment * level
 	translation = Vector3.ZERO
 	$AnimationPlayer.play("walk")
 
@@ -118,7 +119,6 @@ func attack():
 	if not moving and not dead and not hero_dead:
 		$AnimationPlayer.play("attack")
 		yield($AnimationPlayer, "animation_finished")
-		var damage = weapon.damage * settings.difficulty_increment * damage_ratio
 		events.emit_signal("damage_hero", damage)
 		events.emit_signal("hero_turn")
 
@@ -127,20 +127,20 @@ func display_effectiveness(texture):
 	$StatusBars/EffectivenessSpawn/EffectivenessVisualizer.translation = $StatusBars/EffectivenessSpawn.translation
 	$StatusBars/EffectivenessSpawn/EffectivenessVisualizer.visible = true
 
-func take_damage(damage, damage_type=Item.DAMAGE_TYPES.NONE):
+func take_damage(damage_given, damage_type=Item.DAMAGE_TYPES.NONE):
 	if damage_type in types[type].resisted:
-		damage *= .05
+		damage_given *= .05
 		display_effectiveness(resisted_texture)
 	elif damage_type in types[type].ineffective:
-		damage *= .5
+		damage_given *= .5
 		display_effectiveness(ineffective_texture)
 	elif damage_type in types[type].effective:
-		damage *= 3
+		damage_given *= 3
 		display_effectiveness(effective_texture)
 	elif damage_type in types[type].critical:
-		damage *= 8
+		damage_given *= 8
 		display_effectiveness(critical_texture)
-	health -= damage
+	health -= damage_given
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.value = health
 	if health <= 0:
 		$AnimationPlayer.play("die")
