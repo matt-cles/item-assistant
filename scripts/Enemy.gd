@@ -49,15 +49,15 @@ var types = [
 	}, {
 		# goblin-1
 		'resisted': [Item.DAMAGE_TYPES.ICE, Item.DAMAGE_TYPES.FIRE],
-		'ineffective': [Item.DAMAGE_TYPES.STEALTH],
-		'effective': [Item.DAMAGE_TYPES.PIERCE, Item.DAMAGE_TYPES.HEAVY],
+		'ineffective': [Item.DAMAGE_TYPES.HEAVY],
+		'effective': [Item.DAMAGE_TYPES.PIERCE, Item.DAMAGE_TYPES.STEALTH],
 		'critical' : [Item.DAMAGE_TYPES.SLASH],
 	}, {
 		# goblin-2
 		'resisted': [Item.DAMAGE_TYPES.ICE, Item.DAMAGE_TYPES.FIRE],
-		'ineffective': [],
-		'effective': [Item.DAMAGE_TYPES.PIERCE, Item.DAMAGE_TYPES.SLASH, Item.DAMAGE_TYPES.HEAVY],
-		'critical' : [Item.DAMAGE_TYPES.STEALTH],
+		'ineffective': [Item.DAMAGE_TYPES.HEAVY],
+		'effective': [Item.DAMAGE_TYPES.STEALTH, Item.DAMAGE_TYPES.SLASH],
+		'critical' : [Item.DAMAGE_TYPES.PIERCE],
 	},
 ]
 
