@@ -127,20 +127,20 @@ func display_effectiveness(texture):
 	$StatusBars/EffectivenessSpawn/EffectivenessVisualizer.translation = $StatusBars/EffectivenessSpawn.translation
 	$StatusBars/EffectivenessSpawn/EffectivenessVisualizer.visible = true
 
-func take_damage(damage, damage_type=Item.DAMAGE_TYPES.NONE):
+func take_damage(damage_given, damage_type=Item.DAMAGE_TYPES.NONE):
 	if damage_type in types[type].resisted:
-		damage *= .05
+		damage_given *= .05
 		display_effectiveness(resisted_texture)
 	elif damage_type in types[type].ineffective:
-		damage *= .5
+		damage_given *= .5
 		display_effectiveness(ineffective_texture)
 	elif damage_type in types[type].effective:
-		damage *= 3
+		damage_given *= 3
 		display_effectiveness(effective_texture)
 	elif damage_type in types[type].critical:
-		damage *= 8
+		damage_given *= 8
 		display_effectiveness(critical_texture)
-	health -= damage
+	health -= damage_given
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.value = health
 	if health <= 0:
 		$AnimationPlayer.play("die")
