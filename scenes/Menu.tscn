@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/text/Item Assistant Title.png" type="Texture" id=2]
 [ext_resource path="res://assets/text/options.png" type="Texture" id=3]
 [ext_resource path="res://assets/text/paused.png" type="Texture" id=4]
+[ext_resource path="res://assets/text/game over.png" type="Texture" id=5]
 
 [node name="Menu" type="Control"]
 pause_mode = 2
@@ -15,6 +16,7 @@ __meta__ = {
 }
 
 [node name="ScoreTab" type="Control" parent="."]
+visible = false
 margin_top = 560.0
 margin_right = 256.0
 margin_bottom = 600.0
@@ -33,13 +35,16 @@ valign = 1
 [node name="StartMenu" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="StartColorSplash" type="ColorRect" parent="StartMenu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.427451, 0.760784, 0.792157, 0.639216 )
 
-[node name="Title" type="Sprite" parent="StartMenu"]
+[node name="Item Assistant Title" type="Sprite" parent="StartMenu"]
 position = Vector2( 512, 240 )
 scale = Vector2( 0.728571, 0.728571 )
 texture = ExtResource( 2 )
@@ -143,15 +148,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GameOverLabel" type="Label" parent="DeathMenu"]
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = -7.0
-margin_bottom = 7.0
-text = "Game Over!"
-align = 1
-valign = 1
+[node name="game over" type="Sprite" parent="DeathMenu"]
+position = Vector2( 512, 240 )
+scale = Vector2( 0.728571, 0.728571 )
+texture = ExtResource( 5 )
 
 [node name="ScoreTally" type="Label" parent="DeathMenu"]
 anchor_top = 0.5
@@ -159,6 +159,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 margin_top = 7.0
 margin_bottom = 21.0
+text = "You helped the hero defeat 0 enemies! Great job!!"
 align = 1
 valign = 1
 __meta__ = {
