@@ -1,12 +1,12 @@
 # Item Assistant
 
-[Item Assistant Title Screen](/screen_shots/title_screen.png?raw=true)
+![Item Assistant Title Screen](/screen_shots/title_screen.png?raw=true)
 
 In this game, you are the assistant to the Hero. Your job is to give the Hero the item that they need to defeat the enemies. Different enemies have different weaknesses! Keep an eye out for which weapons are effective against which enemies. You will also need to ensure that the Hero does not run out of Health, Mana, or Stamina, so be sure to give them the proper potions when they need a refreshment! If Stamina runs out, then the Hero can't swing any weapon, if Mana runs out, then the hero is unable to use the magical staffs, and if the Hero's health runs out, then the Hero will fall in battle and the Game will be over!
 
-[Effective Weapon](/screen_shots/effective.png)
-[Ineffective Weapon](/screen_shots/ineffective.png)
-[Game Over](/screen_shots/game_over.png)
+![Effective Weapon](/screen_shots/effective.png?raw=true)
+![Ineffective Weapon](/screen_shots/ineffective.png?raw=true)
+![Game Over](/screen_shots/game_over.png?raw=true)
 
 ___
 
