@@ -15,11 +15,9 @@ __meta__ = {
 }
 
 [node name="ScoreTab" type="Control" parent="."]
-visible = false
-margin_left = 384.0
-margin_top = 32.0
-margin_right = 640.0
-margin_bottom = 72.0
+margin_top = 560.0
+margin_right = 256.0
+margin_bottom = 600.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -27,8 +25,9 @@ __meta__ = {
 [node name="Label" type="Label" parent="ScoreTab"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 16.0
+margin_right = 16.0
 text = "Enemies Defeated: 0"
-align = 1
 valign = 1
 
 [node name="StartMenu" type="Control" parent="."]
@@ -76,6 +75,7 @@ __meta__ = {
 }
 
 [node name="PauseMenu" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
