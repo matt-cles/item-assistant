@@ -32,11 +32,6 @@ func _process(delta):
 	if dead:
 		return
 	var current_item:Item = get_weapon()
-	if health <= 0:
-		dead = true
-		$AnimationPlayer.play("die")
-		events.emit_signal("hero_dead")
-		events.emit_signal("stop_moving")
 	if current_item:
 		match current_item.restore_type:
 			Item.RESTORE_TYPES.HEALTH:
@@ -59,6 +54,11 @@ func modify_health(amount):
 	if not dead:
 		health = clamp(health+amount, 0.0, max_health)
 		$StatusBars/HealthBarSprite/Viewport/HealthBar.value = health
+		if health <= 0:
+			dead = true
+			$AnimationPlayer.play("die")
+			events.emit_signal("hero_dead")
+			events.emit_signal("stop_moving")
 
 func modify_mana(amount):
 	if not dead:
@@ -85,22 +85,21 @@ func stop_walking():
 		attack()
 	
 func attack():
-	if dead:
-		return
-	var current_item:Item = get_weapon()
-	if current_item:
-		if current_item.damage_type != Item.DAMAGE_TYPES.NONE:
-			if mana >= current_item.mana_cost and stamina >= current_item.stamina_cost:
-				$AnimationPlayer.play("attack")
-				yield($AnimationPlayer, "animation_finished")
-				events.emit_signal("damage_enemy", current_item.damage, current_item.damage_type)
-				modify_mana(-current_item.mana_cost)
-				modify_stamina(-current_item.stamina_cost)
+	if not dead:
+		var current_item:Item = get_weapon()
+		if current_item:
+			if current_item.damage_type != Item.DAMAGE_TYPES.NONE:
+				if mana >= current_item.mana_cost and stamina >= current_item.stamina_cost:
+					$AnimationPlayer.play("attack")
+					yield($AnimationPlayer, "animation_finished")
+					events.emit_signal("damage_enemy", current_item.damage * float(not dead), current_item.damage_type)
+					modify_mana(-current_item.mana_cost)
+					modify_stamina(-current_item.stamina_cost)
+				else:
+					$AnimationPlayer.play("tired")
+					yield($AnimationPlayer, "animation_finished")
 			else:
-				$AnimationPlayer.play("tired")
+				$AnimationPlayer.play("drink")
 				yield($AnimationPlayer, "animation_finished")
-		else:
-			$AnimationPlayer.play("drink")
-			yield($AnimationPlayer, "animation_finished")
-	events.emit_signal("enemy_turn")
+		events.emit_signal("enemy_turn")
 	
