@@ -1,6 +1,6 @@
 extends Spatial
 
-onready var settings = get_tree().get_nodes_in_group("settings")[0]
+onready var settings:Settings = get_tree().get_nodes_in_group("settings")[0]
 onready var events:Node = get_tree().get_nodes_in_group('events')[0]
 onready var spawn_point = get_tree().get_nodes_in_group('enemy_spawn_point')[0]
 onready var weapons = get_tree().get_nodes_in_group('weapon')
@@ -49,15 +49,15 @@ var types = [
 	}, {
 		# goblin-1
 		'resisted': [Item.DAMAGE_TYPES.ICE, Item.DAMAGE_TYPES.FIRE],
-		'ineffective': [Item.DAMAGE_TYPES.STEALTH],
-		'effective': [Item.DAMAGE_TYPES.PIERCE, Item.DAMAGE_TYPES.HEAVY],
+		'ineffective': [Item.DAMAGE_TYPES.HEAVY],
+		'effective': [Item.DAMAGE_TYPES.PIERCE, Item.DAMAGE_TYPES.STEALTH],
 		'critical' : [Item.DAMAGE_TYPES.SLASH],
 	}, {
 		# goblin-2
 		'resisted': [Item.DAMAGE_TYPES.ICE, Item.DAMAGE_TYPES.FIRE],
-		'ineffective': [],
-		'effective': [Item.DAMAGE_TYPES.PIERCE, Item.DAMAGE_TYPES.SLASH, Item.DAMAGE_TYPES.HEAVY],
-		'critical' : [Item.DAMAGE_TYPES.STEALTH],
+		'ineffective': [Item.DAMAGE_TYPES.HEAVY],
+		'effective': [Item.DAMAGE_TYPES.STEALTH, Item.DAMAGE_TYPES.SLASH],
+		'critical' : [Item.DAMAGE_TYPES.PIERCE],
 	},
 ]
 
@@ -70,8 +70,9 @@ func _ready():
 	_connected = events.connect("damage_enemy", self, "take_damage")
 	_connected = events.connect("hero_dead", self, "hero_death")
 	initialize()
-	
+
 func initialize():
+	# Get a random enemy type
 	type = randi() % len(types)
 	for mesh in $pivot/Meshes.get_children():
 		mesh.visible = false
@@ -79,14 +80,19 @@ func initialize():
 		mesh.visible = false
 	$pivot/Meshes.get_child(type).visible = true
 	$pivot/RightHand/HandMeshes.get_child(type).visible = true
+
+	# Reset enemy vars
 	move_speed = 2
 	dead = false
 	health = 90 + 10 * level
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.max_value = health
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.value = health
 	$StatusBars/HealthBarSprite.visible = true
-	damage_ratio = level / 10.0
+	damage_ratio = level
 	translation = Vector3.ZERO
+	$AnimationPlayer.play("walk")
+
+	# Pick a random weapon
 	weapon = weapons[randi() % len(weapons)].duplicate()
 	# Prevent from getting a duplicated weapon in the player inventory..
 	weapon.remove_from_group('item')
@@ -98,8 +104,9 @@ func initialize():
 		weapon_slot.remove_child(old_weapon)
 		old_weapon.queue_free()
 	weapon_slot.add_child(weapon)
+
+	# Hide effectivness visualizer
 	$StatusBars/EffectivenessSpawn/EffectivenessVisualizer.visible = false
-	$AnimationPlayer.play("walk")
 
 func _process(delta):
 	translation.x += move_speed * delta * float(moving)
@@ -111,7 +118,7 @@ func attack():
 	if not moving and not dead and not hero_dead:
 		$AnimationPlayer.play("attack")
 		yield($AnimationPlayer, "animation_finished")
-		var damage = weapon.damage * damage_ratio
+		var damage = weapon.damage * settings.difficulty_increment * damage_ratio
 		events.emit_signal("damage_hero", damage)
 		events.emit_signal("hero_turn")
 
@@ -128,7 +135,7 @@ func take_damage(damage, damage_type=Item.DAMAGE_TYPES.NONE):
 		damage *= .5
 		display_effectiveness(ineffective_texture)
 	elif damage_type in types[type].effective:
-		damage *= 2
+		damage *= 3
 		display_effectiveness(effective_texture)
 	elif damage_type in types[type].critical:
 		damage *= 8
