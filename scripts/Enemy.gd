@@ -1,6 +1,6 @@
 extends Spatial
 
-onready var settings = get_tree().get_nodes_in_group("settings")[0]
+onready var settings:Settings = get_tree().get_nodes_in_group("settings")[0]
 onready var events:Node = get_tree().get_nodes_in_group('events')[0]
 onready var spawn_point = get_tree().get_nodes_in_group('enemy_spawn_point')[0]
 onready var weapons = get_tree().get_nodes_in_group('weapon')
@@ -88,7 +88,7 @@ func initialize():
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.max_value = health
 	$StatusBars/HealthBarSprite/Viewport/HealthBar.value = health
 	$StatusBars/HealthBarSprite.visible = true
-	damage_ratio = level / 10.0
+	damage_ratio = level
 	translation = Vector3.ZERO
 	$AnimationPlayer.play("walk")
 
@@ -118,7 +118,7 @@ func attack():
 	if not moving and not dead and not hero_dead:
 		$AnimationPlayer.play("attack")
 		yield($AnimationPlayer, "animation_finished")
-		var damage = weapon.damage * damage_ratio
+		var damage = weapon.damage * settings.difficulty_increment * damage_ratio
 		events.emit_signal("damage_hero", damage)
 		events.emit_signal("hero_turn")
 
