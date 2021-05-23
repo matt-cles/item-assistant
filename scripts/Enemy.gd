@@ -70,8 +70,9 @@ func _ready():
 	_connected = events.connect("damage_enemy", self, "take_damage")
 	_connected = events.connect("hero_dead", self, "hero_death")
 	initialize()
-	
+
 func initialize():
+	# Get a random enemy type
 	type = randi() % len(types)
 	for mesh in $pivot/Meshes.get_children():
 		mesh.visible = false
@@ -79,6 +80,8 @@ func initialize():
 		mesh.visible = false
 	$pivot/Meshes.get_child(type).visible = true
 	$pivot/RightHand/HandMeshes.get_child(type).visible = true
+
+	# Reset enemy vars
 	move_speed = 2
 	dead = false
 	health = 90 + 10 * level
@@ -87,6 +90,9 @@ func initialize():
 	$StatusBars/HealthBarSprite.visible = true
 	damage_ratio = level / 10.0
 	translation = Vector3.ZERO
+	$AnimationPlayer.play("walk")
+
+	# Pick a random weapon
 	weapon = weapons[randi() % len(weapons)].duplicate()
 	# Prevent from getting a duplicated weapon in the player inventory..
 	weapon.remove_from_group('item')
@@ -98,8 +104,9 @@ func initialize():
 		weapon_slot.remove_child(old_weapon)
 		old_weapon.queue_free()
 	weapon_slot.add_child(weapon)
+
+	# Hide effectivness visualizer
 	$StatusBars/EffectivenessSpawn/EffectivenessVisualizer.visible = false
-	$AnimationPlayer.play("walk")
 
 func _process(delta):
 	translation.x += move_speed * delta * float(moving)
