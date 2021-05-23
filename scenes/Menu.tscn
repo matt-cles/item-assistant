@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/text/Item Assistant Title.png" type="Texture" id=2]
+[ext_resource path="res://assets/text/options.png" type="Texture" id=3]
 
 [node name="Menu" type="Control"]
 pause_mode = 2
@@ -38,19 +39,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.427451, 0.760784, 0.792157, 0.639216 )
 
-[node name="Sprite" type="Sprite" parent="StartMenu"]
-position = Vector2( 528, 256 )
+[node name="Title" type="Sprite" parent="StartMenu"]
+position = Vector2( 512, 240 )
+scale = Vector2( 0.728571, 0.728571 )
 texture = ExtResource( 2 )
-
-[node name="GameTitle" type="Label" parent="StartMenu"]
-visible = false
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_top = -7.0
-margin_bottom = 7.0
-text = "Item Assistant"
-align = 1
 
 [node name="StartGame" type="Button" parent="StartMenu"]
 margin_left = 416.0
@@ -67,7 +59,7 @@ margin_left = 416.0
 margin_top = 400.0
 margin_right = 608.0
 margin_bottom = 448.0
-text = "Settings"
+text = "Options"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -189,19 +181,8 @@ __meta__ = {
 }
 
 [node name="SettingsMenu" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="BG" type="Panel" parent="SettingsMenu"]
-visible = false
-margin_left = 400.0
-margin_top = 272.0
-margin_right = 624.0
-margin_bottom = 528.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -211,22 +192,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.427451, 0.666667, 0.172549, 0.635294 )
 
-[node name="SettingsLabel" type="Label" parent="SettingsMenu"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -80.0
-margin_top = -12.0
-margin_right = 84.0
-margin_bottom = 31.0
-text = "Settings
-"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="options" type="Sprite" parent="SettingsMenu"]
+position = Vector2( 512, 240 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 3 )
 
 [node name="MusicVolumeControl" type="Control" parent="SettingsMenu"]
 margin_left = 304.0
