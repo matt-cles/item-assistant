@@ -90,3 +90,7 @@ func enemy_defeated():
 
 func _on_VolumeSlider_mouse_entered():
 	allow_preview_sfx = true
+
+func _on_Resume_pressed():
+	$PauseMenu.visible = false
+	get_tree().paused = false
