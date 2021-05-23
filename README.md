@@ -20,13 +20,15 @@ I hope you enjoy Item Assistant! This is my first full game made in Godot Engine
 Controls:
 - `Left Arrow Key`: Switch to the previous item in your inventory
 - `Right Arrow Key`: Switch to the next item in your inventory
-- `Spacebar/Enter Key`: Swap items with the Hero
+- `Space-bar/Enter Key`: Swap items with the Hero
 - `Escape Key`: Pause the game
 
 Screenshot Gallery:
 ![Effective Weapon](/screen_shots/effective.png?raw=true)
-![Ineffective Weapon](/screen_shots/ineffective.png?raw=true)
 ![Game Over](/screen_shots/game_over.png?raw=true)
+![Ineffective Weapon](/screen_shots/ineffective.png?raw=true)
+![Critical Weapon](/screen_shots/critical.png?raw=true)
+![Options Menu](/screen_shots/options.png?raw=true)
 
 ___
 
