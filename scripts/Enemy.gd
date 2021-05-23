@@ -128,7 +128,7 @@ func take_damage(damage, damage_type=Item.DAMAGE_TYPES.NONE):
 		damage *= .5
 		display_effectiveness(ineffective_texture)
 	elif damage_type in types[type].effective:
-		damage *= 2
+		damage *= 3
 		display_effectiveness(effective_texture)
 	elif damage_type in types[type].critical:
 		damage *= 8
